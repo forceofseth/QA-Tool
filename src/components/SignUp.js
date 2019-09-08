@@ -35,11 +35,10 @@ function SignUp() {
     };
 
     const isInvalid =
-        // state.passwordOne !== state.passwordTwo ||
-        // state.passwordOne === '' ||
-        // state.email === '' ||
-        // state.username === '';
-    false;
+        state.passwordOne !== state.passwordTwo ||
+        state.passwordOne === '' ||
+        state.email === '' ||
+        state.username === '';
 
     return (
         <div>
