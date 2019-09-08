@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
+import FirebaseContext from "../Firebase/context";
 
 function SignUp() {
 
@@ -10,30 +11,35 @@ function SignUp() {
         error: null,
     };
     const [state, setState] =useState(INITIAL_STATE);
+    const firebase = useContext(FirebaseContext);
 
     const onSubmit = event => {
         const{username, email, passwordOne} = state;
 
-        this.props.firebase
+        firebase
             .doCreateUserWithEmailAndPassword(email, passwordOne)
-            .then(authUser => {
-                this.setState({ ...INITIAL_STATE });
+            .then(() => {
+                setState({ ...INITIAL_STATE });
             })
             .catch(error => {
-                this.setState({ error });
+                setState({ error });
             });
         event.preventDefault();
     };
 
     const onChange = event => {
-        setState({[event.target.name]: event.target.value})
+        setState({
+            ...state,
+            [event.target.name]: event.target.value});
+        console.log(state);
     };
 
     const isInvalid =
-        state.passwordOne !== state.passwordTwo ||
-        state.passwordOne === '' ||
-        state.email === '' ||
-        state.username === '';
+        // state.passwordOne !== state.passwordTwo ||
+        // state.passwordOne === '' ||
+        // state.email === '' ||
+        // state.username === '';
+    false;
 
     return (
         <div>
