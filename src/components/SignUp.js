@@ -1,7 +1,10 @@
-import React, { useState,useContext } from 'react';
+import React, {useState, useContext} from 'react';
 import FirebaseContext from "../firebase/context";
+import {Link, withRouter} from 'react-router-dom';
+import * as ROUTES from '../constants/routes';
 
-function SignUp() {
+
+function SignUp(props) {
 
     const INITIAL_STATE = {
         username: '',
@@ -10,19 +13,20 @@ function SignUp() {
         passwordTwo: '',
         error: null,
     };
-    const [state, setState] =useState(INITIAL_STATE);
+    const [state, setState] = useState(INITIAL_STATE);
     const firebase = useContext(FirebaseContext);
 
     const onSubmit = event => {
-        const{username, email, passwordOne} = state;
+        const {email, passwordOne} = state;
 
         firebase
             .doCreateUserWithEmailAndPassword(email, passwordOne)
             .then(() => {
-                setState({ ...INITIAL_STATE });
+                setState({...INITIAL_STATE});
+                props.history.push(ROUTES.HOME)
             })
             .catch(error => {
-                setState({ error });
+                setState({error});
             });
         event.preventDefault();
     };
@@ -30,8 +34,8 @@ function SignUp() {
     const onChange = event => {
         setState({
             ...state,
-            [event.target.name]: event.target.value});
-        console.log(state);
+            [event.target.name]: event.target.value
+        });
     };
 
     const isInvalid =
@@ -80,4 +84,12 @@ function SignUp() {
     );
 }
 
-export default SignUp;
+const SignUpLink = () =>(
+    <p>
+        Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+    </p>
+);
+export {SignUpLink};
+
+export default withRouter(SignUp);
+
