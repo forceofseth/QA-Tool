@@ -1,5 +1,5 @@
 import React, { useState,useContext } from 'react';
-import FirebaseContext from "../Firebase/context";
+import FirebaseContext from "../firebase/context";
 
 function SignUp() {
 
