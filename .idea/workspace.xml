@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ab3e8408-007a-4710-bb3d-045e79ea7bb8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Account.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Account.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Firebase.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Landing.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Landing.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navigation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PasswordChange.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PasswordChange.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PasswordForget.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PasswordForget.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Session.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Session.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SignIn.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SignOut.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SignOut.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/routes.js" afterDir="false" />
-    </list>
+    <list default="true" id="ab3e8408-007a-4710-bb3d-045e79ea7bb8" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +70,7 @@
       <option name="presentableId" value="Default" />
       <updated>1567942228827</updated>
       <workItem from="1567942230979" duration="3449000" />
-      <workItem from="1567946163084" duration="1389000" />
+      <workItem from="1567946163084" duration="1694000" />
     </task>
     <task id="LOCAL-00001" summary="some changes in idea files">
       <created>1567942593892</created>
@@ -111,7 +93,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567945812247</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added really basic navigation">
+      <created>1567947613312</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1567947613312</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -134,6 +123,7 @@
     <MESSAGE value="some changes in idea files" />
     <MESSAGE value="added new Components for Firebase login/logout etc." />
     <MESSAGE value="two new constant files" />
-    <option name="LAST_COMMIT_MESSAGE" value="two new constant files" />
+    <MESSAGE value="added really basic navigation" />
+    <option name="LAST_COMMIT_MESSAGE" value="added really basic navigation" />
   </component>
 </project>
