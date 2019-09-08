@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab3e8408-007a-4710-bb3d-045e79ea7bb8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Firebase/firebase.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Firebase/context.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Firebase.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Firebase/firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Firebase/firebase.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +76,7 @@
       <updated>1567942228827</updated>
       <workItem from="1567942230979" duration="3449000" />
       <workItem from="1567946163084" duration="3236000" />
-      <workItem from="1567949563713" duration="272000" />
+      <workItem from="1567949563713" duration="2153000" />
     </task>
     <task id="LOCAL-00001" summary="some changes in idea files">
       <created>1567942593892</created>
@@ -115,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567948031766</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added .env to the gitignore&#10;added some firebase configuration">
+      <created>1567949917230</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1567949917230</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,6 +148,8 @@
     <MESSAGE value="two new constant files" />
     <MESSAGE value="added really basic navigation" />
     <MESSAGE value="updated workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated workspace.xml" />
+    <MESSAGE value="added .env to the gitignore&#10;added some firebase configuration4" />
+    <MESSAGE value="added .env to the gitignore&#10;added some firebase configuration" />
+    <option name="LAST_COMMIT_MESSAGE" value="added .env to the gitignore&#10;added some firebase configuration" />
   </component>
 </project>
