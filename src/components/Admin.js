@@ -1,10 +1,10 @@
 import React from 'react';
 
-function SignOut() {
+function Admin() {
     return (
         <div>
-            <h1>SignOut</h1>
+            <h1>Admin</h1>
         </div>
     );
 }
-export default SignOut;
+export default Admin;
