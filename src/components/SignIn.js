@@ -20,9 +20,6 @@ function SignIn(props) {
 
     const onSubmit = event =>{
         const {email, password} = state;
-        console.log("email for login:", email);
-        console.log("password for login:", password);
-
 
         firebase
             .doSignInWithEmailAndPassword(email, password)
