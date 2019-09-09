@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Navigation from './Navigation';
@@ -10,14 +10,30 @@ import Home from './Home';
 import Account from './Account';
 import Admin from './Admin';
 import * as ROUTES from '../constants/routes';
+import FirebaseContext from "../firebase/context";
 
 
 function App() {
+
+    const [state, setState] = useState({authUser: null});
+    const firebase = useContext(FirebaseContext);
+
+    useEffect(() => {
+        const listener =firebase.auth.onAuthStateChanged(authUser => {
+            authUser
+                ? setState({authUser})
+                : setState({authUser: null});
+        });
+        return () =>{
+            listener();
+        }
+    });
+
+
     return (
         <Router>
             <div>
-
-                <Navigation/>
+                <Navigation authUser={state.authUser}/>
                 <hr/>
                 <Route exact path={ROUTES.LANDING} component={Landing}/>
                 <Route path={ROUTES.SIGN_UP} component={SignUp}/>
@@ -27,7 +43,6 @@ function App() {
                 <Route path={ROUTES.ACCOUNT} component={Account}/>
                 <Route path={ROUTES.ADMIN} component={Admin}/>
             </div>
-
         </Router>
     );
 }
