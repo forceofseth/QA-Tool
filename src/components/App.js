@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Navigation from './Navigation';
@@ -19,15 +19,15 @@ function App() {
     const firebase = useContext(FirebaseContext);
 
     useEffect(() => {
-        const listener =firebase.auth.onAuthStateChanged(authUser => {
+        const listener = firebase.auth.onAuthStateChanged(authUser => {
             authUser
                 ? setState({authUser})
                 : setState({authUser: null});
         });
-        return () =>{
+        return () => {
             listener();
         }
-    });
+    }, [firebase.auth]);
 
 
     return (
