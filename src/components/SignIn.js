@@ -1,11 +1,9 @@
 import {SignUpLink} from './SignUp';
-import React, {useState, useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import FirebaseContext from "../firebase/context";
+import {PasswordForgetLink} from './PasswordForget';
 import * as ROUTES from '../constants/routes';
-import { withRouter } from 'react-router-dom';
-
-
-
+import {withRouter} from 'react-router-dom';
 
 
 function SignIn(props) {
@@ -18,17 +16,17 @@ function SignIn(props) {
     const [state, setState] = useState(INITIAL_STATE);
     const firebase = useContext(FirebaseContext);
 
-    const onSubmit = event =>{
-        const {email, password} = state;
+    const isInvalid = state.password === '' || state.email === '';
 
+    const onSubmit = event => {
         firebase
-            .doSignInWithEmailAndPassword(email, password)
+            .doSignInWithEmailAndPassword(state.email, state.password)
             .then(() => {
-                setState({ ...INITIAL_STATE });
+                setState({...INITIAL_STATE});
                 props.history.push(ROUTES.HOME);
             })
             .catch(error => {
-                setState({ error });
+                setState({error});
             });
         event.preventDefault();
     };
@@ -40,7 +38,6 @@ function SignIn(props) {
         });
     };
 
-    const isInvalid = state.password === '' || state.email === '';
 
     return (
         <div>
@@ -65,6 +62,7 @@ function SignIn(props) {
                 </button>
                 {state.error && <p>{state.error.message}</p>}
             </form>
+            <PasswordForgetLink/>
             <SignUpLink/>
         </div>
     );
