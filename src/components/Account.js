@@ -1,21 +1,13 @@
-import React, {useContext, useEffect} from 'react';
+import React from 'react';
 import PasswordChangeForm from './PasswordChange';
 import {withRouter} from 'react-router-dom';
-import FirebaseContext from "../firebase/context";
-import * as ROUTES from '../constants/routes';
+import {useAuthorization} from "../hooks/useAuthorization";
 
 
 function Account(props) {
 
-    const firebase = useContext(FirebaseContext);
-
-    useEffect(() => {
-        firebase.auth.onAuthStateChanged(authUser => {
-            if (!authUser) {
-                props.history.push(ROUTES.SIGN_IN)
-            }
-        });
-    }, [firebase.auth, props.history]);
+    const authCondition = (authUser) => (!!authUser);
+    useAuthorization(authCondition, props.history);
 
     return (
         <div>
