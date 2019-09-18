@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Navigation from './Navigation';
@@ -11,45 +11,45 @@ import Account from './Account';
 import Admin from './Admin';
 import * as ROUTES from '../constants/routes';
 import FirebaseContext from "../firebase/context";
+import {getLoggedInUser} from "../redux/firebaseActions";
+import {connect} from "react-redux";
+import {getAuthUser} from "../redux/selectors";
 
-//temporary use of a context until we use Redux state.
-export const UserContext = React.createContext(null);
 
-function App() {
+function App(props) {
 
-    const [authUser, setAuthUser] = useState(null);
     const firebase = useContext(FirebaseContext);
 
 
     useEffect(() => {
-        const listener = firebase.auth.onAuthStateChanged(authUser => {
-            authUser
-                ? setAuthUser(authUser)
-                : setAuthUser(null);
-        });
-        return () => {
-            listener();
-        }
-    }, [firebase.auth]);
+        props.getLoggedInUser(firebase);
+    }, [firebase, props]);
 
 
     return (
-        <UserContext.Provider value={{authUser}}>
-            <Router>
-                <div>
-                    <Navigation/>
-                    <hr/>
-                    <Route exact path={ROUTES.LANDING} component={Landing}/>
-                    <Route path={ROUTES.SIGN_UP} component={SignUp}/>
-                    <Route path={ROUTES.SIGN_IN} component={SignIn}/>
-                    <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForget}/>
-                    <Route path={ROUTES.HOME} component={Home}/>
-                    <Route path={ROUTES.ACCOUNT} component={Account}/>
-                    <Route path={ROUTES.ADMIN} component={Admin}/>
-                </div>
-            </Router>
-        </UserContext.Provider>
+        <Router>
+            <div>
+                <Navigation/>
+                <hr/>
+                <Route exact path={ROUTES.LANDING} component={Landing}/>
+                <Route path={ROUTES.SIGN_UP} component={SignUp}/>
+                <Route path={ROUTES.SIGN_IN} component={SignIn}/>
+                <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForget}/>
+                <Route path={ROUTES.HOME} component={Home}/>
+                <Route path={ROUTES.ACCOUNT} component={Account}/>
+                <Route path={ROUTES.ADMIN} component={Admin}/>
+            </div>
+        </Router>
     );
 }
 
-export default App;
+const mapDispatchToProps = {
+    getLoggedInUser
+};
+
+const mapStateToProps = state => {
+    //we dont need authUser from the state at the moment in this component
+    return {authUser: getAuthUser(state)};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
