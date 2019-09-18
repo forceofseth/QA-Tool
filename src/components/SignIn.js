@@ -1,9 +1,11 @@
-import {SignUpLink} from './SignUp';
 import React, {useContext, useState} from 'react';
 import FirebaseContext from "../firebase/context";
 import {PasswordForgetLink} from './PasswordForget';
 import * as ROUTES from '../constants/routes';
-import {withRouter} from 'react-router-dom';
+import useReactRouter from "use-react-router";
+import {connect} from "react-redux";
+import {getLoggedInUser} from "../redux/firebaseActions";
+import {getAuthUser} from "../redux/selectors";
 
 
 function SignIn(props) {
@@ -15,6 +17,8 @@ function SignIn(props) {
     };
     const [state, setState] = useState(INITIAL_STATE);
     const firebase = useContext(FirebaseContext);
+    const {history} = useReactRouter();
+
 
     const isInvalid = state.password === '' || state.email === '';
 
@@ -23,7 +27,8 @@ function SignIn(props) {
             .doSignInWithEmailAndPassword(state.email, state.password)
             .then(() => {
                 setState({...INITIAL_STATE});
-                props.history.push(ROUTES.HOME);
+                props.getLoggedInUser(firebase);
+                history.push(ROUTES.HOME);
             })
             .catch(error => {
                 setState({error});
@@ -38,7 +43,7 @@ function SignIn(props) {
         });
     };
 
-
+//todo passwordforget site needs a link back to signin
     return (
         <div>
             <h1>SignIn</h1>
@@ -63,9 +68,16 @@ function SignIn(props) {
                 {state.error && <p>{state.error.message}</p>}
             </form>
             <PasswordForgetLink/>
-            <SignUpLink/>
         </div>
     );
 }
 
-export default withRouter(SignIn);
+const mapDispatchToProps = {
+    getLoggedInUser
+};
+
+const mapStateToProps = state => {
+    return {authUser: getAuthUser(state)};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
