@@ -1,19 +1,19 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import PasswordChangeForm from './PasswordChange';
 import Forbidden from "./Forbidden";
 import {useAuthorizationRedirect} from "../hooks/useAuthorizationRedirect";
-import {UserContext} from "./App";
+import {connect} from "react-redux";
+import {getAuthUser} from "../redux/selectors";
 
 
 function Account(props) {
 
     const authCondition = (authUser) => !!authUser;
     useAuthorizationRedirect(authCondition, props.history);
-    const {authUser} = useContext(UserContext);
 
 
     return (
-        <div>{authUser ? <AccountAuth/> : <Forbidden/>}</div>
+        <div>{props.authUser ? <AccountAuth/> : <Forbidden/>}</div>
     );
 }
 
@@ -24,5 +24,8 @@ const AccountAuth = () => (
     </div>
 );
 
+const mapStateToProps = state => {
+    return {authUser: getAuthUser(state)};
+};
 
-export default Account;
+export default connect(mapStateToProps)(Account);

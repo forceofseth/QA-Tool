@@ -1,14 +1,14 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 import SignOut from "./SignOut";
-import {UserContext} from "./App";
+import {connect} from "react-redux";
+import {getAuthUser} from "../redux/selectors";
 
 
-function Navigation() {
-    const {authUser} = useContext(UserContext);
+function Navigation(props) {
     return (
-        <div>{authUser ? <NavigationAuth/> : <NavigationNonAuth/>}</div>
+        <div>{props.authUser ? <NavigationAuth/> : <NavigationNonAuth/>}</div>
     );
 }
 
@@ -37,4 +37,9 @@ const NavigationNonAuth = () => (
         </li>
     </ul>
 );
-export default Navigation;
+
+const mapStateToProps = state => {
+    return {authUser: getAuthUser(state)};
+};
+
+export default connect(mapStateToProps)(Navigation);
