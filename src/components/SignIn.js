@@ -1,4 +1,3 @@
-import {SignUpLink} from './SignUp';
 import React, {useContext, useState} from 'react';
 import FirebaseContext from "../firebase/context";
 import {PasswordForgetLink} from './PasswordForget';
@@ -8,9 +7,42 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+
+
+const useStyles = makeStyles(theme => ({
+    '@global': {
+        body: {
+            background: "linear-gradient(90deg, #35C7FF 0%, #4C8CFD 100%);",
+        },
+    },
+    paper: {
+        marginTop: theme.spacing(8),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        background: "white",
+        padding: "20px 50px 10px",
+        borderRadius: "10px",
+        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.25);"
+    },
+    form: {
+        width: '100%',
+        marginTop: theme.spacing(1),
+    },
+    submit: {
+        margin: theme.spacing(3, 0, 2),
+    },
+}));
 
 
 function SignIn(props) {
+
+    const classes = useStyles();
+
 
     const INITIAL_STATE = {
         email: '',
@@ -44,45 +76,54 @@ function SignIn(props) {
 
 
     return (
-        <div>
-            <h1>SignIn</h1>
+        <Container component="main" maxWidth="md">
+            <CssBaseline />
+            <div className={classes.paper}>
+                <form className={classes.form} noValidate onSubmit={onSubmit}>
+                    <TextField className={classes.textfield}
+                        id="outlined-email-input"
+                        autoComplete="email"
+                        margin="normal"
+                        variant="outlined"
+                        value={state.email}
+                        name="email"
+                        onChange={onChange}
+                        type="text"
+                        label="E-Mail"
+                        required
+                        fullWidth
+                    />
+                    <TextField className={classes.textfield}
+                        id="outlined-password-input"
+                        label="Password"
+                        autoComplete="current-password"
+                        margin="normal"
+                        variant="outlined"
+                        name="password"
+                        value={state.password}
+                        onChange={onChange}
+                        type="password"
+                        required
+                        fullWidth
+                    />
 
-            <form onSubmit={onSubmit}>
-
-                <TextField
-                    id="outlined-email-input"
-                    autoComplete="email"
-                    margin="normal"
-                    variant="outlined"
-                    value={state.email}
-                    name="email"
-                    onChange={onChange}
-                    type="text"
-                    label="E-Mail"
-                />
-
-               <TextField
-                    id="outlined-password-input"
-                    label="Password"
-                    autoComplete="current-password"
-                    margin="normal"
-                    variant="outlined"
-                    name="password"
-                    value={state.password}
-                    onChange={onChange}
-                    type="password"
-                />
-
-                <Button variant="contained" color="primary"  type="submit">
-                    Sign In
-                </Button>
-
-
-                {state.error && <p>{state.error.message}</p>}
-            </form>
-            <PasswordForgetLink/>
-            <SignUpLink/>
-        </div>
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}
+                    >
+                        Sign In
+                    </Button>
+                    <Grid container>
+                        <Grid item xs>
+                            <PasswordForgetLink/>
+                        </Grid>
+                    </Grid>
+                    {state.error && <p>{state.error.message}</p>}
+                </form>
+            </div>
+        </Container>
     );
 }
 
