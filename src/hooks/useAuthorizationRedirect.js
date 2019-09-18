@@ -3,7 +3,7 @@ import {useEffect, useContext} from "react";
 import FirebaseContext from "../firebase/context";
 import useReactRouter from 'use-react-router';
 
-export const useAuthorization = (condition) => {
+export const useAuthorizationRedirect = (condition) => {
     const firebase = useContext(FirebaseContext);
     const {history} = useReactRouter();
 

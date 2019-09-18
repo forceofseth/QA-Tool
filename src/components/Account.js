@@ -1,19 +1,28 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import PasswordChangeForm from './PasswordChange';
-import {useAuthorization} from "../hooks/useAuthorization";
+import Forbidden from "./Forbidden";
+import {useAuthorizationRedirect} from "../hooks/useAuthorizationRedirect";
+import {UserContext} from "./App";
 
 
 function Account(props) {
 
-    const authCondition = (authUser) => (!!authUser);
-    useAuthorization(authCondition, props.history);
+    const authCondition = (authUser) => !!authUser;
+    useAuthorizationRedirect(authCondition, props.history);
+    const {authUser} = useContext(UserContext);
+
 
     return (
-        <div>
-            <h1>Account</h1>
-            <PasswordChangeForm/>
-        </div>
+        <div>{authUser ? <AccountAuth/> : <Forbidden/>}</div>
     );
 }
+
+const AccountAuth = () => (
+    <div>
+        <h1>Account</h1>
+        <PasswordChangeForm/>
+    </div>
+);
+
 
 export default Account;
