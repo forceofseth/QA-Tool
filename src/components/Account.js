@@ -1,6 +1,5 @@
 import React from 'react';
 import PasswordChangeForm from './PasswordChange';
-import {withRouter} from 'react-router-dom';
 import {useAuthorization} from "../hooks/useAuthorization";
 
 
@@ -17,4 +16,4 @@ function Account(props) {
     );
 }
 
-export default withRouter(Account);
+export default Account;
