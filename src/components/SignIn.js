@@ -4,6 +4,10 @@ import FirebaseContext from "../firebase/context";
 import {PasswordForgetLink} from './PasswordForget';
 import * as ROUTES from '../constants/routes';
 import {withRouter} from 'react-router-dom';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
+
 
 
 function SignIn(props) {
@@ -42,24 +46,38 @@ function SignIn(props) {
     return (
         <div>
             <h1>SignIn</h1>
+
             <form onSubmit={onSubmit}>
-                <input
-                    name="email"
+
+                <TextField
+                    id="outlined-email-input"
+                    autoComplete="email"
+                    margin="normal"
+                    variant="outlined"
                     value={state.email}
+                    name="email"
                     onChange={onChange}
                     type="text"
-                    placeholder="Email Address"
+                    label="E-Mail"
                 />
-                <input
+
+               <TextField
+                    id="outlined-password-input"
+                    label="Password"
+                    autoComplete="current-password"
+                    margin="normal"
+                    variant="outlined"
                     name="password"
                     value={state.password}
                     onChange={onChange}
                     type="password"
-                    placeholder="Password"
                 />
-                <button disabled={isInvalid} type="submit">
+
+                <Button variant="contained" color="primary"  type="submit">
                     Sign In
-                </button>
+                </Button>
+
+
                 {state.error && <p>{state.error.message}</p>}
             </form>
             <PasswordForgetLink/>
