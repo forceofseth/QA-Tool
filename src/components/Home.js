@@ -3,6 +3,10 @@ import MaterialTable from "material-table";
 import Container from "@material-ui/core/Container";
 import {makeStyles} from "@material-ui/core";
 import Box from "@material-ui/core/Box";
+import {useAuthorizationRedirect} from "../hooks/useAuthorizationRedirect";
+import {getAuthUser} from "../redux/selectors";
+import {connect} from "react-redux";
+import Forbidden from "./Forbidden";
 
 
 const useStyles = makeStyles(theme => ({
@@ -22,7 +26,15 @@ const useStyles = makeStyles(theme => ({
 
 
 
-function Home() {
+function Home(props) {
+
+    const redirectCondition = (authUser) => !!authUser;
+    useAuthorizationRedirect(redirectCondition, props.authUser);
+
+    return (
+        <div>{props.authUser ? <HomeAuth/> : <Forbidden/>}</div>
+
+    );
 
     const classes = useStyles();
 
@@ -96,7 +108,8 @@ function Home() {
         ],
     });
 
-    return (
+
+    const HomeAuth = () => (
         <Container>
 
             <Box className={classes.backgroundLayer}>
@@ -143,4 +156,8 @@ function Home() {
     );
 }
 
-export default Home;
+const mapStateToProps = state => {
+    return {authUser: getAuthUser(state)};
+};
+
+export default connect(mapStateToProps)(Home);

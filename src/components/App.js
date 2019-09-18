@@ -2,8 +2,6 @@ import React, {useContext, useEffect} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Navigation from './Navigation';
-import Landing from './Landing';
-import SignUp from './SignUp';
 import SignIn from './SignIn';
 import PasswordForget from './PasswordForget';
 import Home from './Home';
@@ -20,19 +18,17 @@ function App(props) {
 
     const firebase = useContext(FirebaseContext);
 
-
     useEffect(() => {
         props.getLoggedInUser(firebase);
     }, [firebase, props]);
 
 
+    //todo what should happen if we navigate to '/' and we are already signed in? --> dont show the sign in window and redirect back to home
     return (
         <Router>
             <div>
-                <Navigation/>
-                <Route exact path={ROUTES.LANDING} component={Landing}/>
-                <Route path={ROUTES.SIGN_UP} component={SignUp}/>
-                <Route path={ROUTES.SIGN_IN} component={SignIn}/>
+                {props.authUser ? <Navigation/> : null}
+                <Route exact path={ROUTES.SIGN_IN} component={SignIn}/>
                 <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForget}/>
                 <Route path={ROUTES.HOME} component={Home}/>
                 <Route path={ROUTES.ACCOUNT} component={Account}/>
@@ -47,7 +43,6 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = state => {
-    //we dont need authUser from the state at the moment in this component
     return {authUser: getAuthUser(state)};
 };
 

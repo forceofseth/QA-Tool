@@ -8,8 +8,8 @@ import {getAuthUser} from "../redux/selectors";
 
 function Account(props) {
 
-    const authCondition = (authUser) => !!authUser;
-    useAuthorizationRedirect(authCondition, props.history);
+    const redirectCondition = (authUser) => !!authUser;
+    useAuthorizationRedirect(redirectCondition, props.authUser);
 
 
     return (
