@@ -1,5 +1,10 @@
 import React, {useContext, useState} from 'react';
 import FirebaseContext from "../firebase/context";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Container from "@material-ui/core/Container";
+
 
 function PasswordChange() {
 
@@ -35,29 +40,41 @@ function PasswordChange() {
     };
 
     return (
-        <div>
+        <Container maxWidth="lg">
+
             <h1>PasswordChange</h1>
-            <form onSubmit={onSubmit}>
-                <input
+            <form className="form" onSubmit={onSubmit}>
+                <TextField
+                    id="outlined-email-input"
+                    margin="normal"
+                    variant="outlined"
                     name="passwordOne"
                     value={state.passwordOne}
                     onChange={onChange}
                     type="password"
                     placeholder="New Password"
+                    required
+                    fullWidth
                 />
-                <input
+                <TextField
+                    id="outlined-email-input"
+                    margin="normal"
+                    variant="outlined"
                     name="passwordTwo"
                     value={state.passwordTwo}
                     onChange={onChange}
                     type="password"
                     placeholder="Confirm New Password"
+                    required
+                    fullWidth
                 />
-                <button disabled={isInvalid} type="submit">
+                <Button disabled={isInvalid} type="submit" color="primary" variant="contained">
                     Reset My Password
-                </button>
+                </Button>
                 {state.error && <p>{state.error.message}</p>}
             </form>
-        </div>
+
+        </Container>
     );
 }
 

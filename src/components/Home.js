@@ -7,6 +7,7 @@ import {getAuthUser} from "../redux/selectors";
 import {connect} from "react-redux";
 import Forbidden from "./Forbidden";
 import './Home.css';
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 function Home(props) {
 
@@ -21,6 +22,7 @@ function Home(props) {
 
 const HomeAuth = () => {
 
+    // testdata
     const [state, setState] = useState({
         columns: [
             {title: 'Customer', field: 'customer'},
@@ -90,50 +92,49 @@ const HomeAuth = () => {
         ],
     });
 
-    return (<div>
-            <Container>
+    return (<Container>
+        <CssBaseline/>
 
-                <Box className="backgroundLayer">
+        <Box className="backgroundLayer">
 
-                </Box>
+        </Box>
 
-                <MaterialTable
-                    maxWidth="lg"
-                    title="Cases"
-                    columns={state.columns}
-                    data={state.data}
-                    editable={{
-                        onRowAdd: newData =>
-                            new Promise(resolve => {
-                                setTimeout(() => {
-                                    resolve();
-                                    const data = [...state.data];
-                                    data.push(newData);
-                                    setState({...state, data});
-                                }, 600);
-                            }),
-                        onRowUpdate: (newData, oldData) =>
-                            new Promise(resolve => {
-                                setTimeout(() => {
-                                    resolve();
-                                    const data = [...state.data];
-                                    data[data.indexOf(oldData)] = newData;
-                                    setState({...state, data});
-                                }, 600);
-                            }),
-                        onRowDelete: oldData =>
-                            new Promise(resolve => {
-                                setTimeout(() => {
-                                    resolve();
-                                    const data = [...state.data];
-                                    data.splice(data.indexOf(oldData), 1);
-                                    setState({...state, data});
-                                }, 600);
-                            }),
-                    }}
-                />
-            </Container>
-        </div>)
+        <MaterialTable
+            maxWidth="lg"
+            title="Cases"
+            columns={state.columns}
+            data={state.data}
+            editable={{
+                onRowAdd: newData =>
+                    new Promise(resolve => {
+                        setTimeout(() => {
+                            resolve();
+                            const data = [...state.data];
+                            data.push(newData);
+                            setState({...state, data});
+                        }, 600);
+                    }),
+                onRowUpdate: (newData, oldData) =>
+                    new Promise(resolve => {
+                        setTimeout(() => {
+                            resolve();
+                            const data = [...state.data];
+                            data[data.indexOf(oldData)] = newData;
+                            setState({...state, data});
+                        }, 600);
+                    }),
+                onRowDelete: oldData =>
+                    new Promise(resolve => {
+                        setTimeout(() => {
+                            resolve();
+                            const data = [...state.data];
+                            data.splice(data.indexOf(oldData), 1);
+                            setState({...state, data});
+                        }, 600);
+                    }),
+            }}
+        />
+    </Container>)
 
 };
 

@@ -6,44 +6,15 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import useReactRouter from "use-react-router";
 import {connect} from "react-redux";
 import {getLoggedInUser} from "../redux/firebaseActions";
 import {getAuthUser} from "../redux/selectors";
-
-
-const useStyles = makeStyles(theme => ({
-    '@global': {
-        body: {
-            background: "linear-gradient(90deg, #35C7FF 0%, #4C8CFD 100%);",
-        },
-    },
-    paper: {
-        marginTop: theme.spacing(8),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        background: "white",
-        padding: "20px 50px 10px",
-        borderRadius: "10px",
-        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.25);"
-    },
-    form: {
-        width: '100%',
-        marginTop: theme.spacing(1),
-    },
-    submit: {
-        margin: theme.spacing(1, 0, 2),
-    },
-}));
+import './SignIn.css';
 
 
 function SignIn(props) {
-
-    const classes = useStyles();
-
 
     const INITIAL_STATE = {
         email: '',
@@ -77,13 +48,14 @@ function SignIn(props) {
         });
     };
 
-
     return (
-        <Container component="main" maxWidth="md">
-            <CssBaseline />
-            <div className={classes.paper}>
-                <form className={classes.form} noValidate onSubmit={onSubmit}>
-                    <TextField className={classes.textfield}
+        <main>
+            <CssBaseline/>
+
+            <Container maxWidth="md">
+            <div className="paper">
+                <form className="form" noValidate onSubmit={onSubmit}>
+                    <TextField
                         id="outlined-email-input"
                         margin="normal"
                         variant="outlined"
@@ -95,7 +67,7 @@ function SignIn(props) {
                         required
                         fullWidth
                     />
-                    <TextField className={classes.textfield}
+                    <TextField
                         id="outlined-password-input"
                         label="Password"
                         margin="normal"
@@ -112,7 +84,7 @@ function SignIn(props) {
                         type="submit"
                         variant="contained"
                         color="primary"
-                        className={classes.submit}
+                        className="submit"
                         disabled={isInvalid}
                     >
                         Sign In
@@ -126,6 +98,7 @@ function SignIn(props) {
                 </form>
             </div>
         </Container>
+        </main>
     );
 }
 
