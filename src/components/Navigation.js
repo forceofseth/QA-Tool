@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Link} from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 import SignOut from "./SignOut";
+import {UserContext} from "./App";
 
 
-function Navigation({authUser}) {
+function Navigation() {
+    const {authUser} = useContext(UserContext);
     return (
         <div>{authUser ? <NavigationAuth/> : <NavigationNonAuth/>}</div>
     );

@@ -12,17 +12,20 @@ import Admin from './Admin';
 import * as ROUTES from '../constants/routes';
 import FirebaseContext from "../firebase/context";
 
+//temporary use of a context until we use Redux state.
+export const UserContext = React.createContext(null);
 
 function App() {
 
-    const [state, setState] = useState({authUser: null});
+    const [authUser, setAuthUser] = useState(null);
     const firebase = useContext(FirebaseContext);
+
 
     useEffect(() => {
         const listener = firebase.auth.onAuthStateChanged(authUser => {
             authUser
-                ? setState({authUser})
-                : setState({authUser: null});
+                ? setAuthUser(authUser)
+                : setAuthUser(null);
         });
         return () => {
             listener();
@@ -31,19 +34,21 @@ function App() {
 
 
     return (
-        <Router>
-            <div>
-                <Navigation authUser={state.authUser}/>
-                <hr/>
-                <Route exact path={ROUTES.LANDING} component={Landing}/>
-                <Route path={ROUTES.SIGN_UP} component={SignUp}/>
-                <Route path={ROUTES.SIGN_IN} component={SignIn}/>
-                <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForget}/>
-                <Route path={ROUTES.HOME} component={Home}/>
-                <Route path={ROUTES.ACCOUNT} component={Account}/>
-                <Route path={ROUTES.ADMIN} component={Admin}/>
-            </div>
-        </Router>
+        <UserContext.Provider value={{authUser}}>
+            <Router>
+                <div>
+                    <Navigation/>
+                    <hr/>
+                    <Route exact path={ROUTES.LANDING} component={Landing}/>
+                    <Route path={ROUTES.SIGN_UP} component={SignUp}/>
+                    <Route path={ROUTES.SIGN_IN} component={SignIn}/>
+                    <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForget}/>
+                    <Route path={ROUTES.HOME} component={Home}/>
+                    <Route path={ROUTES.ACCOUNT} component={Account}/>
+                    <Route path={ROUTES.ADMIN} component={Admin}/>
+                </div>
+            </Router>
+        </UserContext.Provider>
     );
 }
 
