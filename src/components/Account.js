@@ -4,6 +4,8 @@ import Forbidden from "./Forbidden";
 import {useAuthorizationRedirect} from "../hooks/useAuthorizationRedirect";
 import {connect} from "react-redux";
 import {getAuthUser} from "../redux/selectors";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Container from "@material-ui/core/Container";
 
 
 function Account(props) {
@@ -18,10 +20,14 @@ function Account(props) {
 }
 
 const AccountAuth = () => (
+
+    <Container maxWidth="lg">
+        <CssBaseline/>
     <div>
         <h1>Account</h1>
         <PasswordChangeForm/>
     </div>
+    </Container>
 );
 
 const mapStateToProps = state => {
