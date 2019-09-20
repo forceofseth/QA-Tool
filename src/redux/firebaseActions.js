@@ -1,16 +1,30 @@
-export const GET_LOGGED_IN_USER_SUCCESS = 'GET_LOGGED_IN_USER_SUCCESS';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 
-
-//Thunk Actions
-export const getLoggedInUser = (firebase) => (dispatch) => {
-    firebase.auth.onAuthStateChanged(authUser => {
-        dispatch(getLoggedInUserSuccess(authUser));
-    })
+//thunk actions
+export const loginUser = (firebase, email, password) => (dispatch) => {
+    firebase.doSignInWithEmailAndPassword(email, password)
+        .then(authUser => {
+            dispatch(getLoggedInUserSuccess(authUser));
+        });
 };
 
+export const logoutUser = (firebase) => (dispatch) => {
+    firebase.doSignOut()
+        .then(() => {
+            dispatch(getLogoutUserSuccess())
+        });
+};
+
+//actions
 const getLoggedInUserSuccess = authUser => ({
-    type: GET_LOGGED_IN_USER_SUCCESS,
+    type: LOGIN_SUCCESS,
     payload: {authUser}
+});
+
+const getLogoutUserSuccess = () => ({
+    type: LOGOUT_SUCCESS,
+    payload: {authUser: null}
 });
 
 

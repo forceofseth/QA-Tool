@@ -1,10 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import * as ROUTES from '../constants/routes';
 import SignOut from "./SignOut";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import './Navigation.css';
+import * as ROUTES from '../constants/routes';
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -38,13 +38,13 @@ function Navigation() {
                     open={Boolean(anchorEl)}
                     onClose={handleClose}
                 >
-                    <MenuItem component={Link} to="home">
+                    <MenuItem component={Link} to={ROUTES.HOME}>
                         Home
                     </MenuItem>
-                    <MenuItem component={Link} to="account">
+                    <MenuItem component={Link} to={ROUTES.ACCOUNT}>
                         Account
                     </MenuItem>
-                    <MenuItem component={Link} to="/">
+                    <MenuItem>
                         <SignOut/>
                     </MenuItem>
                 </Menu>

@@ -11,7 +11,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 
 function Home(props) {
 
-    const redirectCondition = (authUser) => !!authUser;
+    const redirectCondition = authUser => !!authUser;
     useAuthorizationRedirect(redirectCondition, props.authUser);
 
     return (

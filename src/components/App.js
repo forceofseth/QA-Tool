@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Navigation from './Navigation';
@@ -8,22 +8,11 @@ import Home from './Home';
 import Account from './Account';
 import Admin from './Admin';
 import * as ROUTES from '../constants/routes';
-import FirebaseContext from "../firebase/context";
-import {getLoggedInUser} from "../redux/firebaseActions";
 import {connect} from "react-redux";
 import {getAuthUser} from "../redux/selectors";
 
 
 function App(props) {
-
-    const firebase = useContext(FirebaseContext);
-
-    useEffect(() => {
-        props.getLoggedInUser(firebase);
-    }, [firebase, props]);
-
-
-    //todo what should happen if we navigate to '/' and we are already signed in? --> dont show the sign in window and redirect back to home
     return (
         <Router>
             <div>
@@ -38,12 +27,8 @@ function App(props) {
     );
 }
 
-const mapDispatchToProps = {
-    getLoggedInUser
-};
-
 const mapStateToProps = state => {
     return {authUser: getAuthUser(state)};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);
