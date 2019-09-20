@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import FirebaseContext from "../firebase/context";
 import {PasswordForgetLink} from './PasswordForget';
 import * as ROUTES from '../constants/routes';
@@ -9,12 +9,13 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import useReactRouter from "use-react-router";
 import {connect} from "react-redux";
-import {getLoggedInUser} from "../redux/firebaseActions";
+import {loginUser} from "../redux/firebaseActions";
 import {getAuthUser} from "../redux/selectors";
 import './SignIn.css';
 
 
 function SignIn(props) {
+    //todo do only render signin when not authenticated--> SHOW REDIRECTING PAGE
 
     const INITIAL_STATE = {
         email: '',
@@ -25,21 +26,36 @@ function SignIn(props) {
     const firebase = useContext(FirebaseContext);
     const {history} = useReactRouter();
 
+    useEffect(() => {
+        if (props.authUser) {
+            history.push(ROUTES.HOME);
+        }
+    }, [props.authUser, history]);
+
     const isInvalid = state.password === '' || state.email === '';
 
     const onSubmit = event => {
-        firebase
-            .doSignInWithEmailAndPassword(state.email, state.password)
-            .then(() => {
-                setState({...INITIAL_STATE});
-                props.getLoggedInUser(firebase);
-                history.push(ROUTES.HOME);
-            })
-            .catch(error => {
-                setState({error});
-            });
+        //todo firebase in thunkactions instanzieren?
+        props.loginUser(firebase, state.email, state.password);
+        // history.push  (ROUTES.HOME);
         event.preventDefault();
+        //todo handle error case see in comments
     };
+
+
+    // const onSubmit = event => {
+    //     firebase
+    //         .doSignInWithEmailAndPassword(state.email, state.password)
+    //         .then(() => {
+    //             setState({...INITIAL_STATE});
+    //             props.getLoggedInUser(firebase);
+    //             history.push(ROUTES.HOME);
+    //         })
+    //         .catch(error => {
+    //             setState({error});
+    //         });
+    //     event.preventDefault();
+    // };
 
     const onChange = event => {
         setState({
@@ -53,58 +69,58 @@ function SignIn(props) {
             <CssBaseline/>
 
             <Container maxWidth="md">
-            <div className="paper">
-                <form className="form" noValidate onSubmit={onSubmit}>
-                    <TextField
-                        id="outlined-email-input"
-                        margin="normal"
-                        variant="outlined"
-                        value={state.email}
-                        name="email"
-                        onChange={onChange}
-                        type="text"
-                        label="E-Mail"
-                        required
-                        fullWidth
-                    />
-                    <TextField
-                        id="outlined-password-input"
-                        label="Password"
-                        margin="normal"
-                        variant="outlined"
-                        name="password"
-                        value={state.password}
-                        onChange={onChange}
-                        type="password"
-                        required
-                        fullWidth
-                    />
+                <div className="paper">
+                    <form className="form" noValidate onSubmit={onSubmit}>
+                        <TextField
+                            id="outlined-email-input"
+                            margin="normal"
+                            variant="outlined"
+                            value={state.email}
+                            name="email"
+                            onChange={onChange}
+                            type="text"
+                            label="E-Mail"
+                            required
+                            fullWidth
+                        />
+                        <TextField
+                            id="outlined-password-input"
+                            label="Password"
+                            margin="normal"
+                            variant="outlined"
+                            name="password"
+                            value={state.password}
+                            onChange={onChange}
+                            type="password"
+                            required
+                            fullWidth
+                        />
 
-                    <Button
-                        type="submit"
-                        variant="contained"
-                        color="primary"
-                        className="submit"
-                        disabled={isInvalid}
-                    >
-                        Sign In
-                    </Button>
-                    <Grid container>
-                        <Grid item xs>
-                            <PasswordForgetLink/>
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            className="submit"
+                            disabled={isInvalid}
+                        >
+                            Sign In
+                        </Button>
+                        <Grid container>
+                            <Grid item xs>
+                                <PasswordForgetLink/>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                    {state.error && <p>{state.error.message}</p>}
-                </form>
-            </div>
-        </Container>
+                        {state.error && <p>{state.error.message}</p>}
+                    </form>
+                </div>
+            </Container>
         </main>
     );
 }
 
 
 const mapDispatchToProps = {
-    getLoggedInUser
+    loginUser: loginUser
 };
 
 const mapStateToProps = state => {

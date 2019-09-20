@@ -2,7 +2,6 @@ import React, {useContext, useState} from 'react';
 import FirebaseContext from "../firebase/context";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 
 
