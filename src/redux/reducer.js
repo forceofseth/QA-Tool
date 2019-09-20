@@ -1,7 +1,8 @@
-import {LOGIN_SUCCESS, LOGOUT_SUCCESS} from "./firebaseActions";
+import {LOGIN_SUCCESS, LOGOUT_SUCCESS, CREATE_FIREBASE_APP} from "./firebaseActions";
 
 const initialState = {
-    authUser: null
+    authUser: null,
+    firebaseApp: null
 };
 
 export default function reducer(state = initialState, action) {
@@ -18,6 +19,11 @@ export default function reducer(state = initialState, action) {
                 authUser: action.payload.authUser
             };
 
+        case CREATE_FIREBASE_APP:
+            return {
+                ...state,
+                firebaseApp: action.payload.firebaseApp
+            };
 
         default:
             return state;

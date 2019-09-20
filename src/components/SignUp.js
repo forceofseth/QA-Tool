@@ -1,7 +1,9 @@
-import React, {useState, useContext} from 'react';
-import FirebaseContext from "../firebase/context";
-import {Link, withRouter} from 'react-router-dom';
+import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
+import useReactRouter from "use-react-router";
+import {connect} from "react-redux";
+import {getFirebaseApp} from "../redux/selectors";
 
 
 function SignUp(props) {
@@ -14,16 +16,17 @@ function SignUp(props) {
         error: null,
     };
     const [state, setState] = useState(INITIAL_STATE);
-    const firebase = useContext(FirebaseContext);
+    const {history} = useReactRouter();
+
 
     const onSubmit = event => {
         const {email, passwordOne} = state;
 
-        firebase
+        props.firebaseApp
             .doCreateUserWithEmailAndPassword(email, passwordOne)
             .then(() => {
                 setState({...INITIAL_STATE});
-                props.history.push(ROUTES.HOME)
+                history.push(ROUTES.HOME)
             })
             .catch(error => {
                 setState({error});
@@ -84,12 +87,19 @@ function SignUp(props) {
     );
 }
 
-const SignUpLink = () =>(
+const SignUpLink = () => (
     <p>
         Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
     </p>
 );
 export {SignUpLink};
 
-export default withRouter(SignUp);
+
+const mapStateToProps = state => {
+    return {
+        firebaseApp: getFirebaseApp(state)
+    };
+};
+
+export default connect(mapStateToProps)(SignUp);
 

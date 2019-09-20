@@ -1,30 +1,42 @@
+import Firebase from "../firebase/firebase";
+
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+export const CREATE_FIREBASE_APP = 'CREATE_FIREBASE_APP';
 
+//todo sort actions
 //thunk actions
-export const loginUser = (firebase, email, password) => (dispatch) => {
-    firebase.doSignInWithEmailAndPassword(email, password)
+export const loginUser = (email, password) => (dispatch, getState) => {
+    const state = getState();
+    state.firebaseApp.doSignInWithEmailAndPassword(email, password)
         .then(authUser => {
-            dispatch(getLoggedInUserSuccess(authUser));
+            dispatch(getLoggedInUserSuccessAction(authUser));
         });
 };
 
-export const logoutUser = (firebase) => (dispatch) => {
-    firebase.doSignOut()
+export const logoutUser = () => (dispatch, getState) => {
+    const state = getState();
+    state.firebaseApp.doSignOut()
         .then(() => {
-            dispatch(getLogoutUserSuccess())
+            dispatch(getLogoutUserSuccessAction())
         });
 };
 
-//actions
-const getLoggedInUserSuccess = authUser => ({
+//actions creators
+const getLoggedInUserSuccessAction = authUser => ({
     type: LOGIN_SUCCESS,
     payload: {authUser}
 });
 
-const getLogoutUserSuccess = () => ({
+const getLogoutUserSuccessAction = () => ({
     type: LOGOUT_SUCCESS,
     payload: {authUser: null}
+});
+
+const firebaseApp = new Firebase();
+export const createFirebaseApp = () => ({
+    type: CREATE_FIREBASE_APP,
+    payload: {firebaseApp}
 });
 
 

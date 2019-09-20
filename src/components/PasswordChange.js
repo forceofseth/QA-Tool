@@ -1,11 +1,12 @@
-import React, {useContext, useState} from 'react';
-import FirebaseContext from "../firebase/context";
+import React, {useState} from 'react';
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
+import {connect} from "react-redux";
+import {getFirebaseApp} from "../redux/selectors";
 
 
-function PasswordChange() {
+function PasswordChange(props) {
 
     const INITIAL_STATE = {
         passwordOne: '',
@@ -14,13 +15,12 @@ function PasswordChange() {
     };
 
     const [state, setState] = useState(INITIAL_STATE);
-    const firebase = useContext(FirebaseContext);
 
     const isInvalid =
         state.passwordOne !== state.passwordTwo || state.passwordOne === '';
 
     const onSubmit = event => {
-        firebase
+        props.firebaseApp
             .doPasswordUpdate(state.passwordOne)
             .then(() => {
                 setState({...INITIAL_STATE});
@@ -77,4 +77,11 @@ function PasswordChange() {
     );
 }
 
-export default PasswordChange;
+const mapStateToProps = state => {
+    return {
+        firebaseApp: getFirebaseApp(state)
+    };
+};
+
+
+export default connect(mapStateToProps)(PasswordChange);

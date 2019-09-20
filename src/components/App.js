@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Navigation from './Navigation';
@@ -10,9 +10,15 @@ import Admin from './Admin';
 import * as ROUTES from '../constants/routes';
 import {connect} from "react-redux";
 import {getAuthUser} from "../redux/selectors";
+import {createFirebaseApp} from "../redux/firebaseActions";
 
 
 function App(props) {
+//todo deconstruct props outside the useEffect?
+    useEffect(() => {
+        props.createFirebaseApp()
+    }, [props]);
+
     return (
         <Router>
             <div>
@@ -31,4 +37,8 @@ const mapStateToProps = state => {
     return {authUser: getAuthUser(state)};
 };
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = {
+    createFirebaseApp
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
