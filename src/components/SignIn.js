@@ -1,5 +1,4 @@
-import React, {useContext, useState, useEffect} from 'react';
-import FirebaseContext from "../firebase/context";
+import React, {useState, useEffect} from 'react';
 import {PasswordForgetLink} from './PasswordForget';
 import * as ROUTES from '../constants/routes';
 import TextField from '@material-ui/core/TextField';
@@ -10,7 +9,7 @@ import Container from '@material-ui/core/Container';
 import useReactRouter from "use-react-router";
 import {connect} from "react-redux";
 import {loginUser} from "../redux/firebaseActions";
-import {getAuthUser} from "../redux/selectors";
+import {getAuthUser, getFirebaseApp} from "../redux/selectors";
 import './SignIn.css';
 
 
@@ -23,7 +22,6 @@ function SignIn(props) {
         error: null,
     };
     const [state, setState] = useState(INITIAL_STATE);
-    const firebase = useContext(FirebaseContext);
     const {history} = useReactRouter();
 
     useEffect(() => {
@@ -36,7 +34,7 @@ function SignIn(props) {
 
     const onSubmit = event => {
         //todo firebase in thunkactions instanzieren?
-        props.loginUser(firebase, state.email, state.password);
+        props.loginUser(state.email, state.password);
         // history.push  (ROUTES.HOME);
         event.preventDefault();
         //todo handle error case see in comments
@@ -120,11 +118,14 @@ function SignIn(props) {
 
 
 const mapDispatchToProps = {
-    loginUser: loginUser
+    loginUser
 };
 
 const mapStateToProps = state => {
-    return {authUser: getAuthUser(state)};
+    return {
+        authUser: getAuthUser(state),
+        firebaseApp: getFirebaseApp(state)
+    };
 };
 
 

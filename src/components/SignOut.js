@@ -1,14 +1,12 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {connect} from "react-redux";
 import {logoutUser} from "../redux/firebaseActions";
 import {getAuthUser} from "../redux/selectors";
-import FirebaseContext from "../firebase/context";
 
 
 function SignOut(props) {
-    const firebase = useContext(FirebaseContext);
     return (
-        <button type="button" onClick={() => props.logoutUser(firebase)}>
+        <button type="button" onClick={() => props.logoutUser()}>
             Sign Out
         </button>
     );
@@ -16,7 +14,7 @@ function SignOut(props) {
 
 
 const mapDispatchToProps = {
-    logoutUser: logoutUser
+    logoutUser
 };
 
 const mapStateToProps = state => {
