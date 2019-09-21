@@ -25,6 +25,7 @@ const AccountAuth = () => (
         <CssBaseline/>
     <div>
         <h1>Account</h1>
+        <h2>password change</h2>
         <PasswordChangeForm/>
     </div>
     </Container>

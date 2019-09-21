@@ -6,6 +6,9 @@ import SignIn from './SignIn';
 import PasswordForget from './PasswordForget';
 import Home from './Home';
 import Account from './Account';
+import AddUser from "./AddUser";
+import AddCase from "./AddCase";
+import EditCase from "./EditCase";
 import Admin from './Admin';
 import * as ROUTES from '../constants/routes';
 import {connect} from "react-redux";
@@ -27,7 +30,10 @@ function App(props) {
                 <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForget}/>
                 <Route path={ROUTES.HOME} component={Home}/>
                 <Route path={ROUTES.ACCOUNT} component={Account}/>
+                <Route path={ROUTES.ADD_USER} component={AddUser}/>
                 <Route path={ROUTES.ADMIN} component={Admin}/>
+                <Route path={ROUTES.ADD_CASE} component={AddCase}/>
+                <Route path={ROUTES.EDIT_CASE} component={EditCase}/>
             </div>
         </Router>
     );
