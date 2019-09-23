@@ -39,41 +39,36 @@ function PasswordChange(props) {
     };
 
     return (
-        <Container maxWidth="lg">
-
-            <h1>PasswordChange</h1>
-            <form className="form" onSubmit={onSubmit}>
-                <TextField
-                    id="outlined-email-input"
-                    margin="normal"
-                    variant="outlined"
-                    name="passwordOne"
-                    value={state.passwordOne}
-                    onChange={onChange}
-                    type="password"
-                    placeholder="New Password"
-                    required
-                    fullWidth
-                />
-                <TextField
-                    id="outlined-email-input"
-                    margin="normal"
-                    variant="outlined"
-                    name="passwordTwo"
-                    value={state.passwordTwo}
-                    onChange={onChange}
-                    type="password"
-                    placeholder="Confirm New Password"
-                    required
-                    fullWidth
-                />
-                <Button disabled={isInvalid} type="submit" color="primary" variant="contained">
-                    Reset My Password
-                </Button>
-                {state.error && <p>{state.error.message}</p>}
-            </form>
-
-        </Container>
+        <form className="form" onSubmit={onSubmit}>
+            <TextField
+                id="outlined-email-input"
+                margin="normal"
+                variant="outlined"
+                name="passwordOne"
+                value={state.passwordOne}
+                onChange={onChange}
+                type="password"
+                placeholder="New Password"
+                required
+                fullWidth
+            />
+            <TextField
+                id="outlined-email-input"
+                margin="normal"
+                variant="outlined"
+                name="passwordTwo"
+                value={state.passwordTwo}
+                onChange={onChange}
+                type="password"
+                placeholder="Confirm New Password"
+                required
+                fullWidth
+            />
+            <Button disabled={isInvalid} type="submit" color="primary" variant="contained">
+                Reset My Password
+            </Button>
+            {state.error && <p>{state.error.message}</p>}
+        </form>
     );
 }
 
