@@ -1,7 +1,7 @@
 export const getAuthUser = state => {
-    return state.authUser;
+    return state.firebase.authUser;
 };
 
 export const getFirebaseApp = state => {
-    return state.firebaseApp;
+    return state.firebase.firebaseApp;
 };

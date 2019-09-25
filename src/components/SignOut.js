@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {logoutUser} from "../redux/firebaseActions";
+import {logoutUser} from "../redux/actions/firebaseActions";
 import {getAuthUser} from "../redux/selectors";
 
 
