@@ -1,11 +1,11 @@
-import {LOGIN_SUCCESS, LOGOUT_SUCCESS, CREATE_FIREBASE_APP} from "./firebaseActions";
+import {LOGIN_SUCCESS, LOGOUT_SUCCESS, CREATE_FIREBASE_APP} from "../actions/firebaseActions";
 
 const initialState = {
     authUser: null,
     firebaseApp: null
 };
 
-export default function reducer(state = initialState, action) {
+export default function firebaseReducer(state = initialState, action) {
     switch (action.type) {
         case LOGIN_SUCCESS:
             return {

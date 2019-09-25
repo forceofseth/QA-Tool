@@ -13,7 +13,7 @@ import Admin from './Admin';
 import * as ROUTES from '../constants/routes';
 import {connect} from "react-redux";
 import {getAuthUser} from "../redux/selectors";
-import {createFirebaseApp} from "../redux/firebaseActions";
+import {createFirebaseApp} from "../redux/actions/firebaseActions";
 
 
 function App(props) {

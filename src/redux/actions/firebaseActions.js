@@ -1,4 +1,5 @@
-import Firebase from "../firebase/firebase";
+import Firebase from "../../firebase/firebase";
+import {getFirebaseApp} from "../selectors";
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
@@ -8,7 +9,7 @@ export const CREATE_FIREBASE_APP = 'CREATE_FIREBASE_APP';
 //thunk actions
 export const loginUser = (email, password) => (dispatch, getState) => {
     const state = getState();
-    state.firebaseApp.doSignInWithEmailAndPassword(email, password)
+    getFirebaseApp(state).doSignInWithEmailAndPassword(email, password)
         .then(authUser => {
             dispatch(getLoggedInUserSuccessAction(authUser));
         });
@@ -16,7 +17,7 @@ export const loginUser = (email, password) => (dispatch, getState) => {
 
 export const logoutUser = () => (dispatch, getState) => {
     const state = getState();
-    state.firebaseApp.doSignOut()
+    getFirebaseApp(state).doSignOut()
         .then(() => {
             dispatch(getLogoutUserSuccessAction())
         });

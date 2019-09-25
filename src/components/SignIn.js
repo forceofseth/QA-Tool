@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import useReactRouter from "use-react-router";
 import {connect} from "react-redux";
-import {loginUser} from "../redux/firebaseActions";
+import {loginUser} from "../redux/actions/firebaseActions";
 import {getAuthUser, getFirebaseApp} from "../redux/selectors";
 import './SignIn.css';
 
@@ -33,9 +33,7 @@ function SignIn(props) {
     const isInvalid = state.password === '' || state.email === '';
 
     const onSubmit = event => {
-        //todo firebase in thunkactions instanzieren?
         props.loginUser(state.email, state.password);
-        // history.push  (ROUTES.HOME);
         event.preventDefault();
         //todo handle error case see in comments
     };
