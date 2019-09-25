@@ -33,7 +33,6 @@ function SignIn(props) {
     const isInvalid = state.password === '' || state.email === '';
 
     const onSubmit = event => {
-        //todo firebase in thunkactions instanzieren?
         props.loginUser(state.email, state.password);
         // history.push  (ROUTES.HOME);
         event.preventDefault();
