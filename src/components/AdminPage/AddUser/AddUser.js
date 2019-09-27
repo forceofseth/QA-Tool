@@ -3,8 +3,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import {useAuthorizationRedirect} from "../../../hooks/useAuthorizationRedirect";
 import ForbiddenPage from "../../Status/ForbiddenPage";
-import {getAuthUser} from "../../../redux/selectors";
-import {connect} from "react-redux";
 
 function AddUser(props) {
 
@@ -27,8 +25,4 @@ const AddUserAuth = () => {
 };
 
 
-const mapStateToProps = state => {
-    return {authUser: getAuthUser(state)};
-};
-
-export default connect(mapStateToProps)(AddUser);
+export default AddUser;

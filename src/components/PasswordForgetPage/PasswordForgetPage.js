@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
-import {getFirebaseApp} from "../../redux/selectors";
-import {connect} from "react-redux";
 
 
 function PasswordForgetPage(props) {
@@ -63,11 +61,5 @@ const PasswordForgetLink = () => (
 );
 export {PasswordForgetLink};
 
-const mapStateToProps = state => {
-    return {
-        firebaseApp: getFirebaseApp(state)
-    };
-};
 
-
-export default connect(mapStateToProps)(PasswordForgetPage);
+export default PasswordForgetPage;
