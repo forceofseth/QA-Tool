@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/RootPage/RootPage';
+import RootPageContainer from './components/RootPage/RootPageContainer';
 import * as serviceWorker from './serviceWorker';
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
@@ -15,11 +15,11 @@ import Loading from "./components/Status/Loading";
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = createStore(persistedReducer, applyMiddleware(thunk));
-const persistor = persistStore(store);
+const persistedStore = persistStore(store);
 ReactDOM.render(
     <Provider store={store}>
-        <PersistGate loading={<Loading/>} persistor={persistor}>
-            <App/>
+        <PersistGate loading={<Loading/>} persistor={persistedStore}>
+            <RootPageContainer/>
         </PersistGate>
     </Provider>
     ,

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import SignOut from "../../Ui/SignOut/SignOut";
+import SignOutContainer from "../../Ui/SignOut/SignOutContainer";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import './Navigation.css';
@@ -54,7 +54,7 @@ function Navigation() {
                         Edit Case
                     </MenuItem>
                     <MenuItem>
-                        <SignOut/>
+                        <SignOutContainer/>
                     </MenuItem>
                 </Menu>
             </div>

@@ -7,9 +7,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import useReactRouter from "use-react-router";
-import {connect} from "react-redux";
-import {loginUser} from "../../redux/actions/firebaseActions";
-import {getAuthUser, getFirebaseApp} from "../../redux/selectors";
 import './SignInPage.css';
 
 
@@ -115,16 +112,4 @@ function SignInPage(props) {
 }
 
 
-const mapDispatchToProps = {
-    loginUser
-};
-
-const mapStateToProps = state => {
-    return {
-        authUser: getAuthUser(state),
-        firebaseApp: getFirebaseApp(state)
-    };
-};
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignInPage);
+export default SignInPage;

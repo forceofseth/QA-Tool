@@ -6,21 +6,19 @@ import Checkbox from "@material-ui/core/Checkbox";
 import {FormGroup} from "@material-ui/core";
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
 import ForbiddenPage from "../Status/ForbiddenPage";
-import {getAuthUser} from "../../redux/selectors";
-import {connect} from "react-redux";
 
-function AddedCase(props) {
+function AddCasePage(props) {
 
     const redirectCondition = (authUser) => !!authUser;
     useAuthorizationRedirect(redirectCondition, props.authUser);
 
     return (
-        <div>{props.authUser ? <AddCasePage/> : <ForbiddenPage/>}</div>
+        <div>{props.authUser ? <AddCaseAuth/> : <ForbiddenPage/>}</div>
     );
 }
 
 
-function AddCasePage() {
+function AddCaseAuth() {
     return (
         <Container maxWidth="lg">
             <CssBaseline/>
@@ -75,8 +73,5 @@ function AddCasePage() {
     );
 }
 
-const mapStateToProps = state => {
-    return {authUser: getAuthUser(state)};
-};
 
-export default connect(mapStateToProps)(AddedCase);
+export default AddCasePage;
