@@ -1,10 +1,11 @@
-import React, {useContext, useState} from 'react';
-import FirebaseContext from "../firebase/context";
+import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import * as ROUTES from '../constants/routes';
+import * as ROUTES from '../../constants/routes';
+import {getFirebaseApp} from "../../redux/selectors";
+import {connect} from "react-redux";
 
 
-function PasswordForget() {
+function PasswordForgetPage(props) {
 
     const INITIAL_STATE = {
         email: '',
@@ -12,13 +13,12 @@ function PasswordForget() {
     };
 
     const [state, setState] = useState(INITIAL_STATE);
-    const firebase = useContext(FirebaseContext);
 
 
     const isInvalid = state.email === '';
 
     const onSubmit = event => {
-        firebase
+        props.firebaseApp
             .doPasswordReset(state.email)
             .then(() => {
                 setState({...INITIAL_STATE});
@@ -63,4 +63,11 @@ const PasswordForgetLink = () => (
 );
 export {PasswordForgetLink};
 
-export default PasswordForget;
+const mapStateToProps = state => {
+    return {
+        firebaseApp: getFirebaseApp(state)
+    };
+};
+
+
+export default connect(mapStateToProps)(PasswordForgetPage);
