@@ -2,20 +2,20 @@ import React, {useState} from 'react';
 import MaterialTable from "material-table";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
-import {useAuthorizationRedirect} from "../hooks/useAuthorizationRedirect";
-import {getAuthUser} from "../redux/selectors";
+import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
+import {getAuthUser} from "../../redux/selectors";
 import {connect} from "react-redux";
-import Forbidden from "./Forbidden";
-import './Home.css';
+import ForbiddenPage from "../Status/ForbiddenPage";
+import './HomePage.css';
 import CssBaseline from "@material-ui/core/CssBaseline";
 
-function Home(props) {
+function HomePage(props) {
 
     const redirectCondition = authUser => !!authUser;
     useAuthorizationRedirect(redirectCondition, props.authUser);
 
     return (
-        <div>{props.authUser ? <HomeAuth/> : <Forbidden/>}</div>
+        <div>{props.authUser ? <HomeAuth/> : <ForbiddenPage/>}</div>
     );
 
 }
@@ -142,4 +142,4 @@ const mapStateToProps = state => {
     return {authUser: getAuthUser(state)};
 };
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(HomePage);
