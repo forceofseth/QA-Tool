@@ -1,7 +1,7 @@
 import React from "react";
 
-const Forbidden = () => (
+const ForbiddenPage = () => (
     <div>Forbidden Redirecting...</div>
 );
 
-export default Forbidden;
+export default ForbiddenPage;

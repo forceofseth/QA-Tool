@@ -1,9 +1,9 @@
 import React from 'react';
-import PasswordChangeForm from './PasswordChange';
-import Forbidden from "./Forbidden";
-import {useAuthorizationRedirect} from "../hooks/useAuthorizationRedirect";
+import PasswordChangeForm from '../PasswordChangePage/PasswordChangePage';
+import ForbiddenPage from "../Status/ForbiddenPage";
+import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
 import {connect} from "react-redux";
-import {getAuthUser} from "../redux/selectors";
+import {getAuthUser} from "../../redux/selectors";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 
@@ -15,7 +15,7 @@ function Account(props) {
 
 
     return (
-        <div>{props.authUser ? <AccountAuth/> : <Forbidden/>}</div>
+        <div>{props.authUser ? <AccountAuth/> : <ForbiddenPage/>}</div>
     );
 }
 
@@ -23,11 +23,11 @@ const AccountAuth = () => (
 
     <Container maxWidth="lg">
         <CssBaseline/>
-    <div>
-        <h1>Account</h1>
-        <h2>password change</h2>
-        <PasswordChangeForm/>
-    </div>
+        <div>
+            <h1>Account</h1>
+            <h2>password change</h2>
+            <PasswordChangeForm/>
+        </div>
     </Container>
 );
 

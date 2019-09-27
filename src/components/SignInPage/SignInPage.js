@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {PasswordForgetLink} from './PasswordForget';
-import * as ROUTES from '../constants/routes';
+import {PasswordForgetLink} from '../PasswordForgetPage/PasswordForgetPage';
+import * as ROUTES from '../../constants/routes';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -8,12 +8,12 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import useReactRouter from "use-react-router";
 import {connect} from "react-redux";
-import {loginUser} from "../redux/actions/firebaseActions";
-import {getAuthUser, getFirebaseApp} from "../redux/selectors";
-import './SignIn.css';
+import {loginUser} from "../../redux/actions/firebaseActions";
+import {getAuthUser, getFirebaseApp} from "../../redux/selectors";
+import './SignInPage.css';
 
 
-function SignIn(props) {
+function SignInPage(props) {
     //todo do only render signin when not authenticated--> SHOW REDIRECTING PAGE
 
     const INITIAL_STATE = {
@@ -127,4 +127,4 @@ const mapStateToProps = state => {
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(SignInPage);

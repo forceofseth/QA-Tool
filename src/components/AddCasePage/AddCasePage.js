@@ -4,9 +4,9 @@ import Container from "@material-ui/core/Container";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import {FormGroup} from "@material-ui/core";
-import {useAuthorizationRedirect} from "../hooks/useAuthorizationRedirect";
-import Forbidden from "./Forbidden";
-import {getAuthUser} from "../redux/selectors";
+import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
+import ForbiddenPage from "../Status/ForbiddenPage";
+import {getAuthUser} from "../../redux/selectors";
 import {connect} from "react-redux";
 
 function AddedCase(props) {
@@ -15,19 +15,16 @@ function AddedCase(props) {
     useAuthorizationRedirect(redirectCondition, props.authUser);
 
     return (
-        <div>{props.authUser ? <AddCase/> : <Forbidden/>}</div>
+        <div>{props.authUser ? <AddCasePage/> : <ForbiddenPage/>}</div>
     );
 }
 
 
-
-function AddCase() {
+function AddCasePage() {
     return (
         <Container maxWidth="lg">
             <CssBaseline/>
             <h1>Add Case</h1>
-
-
 
 
             <FormGroup>

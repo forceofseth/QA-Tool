@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import * as ROUTES from '../constants/routes';
-import {getFirebaseApp} from "../redux/selectors";
+import * as ROUTES from '../../constants/routes';
+import {getFirebaseApp} from "../../redux/selectors";
 import {connect} from "react-redux";
 
 
-function PasswordForget(props) {
+function PasswordForgetPage(props) {
 
     const INITIAL_STATE = {
         email: '',
@@ -70,4 +70,4 @@ const mapStateToProps = state => {
 };
 
 
-export default connect(mapStateToProps)(PasswordForget);
+export default connect(mapStateToProps)(PasswordForgetPage);

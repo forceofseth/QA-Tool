@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/App';
+import App from './components/RootPage/RootPage';
 import * as serviceWorker from './serviceWorker';
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
@@ -10,7 +10,7 @@ import {rootReducer} from "./redux/reducers/rootReducer";
 import {persistStore, persistReducer} from 'redux-persist';
 import {persistConfig} from "./redux/persistConfig";
 import {PersistGate} from 'redux-persist/lib/integration/react';
-import Loading from "./components/Loading";
+import Loading from "./components/Status/Loading";
 
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

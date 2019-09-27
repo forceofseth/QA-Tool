@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import {connect} from "react-redux";
-import {getFirebaseApp} from "../redux/selectors";
+import {getFirebaseApp} from "../../redux/selectors";
 
 
-function PasswordChange(props) {
+function PasswordChangePage(props) {
 
     const INITIAL_STATE = {
         passwordOne: '',
@@ -78,4 +78,4 @@ const mapStateToProps = state => {
 };
 
 
-export default connect(mapStateToProps)(PasswordChange);
+export default connect(mapStateToProps)(PasswordChangePage);

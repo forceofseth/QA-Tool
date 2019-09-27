@@ -1,10 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import SignOut from "./SignOut";
+import SignOut from "../../Ui/SignOut/SignOut";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import './Navigation.css';
-import * as ROUTES from '../constants/routes';
+import * as ROUTES from '../../../constants/routes';
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";

@@ -1,9 +1,9 @@
 import React from 'react';
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
-import {useAuthorizationRedirect} from "../hooks/useAuthorizationRedirect";
-import Forbidden from "./Forbidden";
-import {getAuthUser} from "../redux/selectors";
+import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
+import ForbiddenPage from "../Status/ForbiddenPage";
+import {getAuthUser} from "../../redux/selectors";
 import {connect} from "react-redux";
 
 function EditedCase(props) {
@@ -12,11 +12,11 @@ function EditedCase(props) {
     useAuthorizationRedirect(redirectCondition, props.authUser);
 
     return (
-        <div>{props.authUser ? <EditCase/> : <Forbidden/>}</div>
+        <div>{props.authUser ? <EditCasePage/> : <ForbiddenPage/>}</div>
     );
 }
 
-function EditCase() {
+function EditCasePage() {
     return (
         <Container maxWidth="lg">
             <CssBaseline/>
