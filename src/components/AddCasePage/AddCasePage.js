@@ -1,9 +1,5 @@
-import React from 'react';
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Container from "@material-ui/core/Container";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import {FormGroup} from "@material-ui/core";
+import React, {useState} from 'react';
+
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
 import ForbiddenPage from "../Status/ForbiddenPage";
 
@@ -11,65 +7,100 @@ function AddCasePage(props) {
 
     const redirectCondition = (authUser) => !!authUser;
     useAuthorizationRedirect(redirectCondition, props.authUser);
-
     return (
-        <div>{props.authUser ? <AddCaseAuth/> : <ForbiddenPage/>}</div>
+        <div>{props.authUser ? <AddCaseAuth {...props}/> : <ForbiddenPage/>}</div>
     );
 }
 
+function AddCaseAuth(props) {
 
-function AddCaseAuth() {
+    const INITIAL_STATE = {
+        approved: '',
+        customer: '',
+        date: '',
+        id: '',
+        lead: '',
+        product: '',
+        web: ''
+    };
+
+    const [state, setState] = useState(INITIAL_STATE);
+
+    const onSubmit = event => {
+        props.createCase(state);
+        event.preventDefault();
+        setState(INITIAL_STATE);
+    };
+
+    const onChange = event => {
+        setState({
+            ...state,
+            [event.target.name]: event.target.value
+        });
+    };
+
+
     return (
-        <Container maxWidth="lg">
-            <CssBaseline/>
-            <h1>Add Case</h1>
+        //TODO check if form is filled out.
+        <div>
+            {console.log(props.createCase)}
+            <h1>SignUp</h1>
 
+            <form onSubmit={onSubmit}>
+                <input
+                    name="approved"
+                    value={state.approved}
+                    onChange={onChange}
+                    type="text"
+                    placeholder="approved"
+                />
+                <input
+                    name="customer"
+                    value={state.customer}
+                    onChange={onChange}
+                    type="text"
+                    placeholder="customer"
+                />
+                <input
+                    name="date"
+                    value={state.date}
+                    onChange={onChange}
+                    type="date"
+                    placeholder="date"
+                />
+                <input
+                    name="id"
+                    value={state.id}
+                    onChange={onChange}
+                    type="text"
+                    placeholder="id"
+                />
+                <input
+                    name="lead"
+                    value={state.lead}
+                    onChange={onChange}
+                    type="text"
+                    placeholder="lead"
+                />
+                <input
+                    name="product"
+                    value={state.product}
+                    onChange={onChange}
+                    type="text"
+                    placeholder="product"
+                />
+                <input
+                    name="web"
+                    value={state.web}
+                    onChange={onChange}
+                    type="text"
+                    placeholder="web"
+                />
+                <button type="submit">Create Case</button>
+                {state.error && <p>{state.error.message}</p>}
+            </form>
+        </div>
 
-            <FormGroup>
-                <h2> html / head</h2>
-                <FormControlLabel
-                    control={
-                        <Checkbox/>
-                    }
-                    label="Primary"
-                />
-                <FormControlLabel
-                    control={
-                        <Checkbox/>
-                    }
-                    label="Primary"
-                />
-                <FormControlLabel
-                    control={
-                        <Checkbox/>
-                    }
-                    label="Primary"
-                />
-            </FormGroup>
-
-            <FormGroup>
-                <h2> stylesheets</h2>
-                <FormControlLabel
-                    control={
-                        <Checkbox/>
-                    }
-                    label="Primary"
-                />
-                <FormControlLabel
-                    control={
-                        <Checkbox/>
-                    }
-                    label="Primary"
-                />
-                <FormControlLabel
-                    control={
-                        <Checkbox/>
-                    }
-                    label="Primary"
-                />
-            </FormGroup>
-
-        </Container>
     );
 }
 

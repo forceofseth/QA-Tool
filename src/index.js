@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import RootPageContainer from './components/RootPage/RootPageContainer';
 import * as serviceWorker from './serviceWorker';
-import {createStore, applyMiddleware} from 'redux';
+import {createStore, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
 import {Provider} from "react-redux";
 import {rootReducer} from "./redux/reducers/rootReducer";
@@ -11,10 +11,19 @@ import {persistStore, persistReducer} from 'redux-persist';
 import {persistConfig} from "./redux/persistConfig";
 import {PersistGate} from 'redux-persist/lib/integration/react';
 import Loading from "./components/Status/Loading";
+import {reduxFirestore, getFirestore} from "redux-firestore";
+import {reactReduxFirebase, getFirebase} from "react-redux-firebase"
+import {firebase} from "./firebase/firebase";
 
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
-const store = createStore(persistedReducer, applyMiddleware(thunk));
+const store = createStore(persistedReducer,
+    compose(
+        applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),
+        reduxFirestore(firebase),
+        reactReduxFirebase(firebase, {})
+    )
+);
 const persistedStore = persistStore(store);
 ReactDOM.render(
     <Provider store={store}>
