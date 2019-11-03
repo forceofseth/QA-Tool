@@ -20,7 +20,7 @@ function AddCasePage(props) {
 
 function AddCaseAuth() {
     return (
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" className="mainContainer">
             <CssBaseline/>
             <h1>Add Case</h1>
 

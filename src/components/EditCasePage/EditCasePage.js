@@ -16,7 +16,7 @@ function EditCasePage(props) {
 
 function EditCaseAuth() {
     return (
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" className="mainContainer">
             <CssBaseline/>
             <h1>Edit Case</h1>
         </Container>
