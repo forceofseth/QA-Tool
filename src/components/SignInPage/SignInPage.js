@@ -3,11 +3,10 @@ import {PasswordForgetLink} from '../PasswordForgetPage/PasswordForgetPage';
 import * as ROUTES from '../../constants/routes';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import useReactRouter from "use-react-router";
-import './SignInPage.css';
+import Box from "@material-ui/core/Box";
 
 
 function SignInPage(props) {
@@ -58,10 +57,8 @@ function SignInPage(props) {
     };
 
     return (
-        <main>
-            <CssBaseline/>
-
-            <Container maxWidth="md">
+        <Box component="span" className="loginFullPage">
+            <Container maxWidth="md" >
                 <div className="paper">
                     <form className="form" noValidate onSubmit={onSubmit}>
                         <TextField
@@ -107,7 +104,10 @@ function SignInPage(props) {
                     </form>
                 </div>
             </Container>
-        </main>
+        </Box>
+
+
+
     );
 }
 

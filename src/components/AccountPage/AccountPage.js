@@ -4,6 +4,8 @@ import ForbiddenPage from "../Status/ForbiddenPage";
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
+import '../global.css';
+
 
 
 function AccountPage(props) {
@@ -19,7 +21,7 @@ function AccountPage(props) {
 
 const AccountAuth = () => (
 
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" className="mainContainer">
         <CssBaseline/>
         <div>
             <h1>Account</h1>
