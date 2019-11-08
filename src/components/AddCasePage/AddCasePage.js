@@ -18,7 +18,7 @@ function AddCaseAuth(props) {
         approved: '',
         customer: '',
         date: '',
-        id: '',
+        projectId: '',
         lead: '',
         product: '',
         web: ''
@@ -68,8 +68,8 @@ function AddCaseAuth(props) {
                     placeholder="date"
                 />
                 <input
-                    name="id"
-                    value={state.id}
+                    name="projectId"
+                    value={state.projectId}
                     onChange={onChange}
                     type="text"
                     placeholder="id"
