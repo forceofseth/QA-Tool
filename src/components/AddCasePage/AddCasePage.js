@@ -41,9 +41,8 @@ function AddCaseAuth(props) {
 
 
     return (
-        //TODO check if form is filled out.
+        //TODO check if form is filled out before allow sending.
         <div>
-            {console.log(props.createCase)}
             <h1>SignUp</h1>
 
             <form onSubmit={onSubmit}>
