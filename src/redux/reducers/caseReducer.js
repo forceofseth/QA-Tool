@@ -1,8 +1,8 @@
-import {CREATE_CASE, CREATE_CASE_ERROR} from "../actions/firestoreActions";
+import {CREATE_CASE, CREATE_CASE_ERROR} from "../actions/caseActions";
 
 const initalState = {};
 
-export default function firestoreReducer(state = initalState, action) {
+export default function caseReducer(state = initalState, action) {
     switch (action.type) {
         case CREATE_CASE:
             console.log("created case", action.payload)

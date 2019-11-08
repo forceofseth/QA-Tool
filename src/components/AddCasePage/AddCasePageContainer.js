@@ -1,7 +1,7 @@
 import {getAuthUser} from "../../redux/selectors";
 import {connect} from "react-redux";
 import AddCasePage from "./AddCasePage";
-import {createCase} from "../../redux/actions/firestoreActions";
+import {createCase} from "../../redux/actions/caseActions";
 
 const mapDispatchToProps = {
     createCase
