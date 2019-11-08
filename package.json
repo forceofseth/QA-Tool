@@ -3,16 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "firebase": "^6.6.0",
-    "firebase-tools": "^7.3.2",
-    "material-table": "^1.50.0",
-    "material-ui": "^0.20.2",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-redux": "^7.1.1",
-    "react-router-dom": "^5.0.1",
+    "firebase": "^6.6.2",
+    "firebase-tools": "^7.6.2",
+    "material-table": "^1.53.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-redux": "^5.1.1",
+    "react-redux-firebase": "^2.2.4",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.1.1",
     "redux": "^4.0.4",
+    "redux-firestore": "^0.9.0",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
     "use-react-router": "^1.0.7"
@@ -39,6 +40,6 @@
     ]
   },
   "devDependencies": {
-    "@material-ui/core": "^4.4.2"
+    "@material-ui/core": "^4.5.2"
   }
 }

@@ -1,12 +1,7 @@
-import React, {useState} from 'react';
-import MaterialTable from "material-table";
-import Container from "@material-ui/core/Container";
-import Box from "@material-ui/core/Box";
+import React from 'react';
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
 import ForbiddenPage from "../Status/ForbiddenPage";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import './HomePage.css';
-
 
 function HomePage(props) {
 
@@ -14,131 +9,32 @@ function HomePage(props) {
     useAuthorizationRedirect(redirectCondition, props.authUser);
 
     return (
-        <div>{props.authUser ? <HomeAuth/> : <ForbiddenPage/>}</div>
+        <div>{props.authUser ? <HomeAuth {...props}/> : <ForbiddenPage/>}</div>
     );
 
 }
 
-const HomeAuth = () => {
-
-    // testdata
-    const [state, setState] = useState({
-        columns: [
-            {title: 'Customer', field: 'customer'},
-            {title: 'Product', field: 'product'},
-            {title: 'ID', field: 'id', type: 'numeric'},
-            {title: 'Lead', field: 'lead'},
-            {title: 'Web', field: 'web'},
-            {title: 'Date', field: 'date'},
-            {title: 'Aproved', field: 'aproved'},
-        ],
-        data: [
-            {
-                customer: 'SBB',
-                product: 'DirectLink',
-                id: 1000242,
-                lead: "Lukas",
-                web: "Milos",
-                date: "21.01.2019",
-                aproved: "no"
-            },
-            {
-                customer: 'SBB',
-                product: 'DirectLink',
-                id: 1000242,
-                lead: "Lukas",
-                web: "Milos",
-                date: "21.01.2019",
-                aproved: "no"
-            },
-            {
-                customer: 'SBB',
-                product: 'DirectLink',
-                id: 1000242,
-                lead: "Lukas",
-                web: "Milos",
-                date: "21.01.2019",
-                aproved: "no"
-            },
-            {
-                customer: 'SBB',
-                product: 'DirectLink',
-                id: 1000242,
-                lead: "Lukas",
-                web: "Milos",
-                date: "21.01.2019",
-                aproved: "no"
-            },
-            {
-                customer: 'SBB',
-                product: 'DirectLink',
-                id: 1000242,
-                lead: "Lukas",
-                web: "Milos",
-                date: "21.01.2019",
-                aproved: "no"
-            },
-            {
-                customer: 'SBB',
-                product: 'DirectLink',
-                id: 1000242,
-                lead: "Lukas",
-                web: "Milos",
-                date: "21.01.2019",
-                aproved: "no"
-            },
-
-        ],
-    });
+const HomeAuth = (props) => {
 
     return (
-
-
-        <Box component="span">
-            <Container className="mainTable">
-                <CssBaseline/>
-                <MaterialTable
-                    title="Cases"
-                    columns={state.columns}
-                    data={state.data}
-                    editable={{
-                        onRowAdd: newData =>
-                            new Promise(resolve => {
-                                setTimeout(() => {
-                                    resolve();
-                                    const data = [...state.data];
-                                    data.push(newData);
-                                    setState({...state, data});
-                                }, 600);
-                            }),
-                        onRowUpdate: (newData, oldData) =>
-                            new Promise(resolve => {
-                                setTimeout(() => {
-                                    resolve();
-                                    const data = [...state.data];
-                                    data[data.indexOf(oldData)] = newData;
-                                    setState({...state, data});
-                                }, 600);
-                            }),
-                        onRowDelete: oldData =>
-                            new Promise(resolve => {
-                                setTimeout(() => {
-                                    resolve();
-                                    const data = [...state.data];
-                                    data.splice(data.indexOf(oldData), 1);
-                                    setState({...state, data});
-                                }, 600);
-                            }),
-                    }}
-                />
-            </Container>
-        </Box>
-
-
-
+        <div className="project-list section">
+            {props.cases && props.cases.map(oneCase => {
+                return (
+                    <div key={oneCase.id}>
+                        <div>----------------------</div>
+                        <div>{oneCase.id}</div>
+                        <div>{oneCase.approved}</div>
+                        <div>{oneCase.customer}</div>
+                        <div>{oneCase.date.toString()}</div>
+                        <div>{oneCase.lead}</div>
+                        <div>{oneCase.product}</div>
+                        <div>{oneCase.web}</div>
+                        <div>---------------------</div>
+                    </div>
+                )
+            })}
+        </div>
     )
-
 };
-
 
 export default HomePage;

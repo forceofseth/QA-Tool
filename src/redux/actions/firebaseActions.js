@@ -1,4 +1,4 @@
-import Firebase from "../../firebase/firebase";
+import {Firebase} from "../../firebase/firebase";
 import {getFirebaseApp} from "../selectors";
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
