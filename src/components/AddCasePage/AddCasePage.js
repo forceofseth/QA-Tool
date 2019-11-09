@@ -26,6 +26,9 @@ function AddCaseAuth(props) {
 
     const [state, setState] = useState(INITIAL_STATE);
 
+    const isInvalid = state.approved === '' || state.customer === ''
+        || state.date === '' || state.projectId === '' || state.lead === '' || state.product === '' || state.web === '';
+
     const onSubmit = event => {
         props.createCase(state);
         event.preventDefault();
@@ -41,7 +44,6 @@ function AddCaseAuth(props) {
 
 
     return (
-        //TODO check if form is filled out before allow sending.
         <div>
             <h1>SignUp</h1>
 
@@ -95,7 +97,11 @@ function AddCaseAuth(props) {
                     type="text"
                     placeholder="web"
                 />
-                <button type="submit">Create Case</button>
+                <button
+                    type="submit"
+                    disabled={isInvalid}
+                >Create Case
+                </button>
                 {state.error && <p>{state.error.message}</p>}
             </form>
         </div>

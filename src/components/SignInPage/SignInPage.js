@@ -14,8 +14,7 @@ function SignInPage(props) {
 
     const INITIAL_STATE = {
         email: '',
-        password: '',
-        error: null,
+        password: ''
     };
     const [state, setState] = useState(INITIAL_STATE);
     const {history} = useReactRouter();
@@ -31,23 +30,8 @@ function SignInPage(props) {
     const onSubmit = event => {
         props.loginUser(state.email, state.password);
         event.preventDefault();
-        //todo handle error case see in comments
     };
 
-
-    // const onSubmit = event => {
-    //     firebase
-    //         .doSignInWithEmailAndPassword(state.email, state.password)
-    //         .then(() => {
-    //             setState({...INITIAL_STATE});
-    //             props.getLoggedInUser(firebase);
-    //             history.push(ROUTES.HOME);
-    //         })
-    //         .catch(error => {
-    //             setState({error});
-    //         });
-    //     event.preventDefault();
-    // };
 
     const onChange = event => {
         setState({
@@ -58,7 +42,7 @@ function SignInPage(props) {
 
     return (
         <Box component="span" className="loginFullPage">
-            <Container maxWidth="md" >
+            <Container maxWidth="md">
                 <div className="paper">
                     <form className="form" noValidate onSubmit={onSubmit}>
                         <TextField
@@ -95,17 +79,16 @@ function SignInPage(props) {
                         >
                             Sign In
                         </Button>
+                        {props.error && <p className='error'>{props.error.message}</p>}
                         <Grid container>
                             <Grid item xs>
                                 <PasswordForgetLink/>
                             </Grid>
                         </Grid>
-                        {state.error && <p>{state.error.message}</p>}
                     </form>
                 </div>
             </Container>
         </Box>
-
 
 
     );
