@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import RootPageContainer from './components/RootPage/RootPageContainer';
 import * as serviceWorker from './serviceWorker';
-import {createStore, applyMiddleware, compose} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
+import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import {Provider} from "react-redux";
 import {rootReducer} from "./redux/reducers/rootReducer";
@@ -18,7 +19,7 @@ import {firebase} from "./firebase/firebase";
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = createStore(persistedReducer,
-    compose(
+    composeWithDevTools(
         applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),
         reduxFirestore(firebase),
         reactReduxFirebase(firebase, {})
