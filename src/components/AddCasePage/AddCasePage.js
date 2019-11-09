@@ -26,8 +26,14 @@ function AddCaseAuth(props) {
 
     const [state, setState] = useState(INITIAL_STATE);
 
-    const isInvalid = state.approved === '' || state.customer === ''
-        || state.date === '' || state.projectId === '' || state.lead === '' || state.product === '' || state.web === '';
+    const isInvalid =
+        state.approved === '' ||
+        state.customer === '' ||
+        state.date === '' ||
+        state.projectId === '' ||
+        state.lead === '' ||
+        state.product === '' ||
+        state.web === '';
 
     const onSubmit = event => {
         props.createCase(state);
