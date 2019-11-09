@@ -10,8 +10,6 @@ import Box from "@material-ui/core/Box";
 
 
 function SignInPage(props) {
-    //todo do only render signin when not authenticated--> SHOW REDIRECTING PAGE
-
     const INITIAL_STATE = {
         email: '',
         password: ''

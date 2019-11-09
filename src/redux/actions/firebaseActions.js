@@ -6,7 +6,6 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const CREATE_FIREBASE_APP = 'CREATE_FIREBASE_APP';
 
-//todo sort actions
 //thunk actions
 export const loginUser = (email, password) => (dispatch, getState) => {
     const state = getState();
