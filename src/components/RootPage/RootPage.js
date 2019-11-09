@@ -14,7 +14,6 @@ import SignInPageContainer from "../SignInPage/SignInPageContainer";
 
 
 function RootPage(props) {
-//todo deconstruct props outside the useEffect?
     useEffect(() => {
         props.createFirebaseApp()
     }, [props]);
