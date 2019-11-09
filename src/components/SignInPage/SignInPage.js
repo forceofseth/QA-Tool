@@ -14,8 +14,7 @@ function SignInPage(props) {
 
     const INITIAL_STATE = {
         email: '',
-        password: '',
-        error: null,
+        password: ''
     };
     const [state, setState] = useState(INITIAL_STATE);
     const {history} = useReactRouter();
@@ -58,7 +57,7 @@ function SignInPage(props) {
 
     return (
         <Box component="span" className="loginFullPage">
-            <Container maxWidth="md" >
+            <Container maxWidth="md">
                 <div className="paper">
                     <form className="form" noValidate onSubmit={onSubmit}>
                         <TextField
@@ -95,17 +94,16 @@ function SignInPage(props) {
                         >
                             Sign In
                         </Button>
+                        {props.error && <p className='error'>{props.error.message}</p>}
                         <Grid container>
                             <Grid item xs>
                                 <PasswordForgetLink/>
                             </Grid>
                         </Grid>
-                        {state.error && <p>{state.error.message}</p>}
                     </form>
                 </div>
             </Container>
         </Box>
-
 
 
     );
