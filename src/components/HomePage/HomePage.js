@@ -17,7 +17,7 @@ function HomePage(props) {
 const HomeAuth = (props) => {
 
     return (
-        <div className="project-list section">
+        <div>
             {props.cases && props.cases.map(oneCase => {
                 return (
                     <div key={oneCase.id}>
