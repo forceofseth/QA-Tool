@@ -30,23 +30,8 @@ function SignInPage(props) {
     const onSubmit = event => {
         props.loginUser(state.email, state.password);
         event.preventDefault();
-        //todo handle error case see in comments
     };
 
-
-    // const onSubmit = event => {
-    //     firebase
-    //         .doSignInWithEmailAndPassword(state.email, state.password)
-    //         .then(() => {
-    //             setState({...INITIAL_STATE});
-    //             props.getLoggedInUser(firebase);
-    //             history.push(ROUTES.HOME);
-    //         })
-    //         .catch(error => {
-    //             setState({error});
-    //         });
-    //     event.preventDefault();
-    // };
 
     const onChange = event => {
         setState({
