@@ -7,15 +7,12 @@ import Container from "@material-ui/core/Container";
 import '../global.css';
 
 
-
 function AccountPage(props) {
 
-    const redirectCondition = (authUser) => !!authUser;
-    useAuthorizationRedirect(redirectCondition, props.authUser);
-
+    useAuthorizationRedirect(props.auth);
 
     return (
-        <div>{props.authUser ? <AccountAuth/> : <ForbiddenPage/>}</div>
+        <div>{props.auth.isEmpty ? <ForbiddenPage/> : <AccountAuth/>}</div>
     );
 }
 

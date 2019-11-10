@@ -6,11 +6,10 @@ import ForbiddenPage from "../Status/ForbiddenPage";
 
 function EditCasePage(props) {
 
-    const redirectCondition = (authUser) => !!authUser;
-    useAuthorizationRedirect(redirectCondition, props.authUser);
+    useAuthorizationRedirect(props.auth);
 
     return (
-        <div>{props.authUser ? <EditCaseAuth/> : <ForbiddenPage/>}</div>
+        <div>{props.auth.isEmpty ? <ForbiddenPage/> : <EditCaseAuth/>}</div>
     );
 }
 

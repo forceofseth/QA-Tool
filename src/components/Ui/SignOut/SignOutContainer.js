@@ -1,4 +1,4 @@
-import {logoutUser} from "../../../redux/actions/firebaseActions";
+import {logoutUser} from "../../../redux/actions/authActions";
 import {connect} from "react-redux";
 import SignOut from "./SignOut";
 
@@ -6,9 +6,5 @@ const mapDispatchToProps = {
     logoutUser
 };
 
-// noinspection JSUnusedLocalSymbols
-const mapStateToProps = state => {
-    return {};
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignOut);
+export default connect(null, mapDispatchToProps)(SignOut);

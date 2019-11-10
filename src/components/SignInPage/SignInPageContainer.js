@@ -1,5 +1,5 @@
-import {loginUser} from "../../redux/actions/firebaseActions";
-import {getAuthUser, getFirebaseApp, getLoginError} from "../../redux/selectors";
+import {loginUser} from "../../redux/actions/authActions";
+import {getAuth, getLoginError} from "../../redux/selectors";
 import {connect} from "react-redux";
 import SignInPage from "./SignInPage";
 import '../global.css';
@@ -12,8 +12,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = state => {
     return {
-        authUser: getAuthUser(state),
-        firebaseApp: getFirebaseApp(state),
+        auth: getAuth(state),
         error: getLoginError(state)
     };
 };

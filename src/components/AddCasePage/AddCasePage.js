@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
-
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
 import ForbiddenPage from "../Status/ForbiddenPage";
 
 function AddCasePage(props) {
 
-    const redirectCondition = (authUser) => !!authUser;
-    useAuthorizationRedirect(redirectCondition, props.authUser);
+    useAuthorizationRedirect(props.auth);
+
     return (
-        <div>{props.authUser ? <AddCaseAuth {...props}/> : <ForbiddenPage/>}</div>
+        <div>{props.auth.isEmpty ? <ForbiddenPage/> : <AddCaseAuth {...props}/>}</div>
     );
 }
 

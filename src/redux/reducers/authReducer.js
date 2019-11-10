@@ -1,17 +1,15 @@
-import {LOGIN_SUCCESS, LOGOUT_SUCCESS, CREATE_FIREBASE_APP, LOGIN_ERROR} from "../actions/firebaseActions";
+import {LOGIN_SUCCESS, LOGOUT_SUCCESS, CREATE_FIREBASE_APP, LOGIN_ERROR} from "../actions/authActions";
 
 const initialState = {
-    authUser: null,
     firebaseApp: null,
     error: null
 };
 
-export default function firebaseReducer(state = initialState, action) {
+export default function authReducer(state = initialState, action) {
     switch (action.type) {
         case LOGIN_SUCCESS:
             return {
                 ...state,
-                authUser: action.payload.authUser,
                 error: null
             };
         case LOGIN_ERROR:
@@ -21,11 +19,8 @@ export default function firebaseReducer(state = initialState, action) {
             };
 
         case LOGOUT_SUCCESS:
-            return {
-                ...state,
-                authUser: action.payload.authUser
-            };
-
+            return state;
+            
         case CREATE_FIREBASE_APP:
             return {
                 ...state,

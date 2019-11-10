@@ -1,4 +1,4 @@
-import {getAuthUser} from "../../redux/selectors";
+import {getAuth} from "../../redux/selectors";
 import {connect} from "react-redux";
 import AddCasePage from "./AddCasePage";
 import {createCase} from "../../redux/actions/caseActions";
@@ -10,7 +10,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = state => {
     return {
-        authUser: getAuthUser(state)
+        auth: getAuth(state)
     };
 
 };

@@ -5,7 +5,7 @@ import useReactRouter from "use-react-router";
 import {connect} from "react-redux";
 import {getFirebaseApp} from "../redux/selectors";
 
-//TODO milos funktionalität in Add User Componente übernehmen.
+//TODO milos funktionalität in Add User Componente übernehmen und SignUp Componente entfernen.
 
 function SignUp(props) {
 

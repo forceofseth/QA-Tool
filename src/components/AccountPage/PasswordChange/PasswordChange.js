@@ -3,6 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
 
+//TODO Logout after password change
 function PasswordChange(props) {
 
     const INITIAL_STATE = {

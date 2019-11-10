@@ -18,10 +18,10 @@ function SignInPage(props) {
     const {history} = useReactRouter();
 
     useEffect(() => {
-        if (props.authUser) {
+        if (!props.auth.isEmpty) {
             history.push(ROUTES.HOME);
         }
-    }, [props.authUser, history]);
+    }, [props.auth, history]);
 
     const isInvalid = state.password === '' || state.email === '';
 
@@ -91,6 +91,5 @@ function SignInPage(props) {
 
     );
 }
-
 
 export default SignInPage;

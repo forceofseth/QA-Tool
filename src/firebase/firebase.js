@@ -13,6 +13,7 @@ const config = {
 };
 
 
+//TODO Firebase constructor in index.js aufrufen.
 class Firebase {
     constructor() {
         firebase.initializeApp(config);
@@ -20,14 +21,10 @@ class Firebase {
         this.auth = firebase.auth();
     }
 
+    //TODO  delete unused methods
     // *** Auth API ***
     doCreateUserWithEmailAndPassword = (email, password) =>
         this.auth.createUserWithEmailAndPassword(email, password);
-
-    doSignInWithEmailAndPassword = (email, password) =>
-        this.auth.signInWithEmailAndPassword(email, password);
-
-    doSignOut = () => this.auth.signOut();
 
     doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
 

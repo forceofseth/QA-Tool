@@ -1,5 +1,4 @@
 import {Firebase} from "../../firebase/firebase";
-import {getFirebaseApp} from "../selectors";
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
@@ -7,9 +6,9 @@ export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const CREATE_FIREBASE_APP = 'CREATE_FIREBASE_APP';
 
 //thunk actions
-export const loginUser = (email, password) => (dispatch, getState) => {
-    const state = getState();
-    getFirebaseApp(state).doSignInWithEmailAndPassword(email, password)
+export const loginUser = (email, password) => (dispatch, getState, {getFirebase}) => {
+    const firebase = getFirebase();
+    firebase.auth().signInWithEmailAndPassword(email, password)
         .then(authUser => {
             dispatch(getLoggedInUserSuccessAction(authUser));
         })
@@ -18,9 +17,9 @@ export const loginUser = (email, password) => (dispatch, getState) => {
         })
 };
 
-export const logoutUser = () => (dispatch, getState) => {
-    const state = getState();
-    getFirebaseApp(state).doSignOut()
+export const logoutUser = () => (dispatch, getState, {getFirebase}) => {
+    const firebase = getFirebase();
+    firebase.auth().signOut()
         .then(() => {
             dispatch(getLogoutUserSuccessAction())
         });
@@ -38,8 +37,7 @@ const getLoggedInUserErrorAction = error => ({
 });
 
 const getLogoutUserSuccessAction = () => ({
-    type: LOGOUT_SUCCESS,
-    payload: {authUser: null}
+    type: LOGOUT_SUCCESS
 });
 
 const firebaseApp = new Firebase();
