@@ -12,28 +12,8 @@ const config = {
     appId: process.env.REACT_APP_APP_ID
 };
 
+firebase.initializeApp(config);
+firebase.firestore();
 
-class Firebase {
-    constructor() {
-        firebase.initializeApp(config);
-        firebase.firestore();
-        this.auth = firebase.auth();
-    }
 
-    // *** Auth API ***
-    doCreateUserWithEmailAndPassword = (email, password) =>
-        this.auth.createUserWithEmailAndPassword(email, password);
-
-    doSignInWithEmailAndPassword = (email, password) =>
-        this.auth.signInWithEmailAndPassword(email, password);
-
-    doSignOut = () => this.auth.signOut();
-
-    doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
-
-    doPasswordUpdate = password =>
-        this.auth.currentUser.updatePassword(password);
-
-}
-
-export {Firebase, firebase};
+export default firebase;

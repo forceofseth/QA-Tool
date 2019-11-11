@@ -5,11 +5,10 @@ import './HomePage.css';
 
 function HomePage(props) {
 
-    const redirectCondition = authUser => !!authUser;
-    useAuthorizationRedirect(redirectCondition, props.authUser);
+    useAuthorizationRedirect(props.auth);
 
     return (
-        <div>{props.authUser ? <HomeAuth {...props}/> : <ForbiddenPage/>}</div>
+        <div>{props.auth.isEmpty ? <ForbiddenPage/> : <HomeAuth {...props}/>}</div>
     );
 
 }
@@ -38,3 +37,5 @@ const HomeAuth = (props) => {
 };
 
 export default HomePage;
+
+

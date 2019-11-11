@@ -7,7 +7,6 @@ function PasswordForgetPage(props) {
 
     const INITIAL_STATE = {
         email: '',
-        error: null
     };
 
     const [state, setState] = useState(INITIAL_STATE);
@@ -16,15 +15,9 @@ function PasswordForgetPage(props) {
     const isInvalid = state.email === '';
 
     const onSubmit = event => {
-        props.firebaseApp
-            .doPasswordReset(state.email)
-            .then(() => {
-                setState({...INITIAL_STATE});
-            })
-            .catch(error => {
-                setState({error});
-            });
+        props.resetPassword(state.email);
         event.preventDefault();
+        setState(INITIAL_STATE);
     };
 
     const onChange = event => {
@@ -48,7 +41,8 @@ function PasswordForgetPage(props) {
                 <button disabled={isInvalid} type="submit">
                     Reset My Password
                 </button>
-                {state.error && <p>{state.error.message}</p>}
+                {props.error && <p className='error'>{props.error.message}</p>}
+                {props.successMessage && <p className='success'>{props.successMessage}</p>}
             </form>
         </div>
     );
@@ -60,6 +54,4 @@ const PasswordForgetLink = () => (
     </p>
 );
 export {PasswordForgetLink};
-
-
 export default PasswordForgetPage;

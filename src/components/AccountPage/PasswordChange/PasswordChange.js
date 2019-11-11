@@ -8,7 +8,6 @@ function PasswordChange(props) {
     const INITIAL_STATE = {
         passwordOne: '',
         passwordTwo: '',
-        error: null
     };
 
     const [state, setState] = useState(INITIAL_STATE);
@@ -17,15 +16,9 @@ function PasswordChange(props) {
         state.passwordOne !== state.passwordTwo || state.passwordOne === '';
 
     const onSubmit = event => {
-        props.firebaseApp
-            .doPasswordUpdate(state.passwordOne)
-            .then(() => {
-                setState({...INITIAL_STATE});
-            })
-            .catch(error => {
-                setState({error});
-            });
+        props.changePassword(state.passwordOne);
         event.preventDefault();
+        setState(INITIAL_STATE);
     };
 
     const onChange = event => {
@@ -62,9 +55,10 @@ function PasswordChange(props) {
                 fullWidth
             />
             <Button disabled={isInvalid} type="submit" color="primary" variant="contained">
-                Reset My Password
+                Change My Password
             </Button>
-            {state.error && <p>{state.error.message}</p>}
+            {props.error && <p className='error'>{props.error.message}</p>}
+            {props.successMessage && <p className='success'>{props.successMessage}</p>}
         </form>
     );
 }

@@ -13,14 +13,14 @@ import {persistConfig} from "./redux/persistConfig";
 import {PersistGate} from 'redux-persist/lib/integration/react';
 import Loading from "./components/Status/Loading";
 import {reduxFirestore, getFirestore} from "redux-firestore";
-import {reactReduxFirebase} from "react-redux-firebase"
-import {firebase} from "./firebase/firebase";
+import {getFirebase, reactReduxFirebase} from "react-redux-firebase"
+import firebase from "./firebase/firebase";
 
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = createStore(persistedReducer,
     composeWithDevTools(
-        applyMiddleware(thunk.withExtraArgument({getFirestore})),
+        applyMiddleware(thunk.withExtraArgument({getFirestore, getFirebase})),
         reduxFirestore(firebase),
         reactReduxFirebase(firebase, {})
     )
