@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './RootPage.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Navigation from './Navigation/Navigation';
@@ -15,12 +15,7 @@ import SignUp from "../SignUp";
 
 
 function RootPage(props) {
-    //TODO delete and use firebase App in index.js
-    useEffect(() => {
-        props.createFirebaseApp()
-    }, [props]);
-
-    //TODO all Routes should be Pages
+    //TODO all Routes should be Pages?
     return (
         <Router>
             <div>

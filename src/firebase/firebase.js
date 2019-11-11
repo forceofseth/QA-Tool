@@ -12,14 +12,8 @@ const config = {
     appId: process.env.REACT_APP_APP_ID
 };
 
+firebase.initializeApp(config);
+firebase.firestore();
 
-//TODO Firebase constructor in index.js aufrufen.
-class Firebase {
-    constructor() {
-        firebase.initializeApp(config);
-        firebase.firestore();
-        this.auth = firebase.auth();
-    }
-}
 
-export {Firebase, firebase};
+export default firebase;

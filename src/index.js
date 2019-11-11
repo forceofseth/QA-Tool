@@ -14,7 +14,7 @@ import {PersistGate} from 'redux-persist/lib/integration/react';
 import Loading from "./components/Status/Loading";
 import {reduxFirestore, getFirestore} from "redux-firestore";
 import {getFirebase, reactReduxFirebase} from "react-redux-firebase"
-import {firebase} from "./firebase/firebase";
+import firebase from "./firebase/firebase";
 
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

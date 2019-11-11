@@ -1,9 +1,6 @@
-import {Firebase} from "../../firebase/firebase";
-
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
-export const CREATE_FIREBASE_APP = 'CREATE_FIREBASE_APP';
 export const PASSWORD_UPDATE_SUCCESS = 'PASSWORD_UPDATE_SUCCESS';
 export const PASSWORD_UPDATE_ERROR = 'PASSWORD_UPDATE_ERROR';
 export const RESET_PASSWORD_SUCCESS = 'RESET_PASSWORD_SUCCESS';
@@ -108,12 +105,6 @@ const getCreateUserErrorAction = (error) => ({
     payload: {error}
 });
 
-
-const firebaseApp = new Firebase();
-export const createFirebaseApp = () => ({
-    type: CREATE_FIREBASE_APP,
-    payload: {firebaseApp}
-});
 
 
 

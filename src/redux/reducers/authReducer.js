@@ -1,7 +1,6 @@
 import {
     LOGIN_SUCCESS,
     LOGOUT_SUCCESS,
-    CREATE_FIREBASE_APP,
     LOGIN_ERROR,
     PASSWORD_UPDATE_SUCCESS,
     PASSWORD_UPDATE_ERROR,
@@ -73,12 +72,6 @@ export default function authReducer(state = initialState, action) {
             return {
                 ...state,
                 error: action.payload.error
-            };
-
-        case CREATE_FIREBASE_APP:
-            return {
-                ...state,
-                firebaseApp: action.payload.firebaseApp
             };
 
         default:
