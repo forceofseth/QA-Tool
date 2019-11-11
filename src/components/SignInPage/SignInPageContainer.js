@@ -1,5 +1,5 @@
 import {loginUser} from "../../redux/actions/authActions";
-import {getAuth, getLoginError} from "../../redux/selectors";
+import {getAuth, getError} from "../../redux/selectors";
 import {connect} from "react-redux";
 import SignInPage from "./SignInPage";
 import '../global.css';
@@ -13,7 +13,7 @@ const mapDispatchToProps = {
 const mapStateToProps = state => {
     return {
         auth: getAuth(state),
-        error: getLoginError(state)
+        error: getError(state)
     };
 };
 

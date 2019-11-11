@@ -20,17 +20,6 @@ class Firebase {
         firebase.firestore();
         this.auth = firebase.auth();
     }
-
-    //TODO  delete unused methods
-    // *** Auth API ***
-    doCreateUserWithEmailAndPassword = (email, password) =>
-        this.auth.createUserWithEmailAndPassword(email, password);
-
-    doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
-
-    doPasswordUpdate = password =>
-        this.auth.currentUser.updatePassword(password);
-
 }
 
 export {Firebase, firebase};

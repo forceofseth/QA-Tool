@@ -6,11 +6,12 @@ import * as ROUTES from '../../constants/routes'
 import AccountPageContainer from "../AccountPage/AccountPageContainer";
 import AddCasePageContainer from "../AddCasePage/AddCasePageContainer";
 import AdminPageContainer from "../AdminPage/AdminPageContainer";
-import EditCaseContainer from "../EditCasePage/EditCaseContainer";
+import EditCaseContainer from "../EditCasePage/EditCasePageContainer";
 import HomePageContainer from "../HomePage/HomePageContainer";
 import PasswordForgetPageContainer from "../PasswordForgetPage/PasswordForgetPageContainer";
 import SignInPageContainer from "../SignInPage/SignInPageContainer";
 import AddUserContainer from "../AdminPage/AddUser/AddUserContainer";
+import SignUp from "../SignUp";
 
 
 function RootPage(props) {
@@ -32,6 +33,7 @@ function RootPage(props) {
                 <Route path={ROUTES.ADMIN} component={AdminPageContainer}/>
                 <Route path={ROUTES.ADD_CASE} component={AddCasePageContainer}/>
                 <Route path={ROUTES.EDIT_CASE} component={EditCaseContainer}/>
+                <Route path={ROUTES.SIGN_UP} component={SignUp}/>
             </div>
         </Router>
     );

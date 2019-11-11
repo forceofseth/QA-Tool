@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
-import * as ROUTES from '../constants/routes';
-import useReactRouter from "use-react-router";
 import {connect} from "react-redux";
-import {getFirebaseApp} from "../redux/selectors";
+import {getError, getSuccessMessage} from "../redux/selectors";
+import {createUser} from "../redux/actions/authActions";
 
 //TODO milos funktionalität in Add User Componente übernehmen und SignUp Componente entfernen.
+//Alles schön auf Container und Component aufsplitten.
 
 function SignUp(props) {
 
@@ -14,24 +13,13 @@ function SignUp(props) {
         email: '',
         passwordOne: '',
         passwordTwo: '',
-        error: null,
     };
     const [state, setState] = useState(INITIAL_STATE);
-    const {history} = useReactRouter();
-
 
     const onSubmit = event => {
         const {email, passwordOne} = state;
-
-        props.firebaseApp
-            .doCreateUserWithEmailAndPassword(email, passwordOne)
-            .then(() => {
-                setState({...INITIAL_STATE});
-                history.push(ROUTES.HOME)
-            })
-            .catch(error => {
-                setState({error});
-            });
+        props.createUser(email, passwordOne);
+        setState(INITIAL_STATE);
         event.preventDefault();
     };
 
@@ -82,25 +70,25 @@ function SignUp(props) {
                     placeholder="Confirm Password"
                 />
                 <button disabled={isInvalid} type="submit">Sign Up</button>
-                {state.error && <p>{state.error.message}</p>}
+                {props.error && <p className='error'>{props.error.message}</p>}
+                {props.successMessage && <p className='success'>{props.successMessage}</p>}
             </form>
         </div>
     );
 }
 
-const SignUpLink = () => (
-    <p>
-        Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
-    </p>
-);
-export {SignUpLink};
-
+//TODO Dieser part gehört in den Container in der AddUser Componente
+const mapDispatchToProps = {
+    createUser
+};
 
 const mapStateToProps = state => {
     return {
-        firebaseApp: getFirebaseApp(state)
+        successMessage: getSuccessMessage(state),
+        error: getError(state)
     };
 };
 
-export default connect(mapStateToProps)(SignUp);
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
 

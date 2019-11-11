@@ -3,13 +3,12 @@ export const getAuth = state => {
     return state.firebase.auth;
 };
 
-//TODO delete
-export const getFirebaseApp = state => {
-    return state.auth.firebaseApp;
+export const getError = state => {
+    return state.auth.error
 };
 
-export const getLoginError = state => {
-    return state.auth.error
+export const getSuccessMessage = state => {
+    return state.auth.successMessage
 };
 
 //Cases Selectors
