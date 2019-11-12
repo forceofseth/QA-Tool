@@ -3,7 +3,7 @@ import {CREATE_CASE, CREATE_CASE_ERROR} from "../actions/caseActions";
 const initalState = {};
 
 export default function caseReducer(state = initalState, action) {
-    //TODO Lukas should we alter the state?
+    //TODO Lukas should we alter the state? --> todo error and successmessages
     switch (action.type) {
         case CREATE_CASE:
             console.log("created case", action.payload);

@@ -9,11 +9,11 @@ function EditCasePage(props) {
     useAuthorizationRedirect(props.auth);
 
     return (
-        <div>{props.auth.isEmpty ? <ForbiddenPage/> : <EditCaseAuth/>}</div>
+        <div>{!props.auth.uid ? <ForbiddenPage/> : <EditCase/>}</div>
     );
 }
 
-function EditCaseAuth() {
+function EditCase() {
     return (
         <Container maxWidth="lg" className="mainContainer">
             <CssBaseline/>

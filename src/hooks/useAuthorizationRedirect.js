@@ -6,7 +6,7 @@ export const useAuthorizationRedirect = auth => {
     const {history} = useReactRouter();
 
     useEffect(() => {
-        if (auth.isEmpty) {
+        if (!auth.uid) {
             history.push(ROUTES.SIGN_IN)
         }
     });

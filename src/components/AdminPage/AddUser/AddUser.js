@@ -6,20 +6,20 @@ import ForbiddenPage from "../../Status/ForbiddenPage";
 
 //TODO auf admin Page verankern
 function AddUser(props) {
-
+    //TODO wenn addUser auf afdmin vewendet wird kann die Protected Subkomponente entfernt werden.
     useAuthorizationRedirect(props.auth);
 
     return (
-        <div>{props.auth.isEmpty ? <ForbiddenPage/> : <AddUserAuth/>}</div>
+        <div>{!props.auth.uid ? <ForbiddenPage/> : <ProtectedAddUser/>}</div>
     );
 }
 
-const AddUserAuth = () => {
+const ProtectedAddUser = () => {
     return (
         <Container maxWidth="lg">
             <CssBaseline/>
             <h1>Add New User</h1>
-        </Container>)
+        </Container>);
 };
 
 

@@ -20,9 +20,9 @@ function RootPage(props) {
         <Router>
             <div>
                 {props.auth.isEmpty ? null : <Navigation/>}
-                <Route exact path={ROUTES.SIGN_IN} component={SignInPageContainer}/>
+                <Route path={ROUTES.SIGN_IN} component={SignInPageContainer}/>
                 <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPageContainer}/>
-                <Route path={ROUTES.HOME} component={HomePageContainer}/>
+                <Route exact path={ROUTES.HOME} component={HomePageContainer}/>
                 <Route path={ROUTES.ACCOUNT} component={AccountPageContainer}/>
                 <Route path={ROUTES.ADD_USER} component={AddUserContainer}/>
                 <Route path={ROUTES.ADMIN} component={AdminPageContainer}/>
