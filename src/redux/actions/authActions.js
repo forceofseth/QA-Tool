@@ -52,14 +52,20 @@ export const resetPassword = (email) => (dispatch, getState, {getFirebase}) => {
 
 };
 
-export const createUser = (email, password) => (dispatch, getState, {getFirebase}) => {
+export const createUser = (newUser) => (dispatch, getState, {getFirebase, getFirestore}) => {
     const firebase = getFirebase();
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then(() => {
-            dispatch(getCreateUserSuccessAction())
-        })
-        .catch(error => {
-            dispatch(getCreateUserErrorAction(error))
+    const firestore = getFirestore();
+    firebase.auth().createUserWithEmailAndPassword(newUser.email, newUser.passwordOne)
+        .then((response) => {
+            return firestore.collection('users').doc(response.user.uid).set({
+                firstName: newUser.firstName,
+                lastName: newUser.lastName,
+                admin: newUser.admin
+            }).then(() => {
+                dispatch(getCreateUserSuccessAction());
+            }).catch(error => {
+                dispatch(getCreateUserErrorAction(error))
+            })
         })
 };
 

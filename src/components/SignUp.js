@@ -9,16 +9,17 @@ import {createUser} from "../redux/actions/authActions";
 function SignUp(props) {
 
     const INITIAL_STATE = {
-        username: '',
+        firstName: '',
+        lastName: '',
         email: '',
         passwordOne: '',
         passwordTwo: '',
+        admin: ''
     };
     const [state, setState] = useState(INITIAL_STATE);
 
     const onSubmit = event => {
-        const {email, passwordOne} = state;
-        props.createUser(email, passwordOne);
+        props.createUser(state);
         setState(INITIAL_STATE);
         event.preventDefault();
     };
@@ -34,7 +35,9 @@ function SignUp(props) {
         state.passwordOne !== state.passwordTwo ||
         state.passwordOne === '' ||
         state.email === '' ||
-        state.username === '';
+        state.firstName === ''||
+        state.lastName === ''||
+        state.admin === '';
 
     return (
         <div>
@@ -42,11 +45,18 @@ function SignUp(props) {
 
             <form onSubmit={onSubmit}>
                 <input
-                    name="username"
-                    value={state.username}
+                    name="firstName"
+                    value={state.firstName}
                     onChange={onChange}
                     type="text"
-                    placeholder="Full Name"
+                    placeholder="FirstName"
+                />
+                <input
+                    name="lastName"
+                    value={state.lastName}
+                    onChange={onChange}
+                    type="text"
+                    placeholder="LastName"
                 />
                 <input
                     name="email"
@@ -69,6 +79,14 @@ function SignUp(props) {
                     type="password"
                     placeholder="Confirm Password"
                 />
+                {/*TODO create dropdown with true or false*/}
+                <input
+                    name="admin"
+                    value={state.admin}
+                    onChange={onChange}
+                    type="text"
+                    placeholder="Is the User an Admin?"
+                />
                 <button disabled={isInvalid} type="submit">Sign Up</button>
                 {props.error && <p className='error'>{props.error.message}</p>}
                 {props.successMessage && <p className='success'>{props.successMessage}</p>}
@@ -77,7 +95,7 @@ function SignUp(props) {
     );
 }
 
-//TODO Dieser part gehört in den Container in der AddUser Componente
+// TODO Dieser part gehört in den Container in der AddUser Component
 const mapDispatchToProps = {
     createUser
 };

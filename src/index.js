@@ -22,7 +22,7 @@ const store = createStore(persistedReducer,
     composeWithDevTools(
         applyMiddleware(thunk.withExtraArgument({getFirestore, getFirebase})),
         reduxFirestore(firebase),
-        reactReduxFirebase(firebase, {})
+        reactReduxFirebase(firebase, {useFirestoreForProfile: true, userProfile: 'users'})
     )
 );
 const persistedStore = persistStore(store);
