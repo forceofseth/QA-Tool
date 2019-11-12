@@ -8,12 +8,11 @@ function HomePage(props) {
     useAuthorizationRedirect(props.auth);
 
     return (
-        <div>{props.auth.isEmpty ? <ForbiddenPage/> : <HomeAuth {...props}/>}</div>
+        <div>{!props.auth.uid ? <ForbiddenPage/> : <Home {...props}/>}</div>
     );
-
 }
 
-const HomeAuth = (props) => {
+const Home = (props) => {
 
     return (
         <div>
@@ -33,7 +32,7 @@ const HomeAuth = (props) => {
                 )
             })}
         </div>
-    )
+    );
 };
 
 export default HomePage;

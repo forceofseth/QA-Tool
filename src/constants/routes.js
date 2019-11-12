@@ -1,5 +1,7 @@
-export const SIGN_IN = '/';
-export const HOME = '/home';
+//TODO cleanup?
+
+export const SIGN_IN = '/signin';
+export const HOME = '/';
 export const ACCOUNT = '/account';
 export const ADD_USER = '/adduser';
 export const ADMIN = '/admin';

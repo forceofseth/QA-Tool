@@ -12,11 +12,11 @@ function AccountPage(props) {
     useAuthorizationRedirect(props.auth);
 
     return (
-        <div>{props.auth.isEmpty ? <ForbiddenPage/> : <AccountAuth/>}</div>
+        <div>{!props.auth.uid ? <ForbiddenPage/> : <Account/>}</div>
     );
 }
 
-const AccountAuth = () => (
+const Account = () => (
 
     <Container maxWidth="lg" className="mainContainer">
         <CssBaseline/>

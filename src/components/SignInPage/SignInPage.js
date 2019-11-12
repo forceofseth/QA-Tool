@@ -18,7 +18,7 @@ function SignInPage(props) {
     const {history} = useReactRouter();
 
     useEffect(() => {
-        if (!props.auth.isEmpty) {
+        if (props.auth.uid) {
             history.push(ROUTES.HOME);
         }
     }, [props.auth, history]);

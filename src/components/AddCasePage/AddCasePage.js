@@ -7,11 +7,11 @@ function AddCasePage(props) {
     useAuthorizationRedirect(props.auth);
 
     return (
-        <div>{props.auth.isEmpty ? <ForbiddenPage/> : <AddCaseAuth {...props}/>}</div>
+        <div>{!props.auth.uid ? <ForbiddenPage/> : <AddCase {...props}/>}</div>
     );
 }
 
-function AddCaseAuth(props) {
+function AddCase(props) {
 
     const INITIAL_STATE = {
         approved: '',

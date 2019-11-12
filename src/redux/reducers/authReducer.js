@@ -11,7 +11,6 @@ import {
 } from "../actions/authActions";
 
 const initialState = {
-    firebaseApp: null,
     successMessage: null,
     error: null
 };
