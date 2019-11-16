@@ -11,7 +11,6 @@ import HomePageContainer from "../HomePage/HomePageContainer";
 import PasswordForgetPageContainer from "../PasswordForgetPage/PasswordForgetPageContainer";
 import SignInPageContainer from "../SignInPage/SignInPageContainer";
 import AddUserContainer from "../AdminPage/AddUser/AddUserContainer";
-import SignUp from "../SignUp";
 import PrivateRoute from "../Ui/PrivateRoute";
 
 
@@ -29,7 +28,6 @@ function RootPage(props) {
                 <PrivateRoute path={ROUTES.ADMIN} component={AdminPageContainer}/>
                 <PrivateRoute path={ROUTES.ADD_CASE} component={AddCasePageContainer}/>
                 <PrivateRoute path={ROUTES.EDIT_CASE} component={EditCaseContainer}/>
-                <Route path={ROUTES.SIGN_UP} component={SignUp}/>
             </div>
         </Router>
     );
