@@ -60,6 +60,9 @@ function Navigation() {
                         <MenuItem component={Link} to={ROUTES.EDIT_CASE}>
                             Edit Case
                         </MenuItem>
+                        <MenuItem component={Link} to={ROUTES.ADMIN}>
+                            Admin
+                        </MenuItem>
                         <MenuItem>
                             <SignOutContainer/>
                         </MenuItem>
