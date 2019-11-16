@@ -1,18 +1,9 @@
 import React from 'react';
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
-import ForbiddenPage from "../Status/ForbiddenPage";
 import './HomePage.css';
 
-function HomePage(props) {
-
+const HomePage = (props) => {
     useAuthorizationRedirect(props.auth);
-
-    return (
-        <div>{!props.auth.uid ? <ForbiddenPage/> : <Home {...props}/>}</div>
-    );
-}
-
-const Home = (props) => {
 
     return (
         <div>

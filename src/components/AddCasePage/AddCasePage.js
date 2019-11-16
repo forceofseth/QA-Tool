@@ -1,17 +1,8 @@
 import React, {useState} from 'react';
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
-import ForbiddenPage from "../Status/ForbiddenPage";
 
 function AddCasePage(props) {
-
     useAuthorizationRedirect(props.auth);
-
-    return (
-        <div>{!props.auth.uid ? <ForbiddenPage/> : <AddCase {...props}/>}</div>
-    );
-}
-
-function AddCase(props) {
 
     const INITIAL_STATE = {
         approved: '',

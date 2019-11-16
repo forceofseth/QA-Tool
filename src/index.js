@@ -8,29 +8,21 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import {Provider} from "react-redux";
 import {rootReducer} from "./redux/reducers/rootReducer";
-import {persistStore, persistReducer} from 'redux-persist';
-import {persistConfig} from "./redux/persistConfig";
-import {PersistGate} from 'redux-persist/lib/integration/react';
-import Loading from "./components/Status/Loading";
 import {reduxFirestore, getFirestore} from "redux-firestore";
 import {getFirebase, reactReduxFirebase} from "react-redux-firebase"
 import firebase from "./firebase/firebase";
 
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-const store = createStore(persistedReducer,
+const store = createStore(rootReducer,
     composeWithDevTools(
         applyMiddleware(thunk.withExtraArgument({getFirestore, getFirebase})),
         reduxFirestore(firebase),
         reactReduxFirebase(firebase, {useFirestoreForProfile: true, userProfile: 'users'})
     )
 );
-const persistedStore = persistStore(store);
 ReactDOM.render(
     <Provider store={store}>
-        <PersistGate loading={<Loading/>} persistor={persistedStore}>
             <RootPageContainer/>
-        </PersistGate>
     </Provider>
     ,
     document.getElementById('root'));
