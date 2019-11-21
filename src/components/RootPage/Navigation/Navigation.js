@@ -51,9 +51,6 @@ function Navigation() {
                         <MenuItem component={Link} to={ROUTES.ACCOUNT}>
                             Account
                         </MenuItem>
-                        <MenuItem component={Link} to={ROUTES.ADD_USER}>
-                            Add New User
-                        </MenuItem>
                         <MenuItem component={Link} to={ROUTES.ADD_CASE}>
                             Add Case
                         </MenuItem>

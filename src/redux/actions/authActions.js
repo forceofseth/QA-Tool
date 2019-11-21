@@ -66,7 +66,9 @@ export const createUser = (newUser) => (dispatch, getState, {getFirebase, getFir
             }).catch(error => {
                 dispatch(getCreateUserErrorAction(error))
             })
-        })
+        }).catch(error =>{
+            dispatch(getCreateUserErrorAction(error))
+    })
 };
 
 
