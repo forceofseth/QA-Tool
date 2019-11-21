@@ -1,7 +1,22 @@
-export const getAuthUser = state => {
-    return state.firebase.authUser;
+// Auth Selectors
+export const getAuth = state => {
+    return state.firebase.auth;
 };
 
-export const getFirebaseApp = state => {
-    return state.firebase.firebaseApp;
+export const getError = state => {
+    return state.auth.error
 };
+
+export const getSuccessMessage = state => {
+    return state.auth.successMessage
+};
+
+//Cases Selectors
+export const getCases = state => {
+    return state.firestore.ordered.cases
+};
+
+export const getCasesStatus = state => {
+    return state.cases;
+};
+

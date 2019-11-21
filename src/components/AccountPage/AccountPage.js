@@ -1,18 +1,23 @@
 import React from 'react';
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
+import '../global.css';
+import PasswordChangeContainer from "./PasswordChange/PasswordChangeContainer";
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
-
-
-function EditCasePage(props) {
+function AccountPage(props) {
     useAuthorizationRedirect(props.auth);
-    return (
+    return(
         <Container maxWidth="lg" className="mainContainer">
             <CssBaseline/>
-            <h1>Edit Case</h1>
+            <div>
+                <h1>Account</h1>
+                <h2>password change</h2>
+                <PasswordChangeContainer/>
+            </div>
         </Container>
     );
+
 }
 
 
-export default EditCasePage;
+export default AccountPage;

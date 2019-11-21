@@ -1,16 +1,13 @@
 import React, {useState} from 'react';
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import {connect} from "react-redux";
-import {getFirebaseApp} from "../../redux/selectors";
 
 
-function PasswordChangePage(props) {
+function PasswordChange(props) {
 
     const INITIAL_STATE = {
         passwordOne: '',
         passwordTwo: '',
-        error: null
     };
 
     const [state, setState] = useState(INITIAL_STATE);
@@ -19,15 +16,9 @@ function PasswordChangePage(props) {
         state.passwordOne !== state.passwordTwo || state.passwordOne === '';
 
     const onSubmit = event => {
-        props.firebaseApp
-            .doPasswordUpdate(state.passwordOne)
-            .then(() => {
-                setState({...INITIAL_STATE});
-            })
-            .catch(error => {
-                setState({error});
-            });
+        props.changePassword(state.passwordOne);
         event.preventDefault();
+        setState(INITIAL_STATE);
     };
 
     const onChange = event => {
@@ -64,18 +55,13 @@ function PasswordChangePage(props) {
                 fullWidth
             />
             <Button disabled={isInvalid} type="submit" color="primary" variant="contained">
-                Reset My Password
+                Change My Password
             </Button>
-            {state.error && <p>{state.error.message}</p>}
+            {props.error && <p className='error'>{props.error.message}</p>}
+            {props.successMessage && <p className='success'>{props.successMessage}</p>}
         </form>
     );
 }
 
-const mapStateToProps = state => {
-    return {
-        firebaseApp: getFirebaseApp(state)
-    };
-};
 
-
-export default connect(mapStateToProps)(PasswordChangePage);
+export default PasswordChange;

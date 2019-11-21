@@ -1,145 +1,31 @@
-import React, {useState} from 'react';
-import MaterialTable from "material-table";
-import Container from "@material-ui/core/Container";
-import Box from "@material-ui/core/Box";
+import React from 'react';
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
-import {getAuthUser} from "../../redux/selectors";
-import {connect} from "react-redux";
-import ForbiddenPage from "../Status/ForbiddenPage";
 import './HomePage.css';
-import CssBaseline from "@material-ui/core/CssBaseline";
 
-function HomePage(props) {
-
-    const redirectCondition = authUser => !!authUser;
-    useAuthorizationRedirect(redirectCondition, props.authUser);
+const HomePage = (props) => {
+    useAuthorizationRedirect(props.auth);
 
     return (
-        <div>{props.authUser ? <HomeAuth/> : <ForbiddenPage/>}</div>
+        <div>
+            {props.cases && props.cases.map(oneCase => {
+                return (
+                    <div key={oneCase.id}>
+                        <div>----------------------</div>
+                        <div>{oneCase.id}</div>
+                        <div>{oneCase.approved}</div>
+                        <div>{oneCase.customer}</div>
+                        <div>{oneCase.date.toString()}</div>
+                        <div>{oneCase.lead}</div>
+                        <div>{oneCase.product}</div>
+                        <div>{oneCase.web}</div>
+                        <div>---------------------</div>
+                    </div>
+                )
+            })}
+        </div>
     );
-
-}
-
-const HomeAuth = () => {
-
-    // testdata
-    const [state, setState] = useState({
-        columns: [
-            {title: 'Customer', field: 'customer'},
-            {title: 'Product', field: 'product'},
-            {title: 'ID', field: 'id', type: 'numeric'},
-            {title: 'Lead', field: 'lead'},
-            {title: 'Web', field: 'web'},
-            {title: 'Date', field: 'date'},
-            {title: 'Aproved', field: 'aproved'},
-        ],
-        data: [
-            {
-                customer: 'SBB',
-                product: 'DirectLink',
-                id: 1000242,
-                lead: "Lukas",
-                web: "Milos",
-                date: "21.01.2019",
-                aproved: "no"
-            },
-            {
-                customer: 'SBB',
-                product: 'DirectLink',
-                id: 1000242,
-                lead: "Lukas",
-                web: "Milos",
-                date: "21.01.2019",
-                aproved: "no"
-            },
-            {
-                customer: 'SBB',
-                product: 'DirectLink',
-                id: 1000242,
-                lead: "Lukas",
-                web: "Milos",
-                date: "21.01.2019",
-                aproved: "no"
-            },
-            {
-                customer: 'SBB',
-                product: 'DirectLink',
-                id: 1000242,
-                lead: "Lukas",
-                web: "Milos",
-                date: "21.01.2019",
-                aproved: "no"
-            },
-            {
-                customer: 'SBB',
-                product: 'DirectLink',
-                id: 1000242,
-                lead: "Lukas",
-                web: "Milos",
-                date: "21.01.2019",
-                aproved: "no"
-            },
-            {
-                customer: 'SBB',
-                product: 'DirectLink',
-                id: 1000242,
-                lead: "Lukas",
-                web: "Milos",
-                date: "21.01.2019",
-                aproved: "no"
-            },
-
-        ],
-    });
-
-    return (<Container>
-        <CssBaseline/>
-
-        <Box className="backgroundLayer">
-
-        </Box>
-
-        <MaterialTable
-            maxWidth="lg"
-            title="Cases"
-            columns={state.columns}
-            data={state.data}
-            editable={{
-                onRowAdd: newData =>
-                    new Promise(resolve => {
-                        setTimeout(() => {
-                            resolve();
-                            const data = [...state.data];
-                            data.push(newData);
-                            setState({...state, data});
-                        }, 600);
-                    }),
-                onRowUpdate: (newData, oldData) =>
-                    new Promise(resolve => {
-                        setTimeout(() => {
-                            resolve();
-                            const data = [...state.data];
-                            data[data.indexOf(oldData)] = newData;
-                            setState({...state, data});
-                        }, 600);
-                    }),
-                onRowDelete: oldData =>
-                    new Promise(resolve => {
-                        setTimeout(() => {
-                            resolve();
-                            const data = [...state.data];
-                            data.splice(data.indexOf(oldData), 1);
-                            setState({...state, data});
-                        }, 600);
-                    }),
-            }}
-        />
-    </Container>)
-
 };
 
-const mapStateToProps = state => {
-    return {authUser: getAuthUser(state)};
-};
+export default HomePage;
 
-export default connect(mapStateToProps)(HomePage);
+

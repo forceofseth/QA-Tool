@@ -1,50 +1,37 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './RootPage.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Navigation from './Navigation/Navigation';
-import SignIn from '../SignInPage/SignInPage';
-import PasswordForget from '../PasswordForgetPage/PasswordForgetPage';
-import Home from '../HomePage/HomePage';
-import Account from '../Account/Account';
-import AddUser from "../AdminPage/AddUser/AddUser";
-import AddCase from "../AddCasePage/AddCasePage";
-import EditCase from "../EditCasePage/EditCasePage";
-import AdminPage from '../AdminPage/AdminPage';
 import * as ROUTES from '../../constants/routes'
-import {connect} from "react-redux";
-import {getAuthUser} from "../../redux/selectors";
-import {createFirebaseApp} from "../../redux/actions/firebaseActions";
+import AccountPageContainer from "../AccountPage/AccountPageContainer";
+import AddCasePageContainer from "../AddCasePage/AddCasePageContainer";
+import AdminPageContainer from "../AdminPage/AdminPageContainer";
+import EditCaseContainer from "../EditCasePage/EditCasePageContainer";
+import HomePageContainer from "../HomePage/HomePageContainer";
+import PasswordForgetPageContainer from "../PasswordForgetPage/PasswordForgetPageContainer";
+import SignInPageContainer from "../SignInPage/SignInPageContainer";
+import AddUserContainer from "../AdminPage/AddUser/AddUserContainer";
+import PrivateRoute from "../Ui/PrivateRoute";
 
 
 function RootPage(props) {
-//todo deconstruct props outside the useEffect?
-    useEffect(() => {
-        props.createFirebaseApp()
-    }, [props]);
-
+    //TODO all Routes should be Pages?
     return (
         <Router>
             <div>
-                {props.authUser ? <Navigation/> : null}
-                <Route exact path={ROUTES.SIGN_IN} component={SignIn}/>
-                <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForget}/>
-                <Route path={ROUTES.HOME} component={Home}/>
-                <Route path={ROUTES.ACCOUNT} component={Account}/>
-                <Route path={ROUTES.ADD_USER} component={AddUser}/>
-                <Route path={ROUTES.ADMIN} component={AdminPage}/>
-                <Route path={ROUTES.ADD_CASE} component={AddCase}/>
-                <Route path={ROUTES.EDIT_CASE} component={EditCase}/>
+                {props.auth.isEmpty ? null : <Navigation/>}
+                <Route path={ROUTES.SIGN_IN} component={SignInPageContainer}/>
+                <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPageContainer}/>
+                <PrivateRoute exact path={ROUTES.HOME} component={HomePageContainer}/>
+                <PrivateRoute path={ROUTES.ACCOUNT} component={AccountPageContainer}/>
+                <PrivateRoute path={ROUTES.ADD_USER} component={AddUserContainer}/>
+                <PrivateRoute path={ROUTES.ADMIN} component={AdminPageContainer}/>
+                <PrivateRoute path={ROUTES.ADD_CASE} component={AddCasePageContainer}/>
+                <PrivateRoute path={ROUTES.EDIT_CASE} component={EditCaseContainer}/>
             </div>
         </Router>
     );
 }
 
-const mapStateToProps = state => {
-    return {authUser: getAuthUser(state)};
-};
 
-const mapDispatchToProps = {
-    createFirebaseApp
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(RootPage);
+export default RootPage;

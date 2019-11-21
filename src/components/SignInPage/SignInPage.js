@@ -3,55 +3,33 @@ import {PasswordForgetLink} from '../PasswordForgetPage/PasswordForgetPage';
 import * as ROUTES from '../../constants/routes';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import useReactRouter from "use-react-router";
-import {connect} from "react-redux";
-import {loginUser} from "../../redux/actions/firebaseActions";
-import {getAuthUser, getFirebaseApp} from "../../redux/selectors";
-import './SignInPage.css';
+import Box from "@material-ui/core/Box";
 
 
 function SignInPage(props) {
-    //todo do only render signin when not authenticated--> SHOW REDIRECTING PAGE
-
     const INITIAL_STATE = {
         email: '',
-        password: '',
-        error: null,
+        password: ''
     };
     const [state, setState] = useState(INITIAL_STATE);
     const {history} = useReactRouter();
 
     useEffect(() => {
-        if (props.authUser) {
+        if (props.auth.uid) {
             history.push(ROUTES.HOME);
         }
-    }, [props.authUser, history]);
+    }, [props.auth, history]);
 
     const isInvalid = state.password === '' || state.email === '';
 
     const onSubmit = event => {
         props.loginUser(state.email, state.password);
         event.preventDefault();
-        //todo handle error case see in comments
     };
 
-
-    // const onSubmit = event => {
-    //     firebase
-    //         .doSignInWithEmailAndPassword(state.email, state.password)
-    //         .then(() => {
-    //             setState({...INITIAL_STATE});
-    //             props.getLoggedInUser(firebase);
-    //             history.push(ROUTES.HOME);
-    //         })
-    //         .catch(error => {
-    //             setState({error});
-    //         });
-    //     event.preventDefault();
-    // };
 
     const onChange = event => {
         setState({
@@ -61,9 +39,7 @@ function SignInPage(props) {
     };
 
     return (
-        <main>
-            <CssBaseline/>
-
+        <Box component="span" className="loginFullPage">
             <Container maxWidth="md">
                 <div className="paper">
                     <form className="form" noValidate onSubmit={onSubmit}>
@@ -101,30 +77,19 @@ function SignInPage(props) {
                         >
                             Sign In
                         </Button>
+                        {props.error && <p className='error'>{props.error.message}</p>}
                         <Grid container>
                             <Grid item xs>
                                 <PasswordForgetLink/>
                             </Grid>
                         </Grid>
-                        {state.error && <p>{state.error.message}</p>}
                     </form>
                 </div>
             </Container>
-        </main>
+        </Box>
+
+
     );
 }
 
-
-const mapDispatchToProps = {
-    loginUser
-};
-
-const mapStateToProps = state => {
-    return {
-        authUser: getAuthUser(state),
-        firebaseApp: getFirebaseApp(state)
-    };
-};
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignInPage);
+export default SignInPage;
