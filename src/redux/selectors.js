@@ -13,6 +13,10 @@ export const getSuccessMessage = state => {
 
 //Cases Selectors
 export const getCases = state => {
-    return state.firestore.ordered.cases;
+    return state.firestore.ordered.cases
+};
+
+export const getCasesStatus = state => {
+    return state.cases;
 };
 

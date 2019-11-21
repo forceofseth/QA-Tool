@@ -4,7 +4,7 @@ import AddUser from "./AddUser";
 
 const mapStateToProps = state => {
     return {
-        auth: getAuth(state)
+        auth: getAuth(state),
     };
 };
 
