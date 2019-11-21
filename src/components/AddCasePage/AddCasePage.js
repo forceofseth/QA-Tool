@@ -98,7 +98,9 @@ function AddCasePage(props) {
                     disabled={isInvalid}
                 >Create Case
                 </button>
-                {state.error && <p>{state.error.message}</p>}
+                {props.caseStatus.error && <p className="error">{props.caseStatus.error.message}</p>}
+                {props.caseStatus.successMessage && <p className="success">{props.caseStatus.successMessage}</p>}
+
             </form>
         </div>
 

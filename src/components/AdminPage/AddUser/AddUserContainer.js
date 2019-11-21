@@ -9,6 +9,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = state => {
     return {
+        auth: getAuth(state),
         successMessage: getSuccessMessage(state),
         error: getError(state)
     };

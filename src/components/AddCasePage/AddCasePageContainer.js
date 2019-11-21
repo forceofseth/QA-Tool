@@ -1,4 +1,4 @@
-import {getAuth} from "../../redux/selectors";
+import {getAuth, getCasesStatus} from "../../redux/selectors";
 import {connect} from "react-redux";
 import AddCasePage from "./AddCasePage";
 import {createCase} from "../../redux/actions/caseActions";
@@ -10,7 +10,8 @@ const mapDispatchToProps = {
 
 const mapStateToProps = state => {
     return {
-        auth: getAuth(state)
+        auth: getAuth(state),
+        caseStatus: getCasesStatus(state)
     };
 
 };
