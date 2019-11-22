@@ -7,7 +7,7 @@ import {
     RESET_PASSWORD_SUCCESS,
     RESET_PASSWORD_ERROR,
     CREATE_USER_SUCCESS,
-    CREATE_USER_ERROR
+    CREATE_USER_ERROR, CLEAN_AUTH_ERROR, CLEAN_AUTH_SUCCESS
 } from "../actions/authActions";
 
 const initialState = {
@@ -63,7 +63,7 @@ export default function authReducer(state = initialState, action) {
         case CREATE_USER_SUCCESS:
             return {
                 ...state,
-                successMessage: "Successfully created a new User!",
+                successMessage: "Successfully created a new User: "+ action.payload.newUser.firstName + "!",
                 error: null
             };
 
@@ -71,6 +71,18 @@ export default function authReducer(state = initialState, action) {
             return {
                 ...state,
                 error: action.payload.error
+            };
+
+        case CLEAN_AUTH_ERROR:
+            return {
+                ...state,
+                error: null
+            };
+
+        case CLEAN_AUTH_SUCCESS:
+            return {
+                ...state,
+                successMessage: null
             };
 
         default:
