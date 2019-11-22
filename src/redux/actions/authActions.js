@@ -27,6 +27,7 @@ export const logoutUser = () => (dispatch, getState, {getFirebase}) => {
     const firebase = getFirebase();
     firebase.auth().signOut()
         .then(() => {
+            firebase.logout();
             dispatch(getLogoutUserSuccessAction())
         })
 };
@@ -62,7 +63,7 @@ export const createUser = (newUser) => (dispatch, getState, {getFirebase, getFir
             return firestore.collection('users').doc(response.user.uid).set({
                 firstName: newUser.firstName,
                 lastName: newUser.lastName,
-                admin: newUser.admin
+                admin: Boolean(newUser.admin)
             }).then(() => {
                 dispatch(getCreateUserSuccessAction(newUser));
             }).catch(error => {

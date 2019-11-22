@@ -3,6 +3,10 @@ export const getAuth = state => {
     return state.firebase.auth;
 };
 
+export const getAuthProfile = state => {
+  return state.firebase.profile;
+};
+
 export const getAuthError = state => {
     return state.auth.error
 };
