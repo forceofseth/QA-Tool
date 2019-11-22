@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import SimpleSnackbarContainer from "../../Ui/Snackbar/SimpleSnackbarContainer";
 
 function AddUser(props) {
 
@@ -81,10 +82,9 @@ function AddUser(props) {
                     type="text"
                     placeholder="Is the User an Admin?"
                 />
-                <button disabled={isInvalid} type="submit">Sign Up</button>
-                {props.error && <p className='error'>{props.error.message}</p>}
-                {props.successMessage && <p className='success'>{props.successMessage}</p>}
+                <button disabled={isInvalid} type="submit">Create User</button>
             </form>
+            <SimpleSnackbarContainer/>
         </div>
     );
 }

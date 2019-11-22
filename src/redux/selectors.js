@@ -3,11 +3,11 @@ export const getAuth = state => {
     return state.firebase.auth;
 };
 
-export const getError = state => {
+export const getAuthError = state => {
     return state.auth.error
 };
 
-export const getSuccessMessage = state => {
+export const getAuthSuccessMessage = state => {
     return state.auth.successMessage
 };
 
@@ -16,7 +16,11 @@ export const getCases = state => {
     return state.firestore.ordered.cases
 };
 
-export const getCasesStatus = state => {
-    return state.cases;
+export const getCasesError = state =>{
+    return state.cases.error;
+};
+
+export const getCasesSuccessMessage = state =>{
+    return state.cases.successMessage;
 };
 

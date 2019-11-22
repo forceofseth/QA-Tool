@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import SimpleSnackbarContainer from "../../Ui/Snackbar/SimpleSnackbarContainer";
 
 
 function PasswordChange(props) {
@@ -29,37 +30,38 @@ function PasswordChange(props) {
     };
 
     return (
-        <form className="form" onSubmit={onSubmit}>
-            <TextField
-                id="outlined-email-input"
-                margin="normal"
-                variant="outlined"
-                name="passwordOne"
-                value={state.passwordOne}
-                onChange={onChange}
-                type="password"
-                placeholder="New Password"
-                required
-                fullWidth
-            />
-            <TextField
-                id="outlined-email-input"
-                margin="normal"
-                variant="outlined"
-                name="passwordTwo"
-                value={state.passwordTwo}
-                onChange={onChange}
-                type="password"
-                placeholder="Confirm New Password"
-                required
-                fullWidth
-            />
-            <Button disabled={isInvalid} type="submit" color="primary" variant="contained">
-                Change My Password
-            </Button>
-            {props.error && <p className='error'>{props.error.message}</p>}
-            {props.successMessage && <p className='success'>{props.successMessage}</p>}
-        </form>
+        <div>
+            <form className="form" onSubmit={onSubmit}>
+                <TextField
+                    id="outlined-email-input"
+                    margin="normal"
+                    variant="outlined"
+                    name="passwordOne"
+                    value={state.passwordOne}
+                    onChange={onChange}
+                    type="password"
+                    placeholder="New Password"
+                    required
+                    fullWidth
+                />
+                <TextField
+                    id="outlined-email-input"
+                    margin="normal"
+                    variant="outlined"
+                    name="passwordTwo"
+                    value={state.passwordTwo}
+                    onChange={onChange}
+                    type="password"
+                    placeholder="Confirm New Password"
+                    required
+                    fullWidth
+                />
+                <Button disabled={isInvalid} type="submit" color="primary" variant="contained">
+                    Change My Password
+                </Button>
+            </form>
+            <SimpleSnackbarContainer/>
+        </div>
     );
 }
 

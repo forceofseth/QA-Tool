@@ -8,10 +8,7 @@ function AdminPage(props) {
     return (
         <div>
             <h1>Admin</h1>
-
             <AddUser/>
-
-
         </div>
     );
 }
