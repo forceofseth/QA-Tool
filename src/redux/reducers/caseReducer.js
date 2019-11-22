@@ -11,7 +11,7 @@ export default function caseReducer(state = initalState, action) {
             console.log("created case", action.payload);
             return {
                 ...state,
-                successMessage: "successfully created new case with the projectid: " + action.payload.newCase.projectId + ".",
+                successMessage: "Successfully created new case with the Projectid: " + action.payload.newCase.projectId + ".",
                 error: null
             };
         case CREATE_CASE_ERROR:

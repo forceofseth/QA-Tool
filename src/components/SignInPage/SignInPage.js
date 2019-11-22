@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import useReactRouter from "use-react-router";
 import Box from "@material-ui/core/Box";
+import SimpleSnackbarContainer from "../Ui/Snackbar/SimpleSnackbarContainer";
 
 
 function SignInPage(props) {
@@ -77,7 +78,6 @@ function SignInPage(props) {
                         >
                             Sign In
                         </Button>
-                        {props.error && <p className='error'>{props.error.message}</p>}
                         <Grid container>
                             <Grid item xs>
                                 <PasswordForgetLink/>
@@ -86,6 +86,7 @@ function SignInPage(props) {
                     </form>
                 </div>
             </Container>
+            <SimpleSnackbarContainer/>
         </Box>
 
 

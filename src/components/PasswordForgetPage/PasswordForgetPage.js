@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
+import SimpleSnackbarContainer from "../Ui/Snackbar/SimpleSnackbarContainer";
 
 
 function PasswordForgetPage(props) {
@@ -41,9 +42,8 @@ function PasswordForgetPage(props) {
                 <button disabled={isInvalid} type="submit">
                     Reset My Password
                 </button>
-                {props.error && <p className='error'>{props.error.message}</p>}
-                {props.successMessage && <p className='success'>{props.successMessage}</p>}
             </form>
+            <SimpleSnackbarContainer/>
         </div>
     );
 }

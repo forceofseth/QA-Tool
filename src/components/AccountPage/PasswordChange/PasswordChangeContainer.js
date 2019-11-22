@@ -1,4 +1,4 @@
-import {getError, getSuccessMessage} from "../../../redux/selectors";
+import {getAuthError, getAuthSuccessMessage} from "../../../redux/selectors";
 import {connect} from "react-redux";
 import PasswordChange from "./PasswordChange";
 import {changePassword} from "../../../redux/actions/authActions";
@@ -10,8 +10,8 @@ const mapDispatchToProps = {
 
 const mapStateToProps = state => {
     return {
-        successMessage: getSuccessMessage(state),
-        error: getError(state)
+        successMessage: getAuthSuccessMessage(state),
+        error: getAuthError(state)
     };
 };
 

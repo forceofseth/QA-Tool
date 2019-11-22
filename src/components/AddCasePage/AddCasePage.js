@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
+import SimpleSnackbarContainer from "../Ui/Snackbar/SimpleSnackbarContainer";
 
 function AddCasePage(props) {
     useAuthorizationRedirect(props.auth);
@@ -98,10 +99,8 @@ function AddCasePage(props) {
                     disabled={isInvalid}
                 >Create Case
                 </button>
-                {props.caseStatus.error && <p className="error">{props.caseStatus.error.message}</p>}
-                {props.caseStatus.successMessage && <p className="success">{props.caseStatus.successMessage}</p>}
-
             </form>
+            <SimpleSnackbarContainer/>
         </div>
 
     );

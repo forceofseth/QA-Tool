@@ -10,7 +10,8 @@ import Box from "@material-ui/core/Box";
 import './Navigation.css';
 
 
-function Navigation() {
+function Navigation(props) {
+    const {profile} = props;
 
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -57,9 +58,16 @@ function Navigation() {
                         <MenuItem component={Link} to={ROUTES.EDIT_CASE}>
                             Edit Case
                         </MenuItem>
-                        <MenuItem component={Link} to={ROUTES.ADMIN}>
-                            Admin
-                        </MenuItem>
+
+                        {!profile || !profile.isLoaded ? null : (
+                            profile.admin ?
+                                <MenuItem component={Link} to={ROUTES.ADMIN}>
+                                    Admin
+                                </MenuItem>
+                                : null
+                        )
+                        }
+
                         <MenuItem>
                             <SignOutContainer/>
                         </MenuItem>
@@ -72,9 +80,6 @@ function Navigation() {
 
 
         </Box>
-
-
-
 
 
     );

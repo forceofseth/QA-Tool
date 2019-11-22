@@ -7,6 +7,8 @@ export const RESET_PASSWORD_SUCCESS = 'RESET_PASSWORD_SUCCESS';
 export const RESET_PASSWORD_ERROR = 'RESET_PASSWORD_ERROR';
 export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS';
 export const CREATE_USER_ERROR = 'CREATE_USER_ERROR';
+export const CLEAN_AUTH_ERROR = 'CLEAN_AUTH_ERROR';
+export const CLEAN_AUTH_SUCCESS = 'CLEAN_AUTH_SUCCESS';
 
 
 //thunk actions
@@ -25,6 +27,7 @@ export const logoutUser = () => (dispatch, getState, {getFirebase}) => {
     const firebase = getFirebase();
     firebase.auth().signOut()
         .then(() => {
+            firebase.logout();
             dispatch(getLogoutUserSuccessAction())
         })
 };
@@ -60,9 +63,9 @@ export const createUser = (newUser) => (dispatch, getState, {getFirebase, getFir
             return firestore.collection('users').doc(response.user.uid).set({
                 firstName: newUser.firstName,
                 lastName: newUser.lastName,
-                admin: newUser.admin
+                admin: Boolean(newUser.admin)
             }).then(() => {
-                dispatch(getCreateUserSuccessAction());
+                dispatch(getCreateUserSuccessAction(newUser));
             }).catch(error => {
                 dispatch(getCreateUserErrorAction(error))
             })
@@ -104,13 +107,22 @@ const getResetPasswordErrorAction = (error) => ({
     payload: {error}
 });
 
-const getCreateUserSuccessAction = () => ({
-    type: CREATE_USER_SUCCESS
+const getCreateUserSuccessAction = (newUser) => ({
+    type: CREATE_USER_SUCCESS,
+    payload: {newUser}
 });
 
 const getCreateUserErrorAction = (error) => ({
     type: CREATE_USER_ERROR,
     payload: {error}
+});
+
+export const cleanAuthErrorAction = () => ({
+    type: CLEAN_AUTH_ERROR
+});
+
+export const cleanAuthSuccessAction = () => ({
+    type: CLEAN_AUTH_SUCCESS
 });
 
 
