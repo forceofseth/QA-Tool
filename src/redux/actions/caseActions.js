@@ -9,6 +9,7 @@ export const createCase = newCase => {
         const firestore = getFirestore();
         firestore.collection('cases').add({
             ...newCase,
+            approved: Boolean(newCase.approved),
             date: new Date(newCase.date)
         }).then(() => {
             dispatch(getCreateCaseAction(newCase))
@@ -23,7 +24,7 @@ const getCreateCaseAction = newCase => ({
     type: CREATE_CASE,
     payload: {newCase}
 });
-const getCreateCaseErrorAction = (error) => ({
+const getCreateCaseErrorAction = error => ({
     type: CREATE_CASE_ERROR,
     payload: error
 });
