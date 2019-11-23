@@ -17,7 +17,7 @@ const HomePage = (props) => {
                     <div key={oneCase.id}>
                         <div>----------------------</div>
                         <div>{oneCase.id}</div>
-                        <div>{oneCase.approved}</div>
+                        <div>{oneCase.approved.toString()}</div>
                         <div>{oneCase.customer}</div>
                         <div>{moment(oneCase.date.toDate()).format('YYYY-MM-DD')}</div>
                         <div>{oneCase.lead}</div>
