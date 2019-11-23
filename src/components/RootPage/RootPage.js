@@ -19,7 +19,6 @@ function RootPage(props) {
     //TODO all Routes should be Pages?
     return (
         <Router>
-            <div>
                 {props.auth.isEmpty ? null : <NavigationContainer/>}
                 <Route path={ROUTES.SIGN_IN} component={SignInPageContainer}/>
                 <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPageContainer}/>
@@ -28,9 +27,8 @@ function RootPage(props) {
                 <PrivateRouteContainer path={ROUTES.ADD_USER} component={AddUserContainer}/>
                 <AdminRouteContainer path={ROUTES.ADMIN} component={AdminPageContainer}/>
                 <PrivateRouteContainer path={ROUTES.ADD_CASE} component={AddCasePageContainer}/>
-                <PrivateRouteContainer path={ROUTES.EDIT_CASE} component={EditCaseContainer}/>
-            </div>
-        </Router>
+                <PrivateRouteContainer path={ROUTES.EDIT_CASE +"/:id"} component={EditCaseContainer}/>
+       </Router>
     );
 }
 

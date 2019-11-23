@@ -12,12 +12,16 @@ export const getAuthError = state => {
 };
 
 export const getAuthSuccessMessage = state => {
-    return state.auth.successMessage
+    return state.auth.successMessage;
 };
 
 //Cases Selectors
 export const getCases = state => {
-    return state.firestore.ordered.cases
+    return state.firestore.ordered.cases;
+};
+
+export const getCasesData = state => {
+    return state.firestore.data.cases;
 };
 
 export const getCasesError = state =>{
