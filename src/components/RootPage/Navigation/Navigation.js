@@ -55,9 +55,6 @@ function Navigation(props) {
                         <MenuItem component={Link} to={ROUTES.ADD_CASE}>
                             Add Case
                         </MenuItem>
-                        <MenuItem component={Link} to={ROUTES.EDIT_CASE}>
-                            Edit Case
-                        </MenuItem>
 
                         {!profile || !profile.isLoaded ? null : (
                             profile.admin ?

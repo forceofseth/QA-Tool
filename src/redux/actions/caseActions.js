@@ -1,32 +1,67 @@
 
-export const CREATE_CASE = 'CREATE_CASE';
+export const CREATE_CASE_SUCCESS = 'CREATE_CASE_SUCCESS';
 export const CREATE_CASE_ERROR = 'CREATE_CASE_ERROR';
 export const CLEAN_CASE_SUCCESS = 'CLEAN_CASE_SUCCESS';
 export const CLEAN_CASE_ERROR = 'CLEAN_CASE_ERROR';
+export const UPDATE_CASE_SUCCESS = 'UPDATE_CASE_SUCCESS';
+export const UPDATE_CASE_ERROR = 'UPDATE_CASE_ERROR';
+
 //thunk actions
 export const createCase = newCase => {
     return (dispatch, getState, {getFirestore}) => {
         const firestore = getFirestore();
         firestore.collection('cases').add({
             ...newCase,
-            approved: Boolean(newCase.approved),
-            date: new Date(newCase.date)
+            approved: newCase.approved === 'true',
+            date: new Date(newCase.date),
+            projectId: Number(newCase.projectId)
         }).then(() => {
-            dispatch(getCreateCaseAction(newCase))
+            dispatch(getCreateCaseSuccessAction(newCase))
         }).catch((error) => {
             dispatch(getCreateCaseErrorAction(error))
         })
     }
 };
 
+export const updateCase = updatedCase => {
+    return(dispatch, getState, {getFirestore}) =>{
+        const firestore = getFirestore();
+        console.log({updatedCase});
+        firestore.collection('cases').doc(updatedCase.id).update({
+            approved: updatedCase.approved === 'true',
+            customer: updatedCase.customer,
+            date: new Date(updatedCase.date),
+            projectId: Number(updatedCase.projectId),
+            lead: updatedCase.lead,
+            product: updatedCase.product,
+            web: updatedCase.web
+        }).then(() => {
+            dispatch(getUpdateCaseSuccessAction(updatedCase));
+        }).catch((error) => {
+            dispatch(getUpdateCaseErrorAction(error));
+        })
+
+    }
+};
+
 //action creators
-const getCreateCaseAction = newCase => ({
-    type: CREATE_CASE,
+const getCreateCaseSuccessAction = newCase => ({
+    type: CREATE_CASE_SUCCESS,
     payload: {newCase}
 });
 const getCreateCaseErrorAction = error => ({
     type: CREATE_CASE_ERROR,
-    payload: error
+    payload: {error}
+});
+
+const getUpdateCaseSuccessAction = updatedCase => ({
+   type: UPDATE_CASE_SUCCESS,
+   payload: {updatedCase}
+});
+
+const getUpdateCaseErrorAction = error => ({
+    type: UPDATE_CASE_ERROR,
+    payload: {error}
 });
 
 export const cleanCaseSuccessAction = () => ({
