@@ -27,8 +27,8 @@ function AddCasePage(props) {
         state.web === '';
 
     const onSubmit = event => {
-        props.createCase(state);
         event.preventDefault();
+        props.createCase(state);
         setState(INITIAL_STATE);
     };
 
@@ -97,7 +97,7 @@ function AddCasePage(props) {
                 <button
                     type="submit"
                     disabled={isInvalid}
-                >Create Case
+                >Save Case
                 </button>
             </form>
             <SimpleSnackbarContainer/>

@@ -1,4 +1,10 @@
-import {CREATE_CASE, CREATE_CASE_ERROR} from "../actions/caseActions";
+import {
+    CREATE_CASE_SUCCESS,
+    CREATE_CASE_ERROR,
+    CLEAN_CASE_SUCCESS,
+    CLEAN_CASE_ERROR,
+    UPDATE_CASE_SUCCESS, UPDATE_CASE_ERROR
+} from "../actions/caseActions";
 
 const initalState = {
     successMessage: null,
@@ -7,7 +13,7 @@ const initalState = {
 
 export default function caseReducer(state = initalState, action) {
     switch (action.type) {
-        case CREATE_CASE:
+        case CREATE_CASE_SUCCESS:
             console.log("created case", action.payload);
             return {
                 ...state,
@@ -20,6 +26,33 @@ export default function caseReducer(state = initalState, action) {
                 ...state,
                 successMessage: null,
                 error: action.payload.error
+            };
+        case UPDATE_CASE_SUCCESS:
+            console.log("updated case", action.payload);
+            return {
+                ...state,
+                successMessage: "Successfully updated case with the Projectid: " + action.payload.updatedCase.projectId + ".",
+                error: null
+            };
+
+        case UPDATE_CASE_ERROR:
+            console.log("error updating case", action.payload);
+            return {
+                ...state,
+                successMessage: null,
+                error: action.payload.error
+            };
+
+        case CLEAN_CASE_SUCCESS:
+            return {
+                ...state,
+                successMessage: null
+            };
+
+        case CLEAN_CASE_ERROR:
+            return {
+                ...state,
+                error: null
             };
         default:
             return state;

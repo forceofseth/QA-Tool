@@ -27,7 +27,8 @@ export const logoutUser = () => (dispatch, getState, {getFirebase}) => {
     const firebase = getFirebase();
     firebase.auth().signOut()
         .then(() => {
-            dispatch(getLogoutUserSuccessAction())
+            firebase.logout();
+            dispatch(getLogoutUserSuccessAction());
         })
 };
 
@@ -35,10 +36,10 @@ export const changePassword = (password) => (dispatch, getState, {getFirebase}) 
     const firebase = getFirebase();
     firebase.auth().currentUser.updatePassword(password)
         .then(() => {
-            dispatch(getUpdatePasswordSuccessAction())
+            dispatch(getUpdatePasswordSuccessAction());
         })
         .catch(error => {
-            dispatch(getUpdatePasswordErrorAction(error))
+            dispatch(getUpdatePasswordErrorAction(error));
         })
 };
 
@@ -46,10 +47,10 @@ export const resetPassword = (email) => (dispatch, getState, {getFirebase}) => {
     const firebase = getFirebase();
     firebase.auth().sendPasswordResetEmail(email)
         .then(() => {
-            dispatch(getResetPasswordSuccessAction())
+            dispatch(getResetPasswordSuccessAction());
         })
         .catch(error => {
-            dispatch(getResetPasswordErrorAction(error))
+            dispatch(getResetPasswordErrorAction(error));
         })
 
 };
@@ -62,14 +63,14 @@ export const createUser = (newUser) => (dispatch, getState, {getFirebase, getFir
             return firestore.collection('users').doc(response.user.uid).set({
                 firstName: newUser.firstName,
                 lastName: newUser.lastName,
-                admin: newUser.admin
+                admin: Boolean(newUser.admin)
             }).then(() => {
                 dispatch(getCreateUserSuccessAction(newUser));
             }).catch(error => {
-                dispatch(getCreateUserErrorAction(error))
+                dispatch(getCreateUserErrorAction(error));
             })
         }).catch(error =>{
-            dispatch(getCreateUserErrorAction(error))
+            dispatch(getCreateUserErrorAction(error));
     })
 };
 
