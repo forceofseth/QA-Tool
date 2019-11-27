@@ -1,15 +1,18 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
 import SimpleSnackbarContainer from "../Ui/Snackbar/SimpleSnackbarContainer";
-import moment from "moment";
 import CaseForm from "../Ui/CaseForm/CaseForm";
+import Loading from "../Status/Loading";
 
 function EditCasePage(props) {
     useAuthorizationRedirect(props.auth);
-
     const {caseToEdit} = props;
+    const [state, setState] = useState({...caseToEdit});
 
-    const [state, setState] = useState({...caseToEdit, date: moment(caseToEdit.date.toDate()).format('YYYY-MM-DD') });
+    useEffect(() => {
+        setState({...caseToEdit})
+    }, [caseToEdit]);
+
 
     const onSubmit = event => {
         event.preventDefault();
@@ -25,10 +28,16 @@ function EditCasePage(props) {
 
 
     return (
-            <div>
-                <CaseForm onSubmit={onSubmit} onChange={onChange} state={state} title={"Edit Case"}/>
-                <SimpleSnackbarContainer/>
-            </div>
+        <div>
+            {caseToEdit ? (
+                <div>
+                    <CaseForm onSubmit={onSubmit} onChange={onChange} state={state} title={"Edit Case"}/>
+                    <SimpleSnackbarContainer/>
+                </div>
+            ) : (
+                <Loading/>
+            )}
+        </div>
     );
 }
 
