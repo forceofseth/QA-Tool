@@ -9,5 +9,8 @@ export const PASSWORD_FORGET = '/pw-forget';
 export const SIGN_UP = '/signup';
 export const ADD_CASE = '/addcase';
 export const EDIT_CASE = '/editcase';
+export const LEAD_CHECKS = '/lead-checks';
+export const WEB_CHECKS = '/web-checks';
+
 
 

@@ -1,4 +1,3 @@
-
 export const CREATE_CASE_SUCCESS = 'CREATE_CASE_SUCCESS';
 export const CREATE_CASE_ERROR = 'CREATE_CASE_ERROR';
 export const CLEAN_CASE_SUCCESS = 'CLEAN_CASE_SUCCESS';
@@ -14,19 +13,29 @@ export const createCase = newCase => {
             ...newCase,
             approved: newCase.approved === 'true',
             date: new Date(newCase.date),
-            projectId: Number(newCase.projectId)
+            projectId: Number(newCase.projectId),
+            leadChecks: {
+                //TODO milos add more checkboxes
+                testLinks: Boolean(false),
+                testLinks2: Boolean(false)
+            },
+            webChecks: {
+                //TODO milos add more checkboxes
+                checkProperties: Boolean(false),
+                checkProperties2: Boolean(false)
+
+            }
         }).then(() => {
-            dispatch(getCreateCaseSuccessAction(newCase))
-        }).catch((error) => {
-            dispatch(getCreateCaseErrorAction(error))
+            dispatch(getCreateCaseSuccessAction(newCase));
+        }).catch(error => {
+            dispatch(getCreateCaseErrorAction(error));
         })
     }
 };
 
 export const updateCase = updatedCase => {
-    return(dispatch, getState, {getFirestore}) =>{
+    return (dispatch, getState, {getFirestore}) => {
         const firestore = getFirestore();
-        console.log({updatedCase});
         firestore.collection('cases').doc(updatedCase.id).update({
             approved: updatedCase.approved === 'true',
             customer: updatedCase.customer,
@@ -44,6 +53,19 @@ export const updateCase = updatedCase => {
     }
 };
 
+export const updateCaseChecklist = (updatedCheckList, caseId) =>{
+  return(dispatch, getState,{getFirestore})=>{
+      const firestore = getFirestore();
+      firestore.collection('cases').doc(caseId).update({
+          leadChecks: updatedCheckList
+      }).then((response)=> {
+          console.log(response);
+      }).catch((error =>{
+          console.log(error);
+      }))
+  }
+};
+
 //action creators
 const getCreateCaseSuccessAction = newCase => ({
     type: CREATE_CASE_SUCCESS,
@@ -55,8 +77,8 @@ const getCreateCaseErrorAction = error => ({
 });
 
 const getUpdateCaseSuccessAction = updatedCase => ({
-   type: UPDATE_CASE_SUCCESS,
-   payload: {updatedCase}
+    type: UPDATE_CASE_SUCCESS,
+    payload: {updatedCase}
 });
 
 const getUpdateCaseErrorAction = error => ({
