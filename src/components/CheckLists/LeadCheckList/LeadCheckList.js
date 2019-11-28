@@ -2,14 +2,14 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import React, {useEffect, useState} from "react";
 import Loading from "../../Status/Loading";
-import SimpleSnackbarContainer from "../../Ui/Snackbar/SimpleSnackbarContainer";
+import CheckboxWithLabel from "../../Ui/Checkbox/CheckboxWithLabel";
 
-function CheckList(props){
+function LeadCheckList(props){
     const {leadChecks, caseId, updateCaseChecklist} = props;
     const [state, setState] = useState(leadChecks);
 
     useEffect(() => {
-        updateCaseChecklist(state,caseId)
+        updateCaseChecklist(state,caseId,"leadChecks")
     }, [state, caseId, updateCaseChecklist]);
 
     useEffect(() => {
@@ -29,16 +29,12 @@ function CheckList(props){
             <CssBaseline/>
             {leadChecks ? (
                 <div>
-                    <h1>{"Check-List"}</h1>
+                    <h1>{"Lead CheckList"}</h1>
                     {state && Object.keys(state).map(key =>{
                         return(
-                            <div key={key}>
-                                <label htmlFor ={key}>{key + ":"}</label>
-                                <input type="checkbox" name={key} defaultChecked={state[key]} onChange={onChange}/>
-                            </div>
+                            <CheckboxWithLabel defaultChecked = {state[key]} checkFor={key} onChange={onChange} />
                         )
                     })}
-                    <SimpleSnackbarContainer/>
                 </div>
             ): (
                 <Loading/>
@@ -48,4 +44,4 @@ function CheckList(props){
     );
 }
 
-export default CheckList;
+export default LeadCheckList;

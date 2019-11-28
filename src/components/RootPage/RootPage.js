@@ -13,7 +13,8 @@ import AddUserContainer from "../AdminPage/AddUser/AddUserContainer";
 import PrivateRouteContainer from "../Ui/PrivateRoute/PrivateRouteContainer";
 import AdminRouteContainer from "../Ui/AdminRoute/AdminRouteContainer";
 import NavigationContainer from "./Navigation/NavigationContainer";
-import CheckListContainer from "../HomePage/Checklist/CheckListContainer";
+import LeadCheckListContainer from "../CheckLists/LeadCheckList/LeadCheckListContainer";
+import WebCheckListContainer from "../CheckLists/WebCheckList.js/WebCheckListContainer";
 
 
 function RootPage(props) {
@@ -29,7 +30,8 @@ function RootPage(props) {
             <AdminRouteContainer path={ROUTES.ADMIN} component={AdminPageContainer}/>
             <PrivateRouteContainer path={ROUTES.ADD_CASE} component={AddCasePageContainer}/>
             <PrivateRouteContainer path={ROUTES.EDIT_CASE + "/:id"} component={EditCaseContainer}/>
-            <PrivateRouteContainer path={ROUTES.LEAD_CHECKS + "/:id"} component={CheckListContainer}/>
+            <PrivateRouteContainer path={ROUTES.LEAD_CHECKS + "/:id"} component={LeadCheckListContainer}/>
+            <PrivateRouteContainer path={ROUTES.WEB_CHECKS + "/:id"} component={WebCheckListContainer}/>
         </Router>
     );
 }

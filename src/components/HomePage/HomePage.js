@@ -2,7 +2,7 @@ import React from 'react';
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
 import './HomePage.css';
 import Button from "@material-ui/core/Button";
-import {EDIT_CASE, LEAD_CHECKS} from "../../constants/routes";
+import {EDIT_CASE, LEAD_CHECKS, WEB_CHECKS} from "../../constants/routes";
 import {Link} from "react-router-dom";
 import moment from "moment";
 
@@ -29,9 +29,9 @@ const HomePage = (props) => {
                         <Link to={LEAD_CHECKS + "/" + oneCase.id}>
                             <Button variant="contained">Lead-Checks</Button>
                         </Link>
-                        {/*<Link>*/}
-                        {/*    <Button variant="contained">Web-Checks</Button>*/}
-                        {/*</Link>*/}
+                        <Link to={WEB_CHECKS + "/" + oneCase.id}>
+                            <Button variant="contained">Web-Checks</Button>
+                        </Link>
                         <div>---------------------</div>
                     </div>
                 )

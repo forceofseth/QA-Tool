@@ -55,13 +55,13 @@ export const updateCase = updatedCase => {
     }
 };
 
-export const updateCaseChecklist = (updatedCheckList, caseId) =>{
+export const updateCaseChecklist = (updatedCheckList, caseId, checkType) =>{
   return(dispatch, getState,{getFirestore})=>{
       const firestore = getFirestore();
       if(updatedCheckList && Object.keys(updatedCheckList).length !== 0){
-      firestore.collection('cases').doc(caseId).update({
-          leadChecks: updatedCheckList
-      }).then(()=> {
+          let caseObjectToUpdate ={};
+          caseObjectToUpdate[checkType]=updatedCheckList;
+      firestore.collection('cases').doc(caseId).update(caseObjectToUpdate).then(()=> {
           dispatch(getUpdateCaseCheckListSuccessAction(updatedCheckList));
       }).catch((error =>{
           dispatch(getUpdateCaseCheckListErrorAction(error));
