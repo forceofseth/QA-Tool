@@ -4,6 +4,8 @@ export const CLEAN_CASE_SUCCESS = 'CLEAN_CASE_SUCCESS';
 export const CLEAN_CASE_ERROR = 'CLEAN_CASE_ERROR';
 export const UPDATE_CASE_SUCCESS = 'UPDATE_CASE_SUCCESS';
 export const UPDATE_CASE_ERROR = 'UPDATE_CASE_ERROR';
+export const UPDATE_CASE_CHECKLIST_SUCCESS = 'UPDATE_CASE_CHECKLIST_SUCCESS';
+export const UPDATE_CASE_CHECKLIST_ERROR = 'UPDATE_CASE_CHECKLIST_ERROR';
 
 //thunk actions
 export const createCase = newCase => {
@@ -56,14 +58,15 @@ export const updateCase = updatedCase => {
 export const updateCaseChecklist = (updatedCheckList, caseId) =>{
   return(dispatch, getState,{getFirestore})=>{
       const firestore = getFirestore();
+      if(updatedCheckList && Object.keys(updatedCheckList).length !== 0){
       firestore.collection('cases').doc(caseId).update({
           leadChecks: updatedCheckList
-      }).then((response)=> {
-          console.log(response);
+      }).then(()=> {
+          dispatch(getUpdateCaseCheckListSuccessAction(updatedCheckList));
       }).catch((error =>{
-          console.log(error);
+          dispatch(getUpdateCaseCheckListErrorAction(error));
       }))
-  }
+  }}
 };
 
 //action creators
@@ -86,6 +89,16 @@ const getUpdateCaseErrorAction = error => ({
     payload: {error}
 });
 
+export const getUpdateCaseCheckListSuccessAction = (updatedCheckList) => ({
+   type:  UPDATE_CASE_CHECKLIST_SUCCESS,
+    payload: {updatedCheckList}
+});
+
+export const getUpdateCaseCheckListErrorAction = (error) =>({
+   type: UPDATE_CASE_CHECKLIST_ERROR,
+   payload:{error}
+});
+
 export const cleanCaseSuccessAction = () => ({
     type: CLEAN_CASE_SUCCESS
 });
@@ -93,5 +106,6 @@ export const cleanCaseSuccessAction = () => ({
 export const cleanCaseErrorAction = () => ({
     type: CLEAN_CASE_ERROR
 });
+
 
 
