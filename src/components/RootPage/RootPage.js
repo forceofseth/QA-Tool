@@ -13,22 +13,26 @@ import AddUserContainer from "../AdminPage/AddUser/AddUserContainer";
 import PrivateRouteContainer from "../Ui/PrivateRoute/PrivateRouteContainer";
 import AdminRouteContainer from "../Ui/AdminRoute/AdminRouteContainer";
 import NavigationContainer from "./Navigation/NavigationContainer";
+import LeadCheckListContainer from "../CheckLists/LeadCheckList/LeadCheckListContainer";
+import WebCheckListContainer from "../CheckLists/WebCheckList.js/WebCheckListContainer";
 
 
 function RootPage(props) {
     //TODO all Routes should be Pages?
     return (
         <Router>
-                {props.auth.isEmpty ? null : <NavigationContainer/>}
-                <Route path={ROUTES.SIGN_IN} component={SignInPageContainer}/>
-                <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPageContainer}/>
-                <PrivateRouteContainer exact path={ROUTES.HOME} component={HomePageContainer}/>
-                <PrivateRouteContainer path={ROUTES.ACCOUNT} component={AccountPageContainer}/>
-                <PrivateRouteContainer path={ROUTES.ADD_USER} component={AddUserContainer}/>
-                <AdminRouteContainer path={ROUTES.ADMIN} component={AdminPageContainer}/>
-                <PrivateRouteContainer path={ROUTES.ADD_CASE} component={AddCasePageContainer}/>
-                <PrivateRouteContainer path={ROUTES.EDIT_CASE +"/:id"} component={EditCaseContainer}/>
-       </Router>
+            {props.auth.isEmpty ? null : <NavigationContainer/>}
+            <Route path={ROUTES.SIGN_IN} component={SignInPageContainer}/>
+            <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPageContainer}/>
+            <PrivateRouteContainer exact path={ROUTES.HOME} component={HomePageContainer}/>
+            <PrivateRouteContainer path={ROUTES.ACCOUNT} component={AccountPageContainer}/>
+            <PrivateRouteContainer path={ROUTES.ADD_USER} component={AddUserContainer}/>
+            <AdminRouteContainer path={ROUTES.ADMIN} component={AdminPageContainer}/>
+            <PrivateRouteContainer path={ROUTES.ADD_CASE} component={AddCasePageContainer}/>
+            <PrivateRouteContainer path={ROUTES.EDIT_CASE + "/:id"} component={EditCaseContainer}/>
+            <PrivateRouteContainer path={ROUTES.LEAD_CHECKS + "/:id"} component={LeadCheckListContainer}/>
+            <PrivateRouteContainer path={ROUTES.WEB_CHECKS + "/:id"} component={WebCheckListContainer}/>
+        </Router>
     );
 }
 
