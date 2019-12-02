@@ -1,5 +1,10 @@
+html {
+    overflow-y: scroll;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
+    margin: 0;
 }
 
 .mainContainer {
@@ -20,4 +25,8 @@ h1 {
 
 .success {
     color: green;
+}
+
+.MuiContainer-maxWidthXl {
+    max-width: 100% !important;
 }

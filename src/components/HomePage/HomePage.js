@@ -1,42 +1,81 @@
 import React from 'react';
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
-import './HomePage.css';
-import Button from "@material-ui/core/Button";
-import {EDIT_CASE, LEAD_CHECKS, WEB_CHECKS} from "../../constants/routes";
+import {EDIT_CASE, LEAD_CHECKS, default as ROUTES, WEB_CHECKS, ADD_CASE} from "../../constants/routes";
 import {Link} from "react-router-dom";
 import moment from "moment";
+import Container from "@material-ui/core/Container";
+import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
+import './HomePage.css';
+import '../global.css';
+import EditIcon from '@material-ui/icons/Edit';
+import LaunchIcon from '@material-ui/icons/Launch';
+
 
 const HomePage = (props) => {
     useAuthorizationRedirect(props.auth);
 
     //TODO Better name than one case using case leads to errors cause of the case reserved keyword.
     return (
-        <div>
-            {props.cases && props.cases.map(oneCase => {
-                return (
-                    <div key={oneCase.id}>
-                        <div>----------------------</div>
-                        <div>{oneCase.id}</div>
-                        <div>{oneCase.approved.toString()}</div>
-                        <div>{oneCase.customer}</div>
-                        <div>{moment(oneCase.date.toDate()).format('YYYY-MM-DD')}</div>
-                        <div>{oneCase.lead}</div>
-                        <div>{oneCase.product}</div>
-                        <div>{oneCase.web}</div>
-                        <Link to={EDIT_CASE + "/" + oneCase.id}>
-                            <Button variant="contained">Edit</Button>
-                        </Link>
-                        <Link to={LEAD_CHECKS + "/" + oneCase.id}>
-                            <Button variant="contained">Lead-Checks</Button>
-                        </Link>
-                        <Link to={WEB_CHECKS + "/" + oneCase.id}>
-                            <Button variant="contained">Web-Checks</Button>
-                        </Link>
-                        <div>---------------------</div>
-                    </div>
-                )
-            })}
-        </div>
+        <Container maxWidth="lg" className="mainContainer">
+            <h1>Projects</h1>
+            <table>
+                <thead>
+                <tr>
+                    <th>Project ID</th>
+                    <th>Approved</th>
+                    <th>Customer</th>
+                    <th>Date</th>
+                    <th>Product</th>
+                    <th>Web</th>
+                    <th>Lead</th>
+                    <th>Edit</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {props.cases && props.cases.map(oneCase => {
+                    return (
+                        <tr key={oneCase.id}>
+                            <td data-label="ID">{oneCase.projectId}</td>
+                            <td data-label="Approved">{oneCase.approved.toString()}</td>
+                            <td data-label="Customer">{oneCase.customer}</td>
+                            <td data-label="Date">{moment(oneCase.date.toDate()).format('DD.MM.YY')}</td>
+                            <td data-label="Product">{oneCase.product}</td>
+
+                            <td data-label="Lead">
+                                <Link to={LEAD_CHECKS + "/" + oneCase.id}>
+                                    <div>{oneCase.lead}
+                                        <LaunchIcon className="openLink" />
+                                    </div>
+                                </Link>
+                            </td>
+
+                            <td data-label="Web">
+                                <Link to={WEB_CHECKS + "/" + oneCase.id}>
+                                    <div>{oneCase.web}
+                                        <LaunchIcon className="openLink" />
+                                    </div>
+                                </Link>
+                            </td>
+
+                            <td data-label="Edit">
+                                <Link to={EDIT_CASE + "/" + oneCase.id}>
+                                    <EditIcon fontSize="small"/>
+                                </Link>
+                            </td>
+                        </tr>
+                    )
+                })}
+                </tbody>
+            </table>
+
+            <div className="addCase">
+                <Link to={ADD_CASE}>
+                    <AddCircleOutlineOutlinedIcon fontSize="large"/>
+                </Link>
+            </div>
+        </Container>
+
     );
 };
 

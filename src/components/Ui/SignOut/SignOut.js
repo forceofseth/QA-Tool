@@ -1,13 +1,12 @@
 import React from 'react';
-
+import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 
 function SignOut(props) {
     return (
-        <button type="button" onClick={() => props.logoutUser()}>
-            Sign Out
-        </button>
+        <a onClick={() => props.logoutUser()}>
+            <ExitToAppOutlinedIcon fontSize="large" />
+        </a>
     );
 }
-
 
 export default SignOut;
