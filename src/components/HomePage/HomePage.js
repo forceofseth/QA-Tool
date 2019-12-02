@@ -1,6 +1,6 @@
 import React from 'react';
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
-import {EDIT_CASE, LEAD_CHECKS, default as ROUTES, WEB_CHECKS, ADD_CASE} from "../../constants/routes";
+import {EDIT_CASE, LEAD_CHECKS, WEB_CHECKS, ADD_CASE} from "../../constants/routes";
 import {Link} from "react-router-dom";
 import moment from "moment";
 import Container from "@material-ui/core/Container";
