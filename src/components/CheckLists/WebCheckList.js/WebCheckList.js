@@ -25,11 +25,12 @@ function WebCheckList(props){
 
 
     return(
+
         <Container maxWidth="lg" className="mainContainer">
             <CssBaseline/>
             {webChecks ? (
                 <div>
-                    <h1>{"Web CheckList"}</h1>
+                    <h1>Customer Name / ProjectID / Product comes here</h1>
                     {state && Object.keys(state).map(key =>{
                         return(
                             <CheckboxWithLabel defaultChecked = {state[key]} checkFor={key} onChange={onChange} />
