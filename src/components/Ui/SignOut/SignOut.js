@@ -5,7 +5,7 @@ import Link from "@material-ui/core/Link";
 function SignOut(props) {
     return (
         <Link onClick={() => props.logoutUser()}>
-            <ExitToAppOutlinedIcon fontSize="large" />
+            <ExitToAppOutlinedIcon fontSize="large" className="topIcon logout" />
         </Link>
     );
 }

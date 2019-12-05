@@ -2,51 +2,42 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import SignOutContainer from "../../Ui/SignOut/SignOutContainer";
 import Container from "@material-ui/core/Container";
-import Box from "@material-ui/core/Box";
-import {ACCOUNT} from "../../../constants/routes";
-import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
-import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
+import {ACCOUNT, ADMIN} from "../../../constants/routes";
 import './Navigation.css';
-
-
-
+import {LockOpenOutlined, PermIdentityOutlined, HomeOutlined} from "@material-ui/icons";
 
 function Navigation() {
-
-
     return (
-        <Box>
-            <Container maxWidth="xl" className="navContainer">
-                <Container className="navInnerContainer">
+        <Container maxWidth="xl" className="navContainer">
+            <Container className="navInnerContainer">
 
-                    {/* title left */}
+                <a href="/">
+                    <h1>
+                        QA Tool
+                    </h1>
+                </a>
+
+                <div className="menuRight">
                     <a href="/">
-                        <h1>
-                            QA Tool
-                        </h1>
+                        <HomeOutlined className="topIcon" fontSize="large"/>
                     </a>
 
-                    {/* menu right */}
-                    <div className="menuRight">
-                        <a href="/">
-                            <HomeOutlinedIcon className="topIcon" fontSize="large"/>
-                        </a>
+                    <Link to={ACCOUNT}>
+                        <PermIdentityOutlined className="topIcon" fontSize="large"/>
+                    </Link>
 
-                        <Link to={ACCOUNT}>
-                            <PermIdentityOutlinedIcon className="topIcon" fontSize="large"/>
-                        </Link>
+                    <SignOutContainer/>
 
-                        <SignOutContainer/>
-                    </div>
+                    <Link to={ADMIN}>
+                        <LockOpenOutlined className="topIcon" fontSize="large"/>
+                    </Link>
+                </div>
 
 
-
-                </Container>
 
             </Container>
 
-
-        </Box>
+        </Container>
 
 
     );

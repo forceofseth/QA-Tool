@@ -23,6 +23,10 @@ button.menuBtn {
     margin-right: 15px;
 }
 
+.topIcon.logout {
+    cursor: pointer;
+}
+
 .navContainer h1 {
     margin-block-start: 0;
     margin-block-end: 0;
