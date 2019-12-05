@@ -32,3 +32,21 @@ export const getCasesSuccessMessage = state =>{
     return state.cases.successMessage;
 };
 
+
+// Masterdata Selectors
+export const getMasterData = state => {
+    return state.firestore.ordered.masterdata;
+};
+
+export const getMasterDataData = state => {
+    return state.firestore.data.masterdata;
+};
+
+export const getMasterDataError = state =>{
+    return state.masterdata.error;
+};
+
+export const getMasterDataSuccessMessage = state =>{
+    return state.masterdata.successMessage;
+};
+
