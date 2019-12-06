@@ -3,7 +3,6 @@ import Container from "@material-ui/core/Container";
 import '../global.css';
 import PasswordChangeContainer from "./PasswordChange/PasswordChangeContainer";
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
-import AddUser from "../AdminPage/AddUser/AddUserContainer";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
@@ -45,7 +44,7 @@ function AccountPage(props) {
                 </ExpansionPanelSummary>
 
                 <ExpansionPanelDetails>
-                    <AddUser/>
+
                 </ExpansionPanelDetails>
 
             </ExpansionPanel>

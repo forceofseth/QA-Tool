@@ -1,15 +1,32 @@
 import React from 'react';
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
+import Container from "@material-ui/core/Container";
 import AddUser from "./AddUser/AddUserContainer";
+import AddMasterDataContainer from "./MasterData/AddMasterData/AddMasterDataContainer";
+import MasterDataListContainer from "./MasterData/MasterDataList/MasterDataListContainer";
 
-//TODO integrate Add User Page into Admin Page?
 function AdminPage(props) {
     useAuthorizationRedirect(props.auth);
     return (
-        <div>
+        <Container maxWidth="lg" className="mainContainer">
+
+
             <h1>Admin</h1>
+
+            <h3>Add User</h3>
             <AddUser/>
-        </div>
+
+            <br/><br/>
+
+            <AddMasterDataContainer/>
+
+            <br/><br/>
+
+
+            <MasterDataListContainer/>
+
+        </Container>
+
     );
 }
 

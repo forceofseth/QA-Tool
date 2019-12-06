@@ -26,11 +26,13 @@ function Navigation() {
                         <PermIdentityOutlined className="topIcon" fontSize="large"/>
                     </Link>
 
-                    <SignOutContainer/>
 
                     <Link to={ADMIN}>
                         <LockOpenOutlined className="topIcon" fontSize="large"/>
                     </Link>
+
+                    <SignOutContainer/>
+
                 </div>
 
 
