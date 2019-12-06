@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
     const masterDataId = ownProps.match.params.id;
     const masterdata = getMasterDataData(state);
     let masterDataToEdit = masterdata ?  masterdata[masterDataId]: null;
-    masterDataToEdit = masterDataToEdit ? {...masterDataToEdit, id: masterDataId, date: moment(masterDataToEdit.date.toDate()).format('YYYY-MM-DD')}: null;
+    masterDataToEdit = masterDataToEdit ? {...masterDataToEdit, id: masterDataId}: null;
     return {
         auth: getAuth(state),
         masterDataToEdit: masterDataToEdit

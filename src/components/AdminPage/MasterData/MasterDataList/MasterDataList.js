@@ -3,6 +3,8 @@ import {EDIT_MASTERDATA, ADD_MASTERDATA} from "../../../../constants/routes";
 import {Link} from "react-router-dom";
 import Container from "@material-ui/core/Container";
 import '../../../global.css';
+import './MasterData.css';
+
 import EditIcon from '@material-ui/icons/Edit';
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 
