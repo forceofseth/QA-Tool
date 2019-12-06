@@ -2,81 +2,42 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import SignOutContainer from "../../Ui/SignOut/SignOutContainer";
 import Container from "@material-ui/core/Container";
-import * as ROUTES from '../../../constants/routes';
-import Button from "@material-ui/core/Button";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import Box from "@material-ui/core/Box";
+import {ACCOUNT, ADMIN} from "../../../constants/routes";
 import './Navigation.css';
+import {LockOpenOutlined, PermIdentityOutlined, HomeOutlined} from "@material-ui/icons";
 
-
-function Navigation(props) {
-    const {profile} = props;
-
-    const [anchorEl, setAnchorEl] = React.useState(null);
-
-    function handleClick(event) {
-        setAnchorEl(event.currentTarget);
-    }
-
-    function handleClose() {
-        setAnchorEl(null);
-    }
-
+function Navigation() {
     return (
+        <Container maxWidth="xl" className="navContainer">
+            <Container className="navInnerContainer">
 
-
-        <Box component="span">
-
-            <Container maxWidth="xl" className="navContainer">
-
-                <Container className="navInnerContainer">
-
+                <a href="/">
                     <h1>
                         QA Tool
                     </h1>
+                </a>
 
-                    <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} className="menuBtn">
-                        Username
-                    </Button>
-                    <Menu
-                        id="simple-menu"
-                        anchorEl={anchorEl}
-                        keepMounted
-                        open={Boolean(anchorEl)}
-                        onClose={handleClose}
-                    >
-                        <MenuItem component={Link} to={ROUTES.HOME}>
-                            Home
-                        </MenuItem>
-                        <MenuItem component={Link} to={ROUTES.ACCOUNT}>
-                            Account
-                        </MenuItem>
-                        <MenuItem component={Link} to={ROUTES.ADD_CASE}>
-                            Add Case
-                        </MenuItem>
+                <div className="menuRight">
+                    <a href="/">
+                        <HomeOutlined className="topIcon" fontSize="large"/>
+                    </a>
 
-                        {!profile || !profile.isLoaded ? null : (
-                            profile.admin ?
-                                <MenuItem component={Link} to={ROUTES.ADMIN}>
-                                    Admin
-                                </MenuItem>
-                                : null
-                        )
-                        }
+                    <Link to={ACCOUNT}>
+                        <PermIdentityOutlined className="topIcon" fontSize="large"/>
+                    </Link>
 
-                        <MenuItem>
-                            <SignOutContainer/>
-                        </MenuItem>
-                    </Menu>
+                    <SignOutContainer/>
+
+                    <Link to={ADMIN}>
+                        <LockOpenOutlined className="topIcon" fontSize="large"/>
+                    </Link>
+                </div>
 
 
-                </Container>
 
             </Container>
 
-
-        </Box>
+        </Container>
 
 
     );

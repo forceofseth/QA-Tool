@@ -3,6 +3,8 @@ import {makeStyles} from '@material-ui/core/styles';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import './SimeSnackbar.css';
+
 
 const useStyles = makeStyles(theme => ({
     close: {
@@ -72,7 +74,7 @@ export default function SimpleSnackbar(props) {
             <Snackbar
                 anchorOrigin={{
                     vertical: 'bottom',
-                    horizontal: 'left',
+                    horizontal: 'center',
                 }}
                 open={open}
                 autoHideDuration={4000}

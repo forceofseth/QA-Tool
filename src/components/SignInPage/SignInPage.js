@@ -43,6 +43,7 @@ function SignInPage(props) {
         <Box component="span" className="loginFullPage">
             <Container maxWidth="md">
                 <div className="paper">
+                    <h1>Log-in to your account</h1>
                     <form className="form" noValidate onSubmit={onSubmit}>
                         <TextField
                             id="outlined-email-input"

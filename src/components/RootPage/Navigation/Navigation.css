@@ -13,9 +13,18 @@ button.menuBtn {
     padding: 5px 20px;
 }
 
-
-.menuBtn {
+.menuRight {
     float: right;
+    color: white;
+}
+
+.topIcon {
+    color: white;
+    margin-right: 15px;
+}
+
+.topIcon.logout {
+    cursor: pointer;
 }
 
 .navContainer h1 {
