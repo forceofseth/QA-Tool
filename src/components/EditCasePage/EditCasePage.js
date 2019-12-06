@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
-import SimpleSnackbarContainer from "../Ui/Snackbar/SimpleSnackbarContainer";
 import CaseForm from "../Ui/CaseForm/CaseForm";
 import Loading from "../Status/Loading";
 
@@ -32,7 +31,6 @@ function EditCasePage(props) {
             {caseToEdit ? (
                 <div>
                     <CaseForm onSubmit={onSubmit} onChange={onChange} state={state} title={"Edit Case"}/>
-                    <SimpleSnackbarContainer/>
                 </div>
             ) : (
                 <Loading/>

@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
-import SimpleSnackbarContainer from "../Ui/Snackbar/SimpleSnackbarContainer";
 import CaseForm from "../Ui/CaseForm/CaseForm";
 
 function AddCasePage(props) {
@@ -35,7 +34,6 @@ function AddCasePage(props) {
     return (
         <div>
             <CaseForm onSubmit={onSubmit} onChange={onChange} state={state} title={"Add Case"}/>
-            <SimpleSnackbarContainer/>
         </div>
 
     );
