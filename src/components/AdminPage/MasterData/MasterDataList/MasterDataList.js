@@ -1,5 +1,4 @@
 import React from 'react';
-import {useAuthorizationRedirect} from "../../../../hooks/useAuthorizationRedirect";
 import {EDIT_MASTERDATA, ADD_MASTERDATA} from "../../../../constants/routes";
 import {Link} from "react-router-dom";
 import Container from "@material-ui/core/Container";
@@ -7,10 +6,7 @@ import '../../../global.css';
 import EditIcon from '@material-ui/icons/Edit';
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 
-
-
 const MasterDataList = (props) => {
-    useAuthorizationRedirect(props.auth);
 
     return (
         <Container maxWidth="lg" className="mainContainer">

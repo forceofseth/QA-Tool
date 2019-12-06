@@ -1,10 +1,8 @@
 import React, {useState} from 'react';
-import {useAuthorizationRedirect} from "../../../../hooks/useAuthorizationRedirect";
 import SimpleSnackbarContainer from "../../../Ui/Snackbar/SimpleSnackbarContainer";
 import MasterDataForm from "../../../Ui/MasterDataForm/MasterDataForm";
 
 function AddMasterData(props) {
-    useAuthorizationRedirect(props.auth);
 
     const INITIAL_STATE = {
         customer: '',

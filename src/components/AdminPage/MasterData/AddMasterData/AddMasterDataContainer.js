@@ -15,4 +15,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddMasterData());
+export default connect(mapStateToProps, mapDispatchToProps)(AddMasterData);

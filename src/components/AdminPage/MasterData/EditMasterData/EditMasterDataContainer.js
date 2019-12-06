@@ -26,4 +26,4 @@ export default compose(
     firestoreConnect([
         {collection: 'masterdata'}
     ])
-)(EditMasterData());
+)(EditMasterData);
