@@ -1,7 +1,6 @@
 import {getAuth, getMasterDataData} from "../../../../redux/selectors";
 import {connect} from "react-redux";
 import {updateMasterData} from "../../../../redux/actions/masterDataAction";
-import moment from "moment";
 import {compose} from "redux";
 import {firestoreConnect} from "react-redux-firebase";
 import EditMasterData from "./EditMasterData";
