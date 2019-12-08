@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
 import CaseForm from "../Ui/CaseForm/CaseForm";
+import {HOME} from "../../constants/routes";
 
 function AddCasePage(props) {
     useAuthorizationRedirect(props.auth);
@@ -21,6 +22,7 @@ function AddCasePage(props) {
         event.preventDefault();
         props.createCase(state);
         setState(INITIAL_STATE);
+        props.history.push(HOME);
     };
 
     const onChange = event => {

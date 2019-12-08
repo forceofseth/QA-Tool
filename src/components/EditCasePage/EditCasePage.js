@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
 import CaseForm from "../Ui/CaseForm/CaseForm";
 import Loading from "../Status/Loading";
+import {HOME} from "../../constants/routes";
 
 function EditCasePage(props) {
     useAuthorizationRedirect(props.auth);
@@ -16,6 +17,7 @@ function EditCasePage(props) {
     const onSubmit = event => {
         event.preventDefault();
         props.updateCase(state);
+        props.history.push(HOME);
     };
 
     const onChange = event => {

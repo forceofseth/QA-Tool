@@ -9,6 +9,7 @@ import './HomePage.css';
 import '../global.css';
 import EditIcon from '@material-ui/icons/Edit';
 import LaunchIcon from '@material-ui/icons/Launch';
+import SimpleSnackbarContainer from "../Ui/Snackbar/SimpleSnackbarContainer";
 
 
 const HomePage = (props) => {
@@ -74,6 +75,7 @@ const HomePage = (props) => {
                     <AddCircleOutlineOutlinedIcon fontSize="large"/>
                 </Link>
             </div>
+            <SimpleSnackbarContainer/>
         </Container>
 
     );
