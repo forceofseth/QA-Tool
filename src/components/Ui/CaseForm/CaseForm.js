@@ -3,32 +3,26 @@ import SimpleSnackbarContainer from "../Snackbar/SimpleSnackbarContainer";
 import Container from "@material-ui/core/Container";
 import React from "react";
 
-function CaseForm(props){
+function CaseForm(props) {
 
     const {onSubmit, state, onChange, title} = props;
     const isInvalid =
-        state.approved === '' ||
         state.customer === '' ||
-        state.date === '' ||
         state.projectId === '' ||
         state.lead === '' ||
         state.product === '' ||
         state.web === '';
 
-    return(
+
+
+    return (
         <Container maxWidth="lg" className="mainContainer">
             <CssBaseline/>
             <h1>{title}</h1>
             <div>
                 <form onSubmit={onSubmit}>
                     <input
-                        name="approved"
-                        value={state.approved}
-                        onChange={onChange}
-                        type="text"
-                        placeholder="approved"
-                    />
-                    <input
+                        className="customer-js"
                         name="customer"
                         value={state.customer}
                         onChange={onChange}
@@ -36,14 +30,8 @@ function CaseForm(props){
                         placeholder="customer"
                     />
                     <input
-                        name="date"
-                        value={state.date}
-                        onChange={onChange}
-                        type="date"
-                        placeholder="date"
-                    />
-                    <input
                         name="projectId"
+                        className="projectId-js"
                         value={state.projectId}
                         onChange={onChange}
                         type="text"
@@ -58,6 +46,7 @@ function CaseForm(props){
                     />
                     <input
                         name="product"
+                        className="product-js"
                         value={state.product}
                         onChange={onChange}
                         type="text"

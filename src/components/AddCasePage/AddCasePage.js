@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
 import CaseForm from "../Ui/CaseForm/CaseForm";
 import {HOME} from "../../constants/routes";
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
 function AddCasePage(props) {
     useAuthorizationRedirect(props.auth);
@@ -32,10 +34,34 @@ function AddCasePage(props) {
         });
     };
 
+    const onAutocompleteChange = (event, value) => {
+        const customerHtml = document.querySelector(".customer-js");
+        customerHtml.value = value && value.customer ? value.customer : "";
+        const projectIdHtml = document.querySelector(".projectId-js");
+        projectIdHtml.value = value && value.projectId ? value.projectId : "";
+        const productHtml = document.querySelector(".product-js");
+        productHtml.value = value && value.product ? value.product : "";
+
+        setState({...state,
+            product: value.product,
+            customer: value.customer,
+            projectId: value.projectId
+        });
+    };
+
 
     return (
         <div>
-            <CaseForm onSubmit={onSubmit} onChange={onChange} state={state} title={"Add Case"}/>
+            <Autocomplete
+                options={props.masterData}
+                getOptionLabel={option => option.customer}
+                style={{width: 300}}
+                onChange={onAutocompleteChange}
+                renderInput={params => (
+                    <TextField {...params} label="Choose Customer" variant="outlined" fullWidth/>
+                )}
+            />
+            <CaseForm onSubmit={onSubmit} onChange={onChange} state={state}  title={"Add Case"}/>
         </div>
 
     );
