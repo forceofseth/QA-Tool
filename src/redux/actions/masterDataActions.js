@@ -11,7 +11,6 @@ export const createMasterData = newMasterData => {
         const firestore = getFirestore();
         firestore.collection('masterdata').add({
             ...newMasterData,
-            date: new Date(newMasterData.date),
         }).then(() => {
             dispatch(getCreateMasterDataSuccessAction(newMasterData));
         }).catch(error => {
@@ -20,19 +19,18 @@ export const createMasterData = newMasterData => {
     }
 };
 
-export const updateMasterData = updateMasterData => {
+export const updateMasterData = updatedMasterData => {
     return (dispatch, getState, {getFirestore}) => {
         const firestore = getFirestore();
-        firestore.collection('masterdata').doc(updateMasterData.id).update({
-            customer: updateMasterData.customer,
-            projectId: Number(updateMasterData.projectId),
-            product: updateMasterData.product,
+        firestore.collection('masterdata').doc(updatedMasterData.id).update({
+            customer: updatedMasterData.customer,
+            projectId: Number(updatedMasterData.projectId),
+            product: updatedMasterData.product,
         }).then(() => {
-            dispatch(getUpdateMasterDataSuccessAction(updateMasterData));
+            dispatch(getUpdateMasterDataSuccessAction(updatedMasterData));
         }).catch((error) => {
             dispatch(getUpdateMasterDataErrorAction(error));
         })
-
     }
 };
 
@@ -46,14 +44,22 @@ const getCreateMasterDataErrorAction = error => ({
     payload: {error}
 });
 
-const getUpdateMasterDataSuccessAction = updateMasterData => ({
+const getUpdateMasterDataSuccessAction = updatedMasterData => ({
     type: UPDATE_MASTERDATA_SUCCESS,
-    payload: {updateMasterData}
+    payload: {updatedMasterData}
 });
 
 const getUpdateMasterDataErrorAction = error => ({
     type: UPDATE_MASTERDATA_ERROR,
     payload: {error}
+});
+
+export const cleanMasterDataErrorAction = () => ({
+    type: CLEAN_MASTERDATA_ERROR
+});
+
+export const cleanMasterDataSuccessAction = () => ({
+    type: CLEAN_MASTERDATA_SUCCESS
 });
 
 

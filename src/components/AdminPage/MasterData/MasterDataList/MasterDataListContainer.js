@@ -7,7 +7,7 @@ import MasterDataList from "./MasterDataList";
 const mapStateToProps = state => {
     return {
         auth: getAuth(state),
-        masterdata: getMasterData(state)
+        masterData: getMasterData(state)
     };
 };
 

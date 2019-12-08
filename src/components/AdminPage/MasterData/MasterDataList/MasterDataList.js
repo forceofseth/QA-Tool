@@ -21,7 +21,7 @@ const MasterDataList = (props) => {
                 </thead>
                 <tbody>
 
-                {props.masterdata && props.masterdata.map(oneMasterData => {
+                {props.masterData && props.masterData.map(oneMasterData => {
                     return (
                         <tr key={oneMasterData.id}>
                             <td data-label="ID">{oneMasterData.projectId}</td>
