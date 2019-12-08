@@ -1,4 +1,3 @@
-import SimpleSnackbarContainer from "../Snackbar/SimpleSnackbarContainer";
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -51,7 +50,6 @@ function MasterDataForm(props){
                     Save Masterdata
                 </Button>
             </form>
-            <SimpleSnackbarContainer/>
         </div>
     );
 }

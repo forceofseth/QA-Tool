@@ -3,6 +3,7 @@ import {useAuthorizationRedirect} from "../../../../hooks/useAuthorizationRedire
 import SimpleSnackbarContainer from "../../../Ui/Snackbar/SimpleSnackbarContainer";
 import MasterDataForm from "../../../Ui/MasterDataForm/MasterDataForm";
 import Loading from "../../../Status/Loading";
+import {ADMIN} from "../../../../constants/routes";
 
 function EditMasterData(props) {
     useAuthorizationRedirect(props.auth);
@@ -17,6 +18,7 @@ function EditMasterData(props) {
     const onSubmit = event => {
         event.preventDefault();
         props.updateMasterData(state);
+        props.history.push(ADMIN);
     };
 
     const onChange = event => {

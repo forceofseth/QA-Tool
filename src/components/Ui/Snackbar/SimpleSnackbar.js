@@ -5,7 +5,6 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import './SimeSnackbar.css';
 
-
 const useStyles = makeStyles(theme => ({
     close: {
         padding: theme.spacing(0.5),
@@ -16,8 +15,8 @@ export default function SimpleSnackbar(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const {
-        authError, authSuccess, casesError, casesSuccess,
-        cleanAuthErrorAction, cleanAuthSuccessAction, cleanCaseSuccessAction, cleanCaseErrorAction
+        authError, authSuccess, casesError, casesSuccess, masterDataError, masterDataSuccess,
+        cleanAuthErrorAction, cleanAuthSuccessAction, cleanCaseSuccessAction, cleanCaseErrorAction, cleanMasterDataErrorAction, cleanMasterDataSuccessAction
     } = props;
     const message = useRef("");
 
@@ -60,6 +59,26 @@ export default function SimpleSnackbar(props) {
             cleanCaseSuccessAction();
         }
     }, [casesSuccess, cleanCaseSuccessAction]);
+
+    useEffect(() => {
+        if (masterDataError) {
+            message.current = masterDataError.message;
+            setOpen(true);
+        }
+        return () => {
+            cleanMasterDataErrorAction();
+        }
+    }, [masterDataError, cleanMasterDataErrorAction]);
+
+    useEffect(() => {
+        if (masterDataSuccess) {
+            message.current = masterDataSuccess;
+            setOpen(true);
+        }
+        return () => {
+            cleanMasterDataSuccessAction();
+        }
+    }, [masterDataSuccess, cleanMasterDataSuccessAction]);
 
 
     const handleClose = (event, reason) => {
