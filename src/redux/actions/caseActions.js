@@ -1,3 +1,5 @@
+import * as moment from "moment";
+
 export const CREATE_CASE_SUCCESS = 'CREATE_CASE_SUCCESS';
 export const CREATE_CASE_ERROR = 'CREATE_CASE_ERROR';
 export const CLEAN_CASE_SUCCESS = 'CLEAN_CASE_SUCCESS';
@@ -13,8 +15,8 @@ export const createCase = newCase => {
         const firestore = getFirestore();
         firestore.collection('cases').add({
             ...newCase,
-            approved: newCase.approved === 'true',
-            date: new Date(newCase.date),
+            approved: Boolean(false),
+            date: new Date(moment.now()),
             projectId: Number(newCase.projectId),
             leadChecks: {
                 //TODO milos add more checkboxes
@@ -39,9 +41,7 @@ export const updateCase = updatedCase => {
     return (dispatch, getState, {getFirestore}) => {
         const firestore = getFirestore();
         firestore.collection('cases').doc(updatedCase.id).update({
-            approved: updatedCase.approved === 'true',
             customer: updatedCase.customer,
-            date: new Date(updatedCase.date),
             projectId: Number(updatedCase.projectId),
             lead: updatedCase.lead,
             product: updatedCase.product,

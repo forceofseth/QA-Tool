@@ -15,7 +15,6 @@ import SimpleSnackbarContainer from "../Ui/Snackbar/SimpleSnackbarContainer";
 const HomePage = (props) => {
     useAuthorizationRedirect(props.auth);
 
-    //TODO Better name than one case using case leads to errors cause of the case reserved keyword.
     return (
         <Container maxWidth="lg" className="mainContainer">
             <h1>Projects</h1>
@@ -27,8 +26,8 @@ const HomePage = (props) => {
                     <th>Customer</th>
                     <th>Date</th>
                     <th>Product</th>
-                    <th>Web</th>
                     <th>Lead</th>
+                    <th>Web</th>
                     <th>Edit</th>
                 </tr>
                 </thead>
