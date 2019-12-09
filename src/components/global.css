@@ -13,6 +13,7 @@ body {
     background-color: white;
     padding: 20px;
     border-radius: 4px;
+    margin-bottom: 50px;
 }
 
 h1 {
@@ -29,4 +30,13 @@ h1 {
 
 .MuiContainer-maxWidthXl {
     max-width: 100% !important;
+}
+
+.backButton {
+    float: right;
+    text-decoration: none;
+}
+
+.title {
+    float: left;
 }

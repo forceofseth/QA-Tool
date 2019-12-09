@@ -4,6 +4,11 @@ import CaseForm from "../Ui/CaseForm/CaseForm";
 import {HOME} from "../../constants/routes";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Container from "@material-ui/core/Container";
+import Button from "@material-ui/core/Button";
+import {Link} from "react-router-dom";
+import '../global.css';
 
 function AddCasePage(props) {
     useAuthorizationRedirect(props.auth);
@@ -52,16 +57,30 @@ function AddCasePage(props) {
 
     return (
         <div>
-            <Autocomplete
-                options={props.masterData}
-                getOptionLabel={option => option.customer}
-                style={{width: 300}}
-                onChange={onAutocompleteChange}
-                renderInput={params => (
-                    <TextField {...params} label="Choose Customer" variant="outlined" fullWidth/>
-                )}
-            />
-            <CaseForm onSubmit={onSubmit} onChange={onChange} state={state}  title={"Add Case"}/>
+
+            <Container maxWidth="lg" className="mainContainer">
+                <CssBaseline/>
+                <h1 className="title">Add Case</h1>
+                <Link to={HOME} className="backButton">
+                    <Button color="primary" variant="contained">
+                        <span>BACK</span>
+                    </Button>
+                </Link>
+                <Autocomplete
+                    options={props.masterData}
+                    getOptionLabel={option => option.customer}
+                    style={{width: 300}}
+                    onChange={onAutocompleteChange}
+                    renderInput={params => (
+                        <TextField {...params} label="Choose Customer from Database" variant="outlined" fullWidth/>
+                    )}
+                />
+                <CaseForm onSubmit={onSubmit} onChange={onChange} state={state}  title={"Add Case"}/>
+            </Container>
+
+
+
+
         </div>
 
     );

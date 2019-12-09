@@ -3,6 +3,9 @@ import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
 import CaseForm from "../Ui/CaseForm/CaseForm";
 import Loading from "../Status/Loading";
 import {HOME} from "../../constants/routes";
+import Container from "@material-ui/core/Container";
+import Button from "@material-ui/core/Button";
+import {Link} from "react-router-dom";
 
 function EditCasePage(props) {
     useAuthorizationRedirect(props.auth);
@@ -12,7 +15,6 @@ function EditCasePage(props) {
     useEffect(() => {
         setState({...caseToEdit})
     }, [caseToEdit]);
-
 
     const onSubmit = event => {
         event.preventDefault();
@@ -27,17 +29,23 @@ function EditCasePage(props) {
         });
     };
 
-
     return (
-        <div>
-            {caseToEdit ? (
-                <div>
-                    <CaseForm onSubmit={onSubmit} onChange={onChange} state={state} title={"Edit Case"}/>
-                </div>
-            ) : (
-                <Loading/>
-            )}
-        </div>
+        <Container maxWidth="lg" className="mainContainer">
+            <div>
+                {caseToEdit ? (
+                    <div>
+                        <Link to={HOME} className="backButton">
+                            <Button color="primary" variant="contained">
+                                <span>BACK</span>
+                            </Button>
+                        </Link>
+                        <CaseForm onSubmit={onSubmit} onChange={onChange} state={state} title={"Edit Case"}/>
+                    </div>
+                ) : (
+                    <Loading/>
+                )}
+            </div>
+        </Container>
     );
 }
 
