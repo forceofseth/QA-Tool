@@ -18,11 +18,12 @@ function AdminPage(props) {
 
             <br/><br/>
 
+            <h3>Add Masterdata</h3>
             <AddMasterDataContainer/>
 
             <br/><br/>
 
-
+            <h3>Masterdata</h3>
             <MasterDataListContainer/>
 
         </Container>

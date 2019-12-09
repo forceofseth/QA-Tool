@@ -55,7 +55,7 @@ function AddUser(props) {
                     value={state.firstName}
                     onChange={onChange}
                     type="text"
-                    placeholder="FirstName"
+                    placeholder="Firstname"
                     margin="normal"
                     variant="outlined"
                     required
@@ -66,7 +66,7 @@ function AddUser(props) {
                     value={state.lastName}
                     onChange={onChange}
                     type="text"
-                    placeholder="LastName"
+                    placeholder="Lastname"
                     margin="normal"
                     variant="outlined"
                     required
@@ -105,23 +105,6 @@ function AddUser(props) {
                     required
                     fullWidth
                 />
-                {/*/!*TODO create dropdown with true or false*!/*/}
-                {/*<TextField*/}
-                {/*    name="admin"*/}
-                {/*    value={state.admin}*/}
-                {/*    onChange={onChange}*/}
-                {/*    type="text"*/}
-                {/*    placeholder="Is the User an Admin?"*/}
-                {/*    margin="normal"*/}
-                {/*    variant="outlined"*/}
-                {/*    required*/}
-                {/*    fullWidth*/}
-                {/*/>*/}
-
-
-                {/* NOT WORKING PROPERLY ! ( unable to write falsy in db )*/}
-
-
 
                 <FormControlLabel
                     control={<Checkbox
@@ -131,23 +114,6 @@ function AddUser(props) {
                         />}
                         label="Is this user an admin?"
                 />
-
-                {/*<FormControl >*/}
-                {/*    <NativeSelect*/}
-                {/*        name="admin"*/}
-                {/*        value={state.admin}*/}
-                {/*        onChange={onChange}*/}
-                {/*        fullWidth*/}
-                {/*        required*/}
-                {/*    >*/}
-                {/*        <option value="">Is the User an Admin?</option>*/}
-                {/*        <option value={true}>yes</option>*/}
-                {/*        <option value={false}>no</option>*/}
-                {/*    </NativeSelect>*/}
-                {/*</FormControl>*/}
-
-
-
 
                 <Button disabled={isInvalid} type="submit" color="primary" variant="contained">
                     Create User

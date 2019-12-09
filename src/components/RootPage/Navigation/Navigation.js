@@ -12,11 +12,15 @@ function Navigation(props) {
     return (
         <Container maxWidth="xl" className="navContainer">
             <Container className="navInnerContainer">
-                <a href="/">
-                    <h1>
-                        QA Tool
-                    </h1>
-                </a>
+                <p className="greeting">Hi {profile.firstName}, how are you today?</p>
+                <div>
+                    <a href="/">
+                        <h1>
+                            QA Tool
+                        </h1>
+                    </a>
+                </div>
+
                 <div className="menuRight">
                     <a href="/">
                         <HomeOutlined className="topIcon" fontSize="large"/>
@@ -32,6 +36,7 @@ function Navigation(props) {
                             : null)
                     }
                     <SignOutContainer/>
+
                 </div>
             </Container>
         </Container>

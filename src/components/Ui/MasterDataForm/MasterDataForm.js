@@ -18,7 +18,7 @@ function MasterDataForm(props){
                     value={state.customer}
                     onChange={onChange}
                     type="text"
-                    placeholder="customer"
+                    placeholder="Customer"
                     margin="normal"
                     variant="outlined"
                     required
@@ -29,7 +29,7 @@ function MasterDataForm(props){
                     value={state.projectId}
                     onChange={onChange}
                     type="text"
-                    placeholder="id"
+                    placeholder="Layout ID"
                     margin="normal"
                     variant="outlined"
                     required
@@ -40,7 +40,7 @@ function MasterDataForm(props){
                     value={state.product}
                     onChange={onChange}
                     type="text"
-                    placeholder="product"
+                    placeholder="Product"
                     margin="normal"
                     variant="outlined"
                     required
