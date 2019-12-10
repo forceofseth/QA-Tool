@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import SimpleSnackbarContainer from "../../Ui/Snackbar/SimpleSnackbarContainer";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import FormControl from "@material-ui/core/FormControl";
-import NativeSelect from "@material-ui/core/NativeSelect";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 
 function AddUser(props) {
 
@@ -13,7 +13,7 @@ function AddUser(props) {
         email: '',
         passwordOne: '',
         passwordTwo: '',
-        admin: ''
+        admin: false
     };
     const [state, setState] = useState(INITIAL_STATE);
 
@@ -29,6 +29,14 @@ function AddUser(props) {
             [event.target.name]: event.target.value
         });
     };
+
+    const onChangeCheckbox = event => {
+        setState({
+            ...state,
+            [event.target.name]: !event.target.defaultChecked
+        });
+    };
+
 
 
     const isInvalid =
@@ -47,7 +55,7 @@ function AddUser(props) {
                     value={state.firstName}
                     onChange={onChange}
                     type="text"
-                    placeholder="FirstName"
+                    placeholder="Firstname"
                     margin="normal"
                     variant="outlined"
                     required
@@ -58,7 +66,7 @@ function AddUser(props) {
                     value={state.lastName}
                     onChange={onChange}
                     type="text"
-                    placeholder="LastName"
+                    placeholder="Lastname"
                     margin="normal"
                     variant="outlined"
                     required
@@ -97,39 +105,15 @@ function AddUser(props) {
                     required
                     fullWidth
                 />
-                {/*/!*TODO create dropdown with true or false*!/*/}
-                {/*<TextField*/}
-                {/*    name="admin"*/}
-                {/*    value={state.admin}*/}
-                {/*    onChange={onChange}*/}
-                {/*    type="text"*/}
-                {/*    placeholder="Is the User an Admin?"*/}
-                {/*    margin="normal"*/}
-                {/*    variant="outlined"*/}
-                {/*    required*/}
-                {/*    fullWidth*/}
-                {/*/>*/}
 
-
-                {/* NOT WORKING PROPERLY ! ( unable to write falsy in db )*/}
-
-
-                <FormControl >
-                    <NativeSelect
+                <FormControlLabel
+                    control={<Checkbox
+                        onChange={onChangeCheckbox}
+                        defaultChecked = {state.admin}
                         name="admin"
-                        value={state.admin}
-                        onChange={onChange}
-                        fullWidth
-                        required
-                    >
-                        <option value="">Is the User an Admin?</option>
-                        <option value={true}>yes</option>
-                        <option value={false}>no</option>
-                    </NativeSelect>
-                </FormControl>
-
-
-
+                        />}
+                        label="Is this user an admin?"
+                />
 
                 <Button disabled={isInvalid} type="submit" color="primary" variant="contained">
                     Create User

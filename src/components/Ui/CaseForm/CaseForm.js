@@ -1,84 +1,95 @@
-import CssBaseline from "@material-ui/core/CssBaseline";
 import SimpleSnackbarContainer from "../Snackbar/SimpleSnackbarContainer";
-import Container from "@material-ui/core/Container";
 import React from "react";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
-function CaseForm(props){
+function CaseForm(props) {
 
-    const {onSubmit, state, onChange, title} = props;
+    const {onSubmit, state, onChange} = props;
     const isInvalid =
-        state.approved === '' ||
         state.customer === '' ||
-        state.date === '' ||
         state.projectId === '' ||
         state.lead === '' ||
         state.product === '' ||
         state.web === '';
 
-    return(
-        <Container maxWidth="lg" className="mainContainer">
-            <CssBaseline/>
-            <h1>{title}</h1>
-            <div>
-                <form onSubmit={onSubmit}>
-                    <input
-                        name="approved"
-                        value={state.approved}
-                        onChange={onChange}
-                        type="text"
-                        placeholder="approved"
-                    />
-                    <input
-                        name="customer"
-                        value={state.customer}
-                        onChange={onChange}
-                        type="text"
-                        placeholder="customer"
-                    />
-                    <input
-                        name="date"
-                        value={state.date}
-                        onChange={onChange}
-                        type="date"
-                        placeholder="date"
-                    />
-                    <input
-                        name="projectId"
-                        value={state.projectId}
-                        onChange={onChange}
-                        type="text"
-                        placeholder="id"
-                    />
-                    <input
-                        name="lead"
-                        value={state.lead}
-                        onChange={onChange}
-                        type="text"
-                        placeholder="lead"
-                    />
-                    <input
-                        name="product"
-                        value={state.product}
-                        onChange={onChange}
-                        type="text"
-                        placeholder="product"
-                    />
-                    <input
-                        name="web"
-                        value={state.web}
-                        onChange={onChange}
-                        type="text"
-                        placeholder="web"
-                    />
-                    <button
-                        type="submit"
-                        disabled={isInvalid}
-                    >Save Case
-                    </button>
-                </form>
-                <SimpleSnackbarContainer/>
-            </div>
-        </Container>
+
+
+    return (
+        <div>
+            <form onSubmit={onSubmit}>
+                <TextField
+                    className="customer-js"
+                    name="customer"
+                    value={state.customer}
+                    onChange={onChange}
+                    type="text"
+                    placeholder="Customer"
+                    margin="normal"
+                    variant="outlined"
+                    required
+                    fullWidth
+                />
+                <TextField
+                    name="projectId"
+                    className="projectId-js"
+                    value={state.projectId}
+                    onChange={onChange}
+                    type="text"
+                    placeholder="Layout ID"
+                    margin="normal"
+                    variant="outlined"
+                    required
+                    fullWidth
+                />
+                <TextField
+                    name="product"
+                    className="product-js"
+                    value={state.product}
+                    onChange={onChange}
+                    type="text"
+                    placeholder="Product"
+                    margin="normal"
+                    variant="outlined"
+                    required
+                    fullWidth
+                />
+                <TextField
+                    name="lead"
+                    value={state.lead}
+                    onChange={onChange}
+                    type="text"
+                    placeholder="Lead"
+                    margin="normal"
+                    variant="outlined"
+                    required
+                    fullWidth
+                />
+                <TextField
+                    name="web"
+                    value={state.web}
+                    onChange={onChange}
+                    type="text"
+                    placeholder="Web"
+                    margin="normal"
+                    variant="outlined"
+                    required
+                    fullWidth
+                />
+                <Button
+                    type="submit"
+                    disabled={isInvalid}
+                    color="primary"
+                    margin="normal"
+                    variant="contained"
+                >Save Case
+                </Button>
+            </form>
+            <SimpleSnackbarContainer/>
+        </div>
+
+
+
     );
 }
 

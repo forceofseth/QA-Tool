@@ -4,7 +4,7 @@ import {
     CLEAN_MASTERDATA_SUCCESS,
     CLEAN_MASTERDATA_ERROR,
     UPDATE_MASTERDATA_SUCCESS, UPDATE_MASTERDATA_ERROR
-} from "../actions/masterDataAction";
+} from "../actions/masterDataActions";
 
 const initalState = {
     successMessage: null,
@@ -33,7 +33,7 @@ export default function masterDataReducer(state = initalState, action) {
             console.log("updated masterdata", action.payload);
             return {
                 ...state,
-                successMessage: "Successfully updated masterdata with the id: " + action.payload.updatedMasterData.projectId + ".",
+                successMessage: "Successfully updated masterdata with the id: " + action.payload.updatedMasterData.id + ".",
                 error: null
             };
 

@@ -1,18 +1,15 @@
 import React from 'react';
-import {EDIT_MASTERDATA, ADD_MASTERDATA} from "../../../../constants/routes";
+import {EDIT_MASTERDATA} from "../../../../constants/routes";
 import {Link} from "react-router-dom";
-import Container from "@material-ui/core/Container";
 import '../../../global.css';
 import './MasterData.css';
 
 import EditIcon from '@material-ui/icons/Edit';
-import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 
 const MasterDataList = (props) => {
 
     return (
-        <Container maxWidth="lg" className="mainContainer">
-            <h1>Masterdata</h1>
+        <div>
             <table>
                 <thead>
                 <tr>
@@ -24,7 +21,7 @@ const MasterDataList = (props) => {
                 </thead>
                 <tbody>
 
-                {props.masterdata && props.masterdata.map(oneMasterData => {
+                {props.masterData && props.masterData.map(oneMasterData => {
                     return (
                         <tr key={oneMasterData.id}>
                             <td data-label="ID">{oneMasterData.projectId}</td>
@@ -41,13 +38,7 @@ const MasterDataList = (props) => {
                 })}
                 </tbody>
             </table>
-
-            <div>
-                <Link to={ADD_MASTERDATA}>
-                    <AddCircleOutlineOutlinedIcon fontSize="large"/>
-                </Link>
-            </div>
-        </Container>
+        </div>
 
     );
 };

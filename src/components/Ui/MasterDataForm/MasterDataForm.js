@@ -1,52 +1,56 @@
-import CssBaseline from "@material-ui/core/CssBaseline";
-import SimpleSnackbarContainer from "../Snackbar/SimpleSnackbarContainer";
-import Container from "@material-ui/core/Container";
 import React from "react";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 function MasterDataForm(props){
 
-    const {onSubmit, state, onChange, title} = props;
+    const {onSubmit, state, onChange} = props;
     const isInvalid =
         state.customer === '' ||
         state.projectId === '' ||
         state.product === '';
 
     return(
-        <Container maxWidth="lg" className="mainContainer">
-            <CssBaseline/>
-            <h1>{title}</h1>
-            <div>
-                <form onSubmit={onSubmit}>
-                    <input
-                        name="customer"
-                        value={state.customer}
-                        onChange={onChange}
-                        type="text"
-                        placeholder="customer"
-                    />
-                    <input
-                        name="projectId"
-                        value={state.projectId}
-                        onChange={onChange}
-                        type="text"
-                        placeholder="id"
-                    />
-                    <input
-                        name="product"
-                        value={state.product}
-                        onChange={onChange}
-                        type="text"
-                        placeholder="product"
-                    />
-                    <button
-                        type="submit"
-                        disabled={isInvalid}
-                    >Save Masterdata
-                    </button>
-                </form>
-                <SimpleSnackbarContainer/>
-            </div>
-        </Container>
+        <div>
+            <form onSubmit={onSubmit}>
+                <TextField
+                    name="customer"
+                    value={state.customer}
+                    onChange={onChange}
+                    type="text"
+                    placeholder="Customer"
+                    margin="normal"
+                    variant="outlined"
+                    required
+                    fullWidth
+                />
+                <TextField
+                    name="projectId"
+                    value={state.projectId}
+                    onChange={onChange}
+                    type="text"
+                    placeholder="Layout ID"
+                    margin="normal"
+                    variant="outlined"
+                    required
+                    fullWidth
+                />
+                <TextField
+                    name="product"
+                    value={state.product}
+                    onChange={onChange}
+                    type="text"
+                    placeholder="Product"
+                    margin="normal"
+                    variant="outlined"
+                    required
+                    fullWidth
+                />
+                <Button disabled={isInvalid} type="submit" color="primary" variant="contained">
+                    Save Masterdata
+                </Button>
+            </form>
+        </div>
     );
 }
 

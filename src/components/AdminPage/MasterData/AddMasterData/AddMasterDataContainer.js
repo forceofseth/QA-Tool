@@ -1,6 +1,6 @@
 import {getAuth, getMasterDataError, getMasterDataSuccessMessage} from "../../../../redux/selectors";
 import {connect} from "react-redux";
-import {createMasterData} from "../../../../redux/actions/masterDataAction";
+import {createMasterData} from "../../../../redux/actions/masterDataActions";
 import AddMasterData from "./AddMasterData";
 
 const mapDispatchToProps = {
