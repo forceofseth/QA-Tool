@@ -77,6 +77,8 @@ const HomePage = (props) => {
                                     <EditIcon fontSize="small"/>
                                 </Link>
                             </td>
+
+                        {/*TODO-Milos: Add archiving toggle*/}
                         </tr>
                     )
                 })}
