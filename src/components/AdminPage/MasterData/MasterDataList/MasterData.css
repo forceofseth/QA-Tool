@@ -1,3 +1,5 @@
+
+
 table {
     border: 0px solid #ccc;
     width: 100%;
@@ -61,23 +63,6 @@ table th {
         text-transform: uppercase;
         font-weight: bold;
     }
-
-    .editLabel::before {
-        display: none;
-    }
-}
-
-.addCase {
-    float: right;
-}
-
-.addCase a {
-    text-decoration: none;
-}
-
-.addCaseIcon {
-    font-size: 20px !important;
-    margin-left: 10px;
 }
 
 .openLink {

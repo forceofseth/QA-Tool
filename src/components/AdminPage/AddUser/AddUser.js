@@ -1,5 +1,9 @@
 import React, {useState} from 'react';
 import SimpleSnackbarContainer from "../../Ui/Snackbar/SimpleSnackbarContainer";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 
 function AddUser(props) {
 
@@ -9,7 +13,7 @@ function AddUser(props) {
         email: '',
         passwordOne: '',
         passwordTwo: '',
-        admin: ''
+        admin: false
     };
     const [state, setState] = useState(INITIAL_STATE);
 
@@ -26,6 +30,15 @@ function AddUser(props) {
         });
     };
 
+    const onChangeCheckbox = event => {
+        setState({
+            ...state,
+            [event.target.name]: !event.target.defaultChecked
+        });
+    };
+
+
+
     const isInvalid =
         state.passwordOne !== state.passwordTwo ||
         state.passwordOne === '' ||
@@ -36,53 +49,75 @@ function AddUser(props) {
 
     return (
         <div>
-            <h1>Add User</h1>
-
-            <form onSubmit={onSubmit}>
-                <input
+            <form className="form" onSubmit={onSubmit}>
+                <TextField
                     name="firstName"
                     value={state.firstName}
                     onChange={onChange}
                     type="text"
-                    placeholder="FirstName"
+                    placeholder="Firstname"
+                    margin="normal"
+                    variant="outlined"
+                    required
+                    fullWidth
                 />
-                <input
+                <TextField
                     name="lastName"
                     value={state.lastName}
                     onChange={onChange}
                     type="text"
-                    placeholder="LastName"
+                    placeholder="Lastname"
+                    margin="normal"
+                    variant="outlined"
+                    required
+                    fullWidth
                 />
-                <input
+                <TextField
                     name="email"
                     value={state.email}
                     onChange={onChange}
                     type="text"
                     placeholder="Email Address"
+                    margin="normal"
+                    variant="outlined"
+                    required
+                    fullWidth
                 />
-                <input
+                <TextField
                     name="passwordOne"
                     value={state.passwordOne}
                     onChange={onChange}
                     type="password"
                     placeholder="Password"
+                    margin="normal"
+                    variant="outlined"
+                    required
+                    fullWidth
                 />
-                <input
+                <TextField
                     name="passwordTwo"
                     value={state.passwordTwo}
                     onChange={onChange}
                     type="password"
                     placeholder="Confirm Password"
+                    margin="normal"
+                    variant="outlined"
+                    required
+                    fullWidth
                 />
-                {/*TODO create dropdown with true or false*/}
-                <input
-                    name="admin"
-                    value={state.admin}
-                    onChange={onChange}
-                    type="text"
-                    placeholder="Is the User an Admin?"
+
+                <FormControlLabel
+                    control={<Checkbox
+                        onChange={onChangeCheckbox}
+                        defaultChecked = {state.admin}
+                        name="admin"
+                        />}
+                        label="Is this user an admin?"
                 />
-                <button disabled={isInvalid} type="submit">Create User</button>
+
+                <Button disabled={isInvalid} type="submit" color="primary" variant="contained">
+                    Create User
+                </Button>
             </form>
             <SimpleSnackbarContainer/>
         </div>

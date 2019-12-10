@@ -5,7 +5,6 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
-import useReactRouter from "use-react-router";
 import Box from "@material-ui/core/Box";
 import SimpleSnackbarContainer from "../Ui/Snackbar/SimpleSnackbarContainer";
 
@@ -16,7 +15,7 @@ function SignInPage(props) {
         password: ''
     };
     const [state, setState] = useState(INITIAL_STATE);
-    const {history} = useReactRouter();
+    const {history} = props;
 
     useEffect(() => {
         if (props.auth.uid) {
@@ -43,6 +42,7 @@ function SignInPage(props) {
         <Box component="span" className="loginFullPage">
             <Container maxWidth="md">
                 <div className="paper">
+                    <h1>Log-in to your account</h1>
                     <form className="form" noValidate onSubmit={onSubmit}>
                         <TextField
                             id="outlined-email-input"

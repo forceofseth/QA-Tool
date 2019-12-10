@@ -1,14 +1,24 @@
-import {getAuthError, getAuthSuccessMessage, getCasesError, getCasesSuccessMessage} from "../../../redux/selectors";
+import {
+    getAuthError,
+    getAuthSuccessMessage,
+    getCasesError,
+    getCasesSuccessMessage,
+    getMasterDataError,
+    getMasterDataSuccessMessage
+} from "../../../redux/selectors";
 import {connect} from "react-redux";
 import SimpleSnackbar from "./SimpleSnackbar";
 import {cleanAuthErrorAction, cleanAuthSuccessAction} from "../../../redux/actions/authActions";
 import {cleanCaseErrorAction, cleanCaseSuccessAction} from "../../../redux/actions/caseActions";
+import {cleanMasterDataErrorAction, cleanMasterDataSuccessAction} from "../../../redux/actions/masterDataActions";
 
 const mapDispatchToProps = {
     cleanAuthErrorAction,
     cleanAuthSuccessAction,
     cleanCaseSuccessAction,
-    cleanCaseErrorAction
+    cleanCaseErrorAction,
+    cleanMasterDataErrorAction,
+    cleanMasterDataSuccessAction
 };
 
 const mapStateToProps = state =>{
@@ -16,7 +26,9 @@ const mapStateToProps = state =>{
         authError: getAuthError(state),
         authSuccess: getAuthSuccessMessage(state),
         casesError: getCasesError(state),
-        casesSuccess: getCasesSuccessMessage(state)
+        casesSuccess: getCasesSuccessMessage(state),
+        masterDataError: getMasterDataError(state),
+        masterDataSuccess: getMasterDataSuccessMessage(state)
     }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(SimpleSnackbar);

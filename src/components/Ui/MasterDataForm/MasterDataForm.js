@@ -1,25 +1,19 @@
-import SimpleSnackbarContainer from "../Snackbar/SimpleSnackbarContainer";
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-function CaseForm(props) {
+function MasterDataForm(props){
 
     const {onSubmit, state, onChange} = props;
     const isInvalid =
         state.customer === '' ||
         state.projectId === '' ||
-        state.lead === '' ||
-        state.product === '' ||
-        state.web === '';
+        state.product === '';
 
-
-
-    return (
+    return(
         <div>
             <form onSubmit={onSubmit}>
                 <TextField
-                    className="customer-js"
                     name="customer"
                     value={state.customer}
                     onChange={onChange}
@@ -32,7 +26,6 @@ function CaseForm(props) {
                 />
                 <TextField
                     name="projectId"
-                    className="projectId-js"
                     value={state.projectId}
                     onChange={onChange}
                     type="text"
@@ -44,7 +37,6 @@ function CaseForm(props) {
                 />
                 <TextField
                     name="product"
-                    className="product-js"
                     value={state.product}
                     onChange={onChange}
                     type="text"
@@ -54,43 +46,12 @@ function CaseForm(props) {
                     required
                     fullWidth
                 />
-                <TextField
-                    name="lead"
-                    value={state.lead}
-                    onChange={onChange}
-                    type="text"
-                    placeholder="Lead"
-                    margin="normal"
-                    variant="outlined"
-                    required
-                    fullWidth
-                />
-                <TextField
-                    name="web"
-                    value={state.web}
-                    onChange={onChange}
-                    type="text"
-                    placeholder="Web"
-                    margin="normal"
-                    variant="outlined"
-                    required
-                    fullWidth
-                />
-                <Button
-                    type="submit"
-                    disabled={isInvalid}
-                    color="primary"
-                    margin="normal"
-                    variant="contained"
-                >Save Case
+                <Button disabled={isInvalid} type="submit" color="primary" variant="contained">
+                    Save Masterdata
                 </Button>
             </form>
-            <SimpleSnackbarContainer/>
         </div>
-
-
-
     );
 }
 
-export default CaseForm;
+export default MasterDataForm;

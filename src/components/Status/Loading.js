@@ -4,7 +4,7 @@ import './Loading.css'
 
 const Loading = () => (
 
-                <CircularProgress />
+    <CircularProgress/>
 );
 
 export default Loading;

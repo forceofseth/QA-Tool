@@ -1,21 +1,19 @@
-import {getAuth, getCases} from "../../redux/selectors";
+import {getAuth, getMasterData} from "../../../../redux/selectors";
 import {connect} from "react-redux";
-import HomePage from "./HomePage";
 import {compose} from "redux";
 import {firestoreConnect} from "react-redux-firebase";
+import MasterDataList from "./MasterDataList";
 
 const mapStateToProps = state => {
     return {
         auth: getAuth(state),
-        cases: getCases(state)
+        masterData: getMasterData(state)
     };
 };
 
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-        {
-            collection: 'cases',
-        }
+        {collection: 'masterdata'}
     ])
-)(HomePage);
+)(MasterDataList);

@@ -2,83 +2,44 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import SignOutContainer from "../../Ui/SignOut/SignOutContainer";
 import Container from "@material-ui/core/Container";
-import * as ROUTES from '../../../constants/routes';
-import Button from "@material-ui/core/Button";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import Box from "@material-ui/core/Box";
+import {ACCOUNT, ADMIN} from "../../../constants/routes";
 import './Navigation.css';
-
+import {LockOpenOutlined, PermIdentityOutlined, HomeOutlined} from "@material-ui/icons";
 
 function Navigation(props) {
     const {profile} = props;
 
-    const [anchorEl, setAnchorEl] = React.useState(null);
-
-    function handleClick(event) {
-        setAnchorEl(event.currentTarget);
-    }
-
-    function handleClose() {
-        setAnchorEl(null);
-    }
-
     return (
+        <Container maxWidth="xl" className="navContainer">
+            <Container className="navInnerContainer">
+                <p className="greeting">Hi {profile.firstName}, how are you today?</p>
+                <div>
+                    <a href="/">
+                        <h1>
+                            QA Tool
+                        </h1>
+                    </a>
+                </div>
 
+                <div className="menuRight">
+                    <a href="/">
+                        <HomeOutlined className="topIcon" fontSize="large"/>
+                    </a>
+                    <Link to={ACCOUNT}>
+                        <PermIdentityOutlined className="topIcon" fontSize="large"/>
+                    </Link>
+                    {!profile || !profile.isLoaded ? null : (
+                        profile.admin ?
+                            <Link to={ADMIN}>
+                                <LockOpenOutlined className="topIcon" fontSize="large"/>
+                            </Link>
+                            : null)
+                    }
+                    <SignOutContainer/>
 
-        <Box component="span">
-
-            <Container maxWidth="xl" className="navContainer">
-
-                <Container className="navInnerContainer">
-
-                    <h1>
-                        QA Tool
-                    </h1>
-
-                    <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} className="menuBtn">
-                        Username
-                    </Button>
-                    <Menu
-                        id="simple-menu"
-                        anchorEl={anchorEl}
-                        keepMounted
-                        open={Boolean(anchorEl)}
-                        onClose={handleClose}
-                    >
-                        <MenuItem component={Link} to={ROUTES.HOME}>
-                            Home
-                        </MenuItem>
-                        <MenuItem component={Link} to={ROUTES.ACCOUNT}>
-                            Account
-                        </MenuItem>
-                        <MenuItem component={Link} to={ROUTES.ADD_CASE}>
-                            Add Case
-                        </MenuItem>
-
-                        {!profile || !profile.isLoaded ? null : (
-                            profile.admin ?
-                                <MenuItem component={Link} to={ROUTES.ADMIN}>
-                                    Admin
-                                </MenuItem>
-                                : null
-                        )
-                        }
-
-                        <MenuItem>
-                            <SignOutContainer/>
-                        </MenuItem>
-                    </Menu>
-
-
-                </Container>
-
+                </div>
             </Container>
-
-
-        </Box>
-
-
+        </Container>
     );
 }
 
