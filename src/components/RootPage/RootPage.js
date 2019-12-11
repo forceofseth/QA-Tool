@@ -16,6 +16,8 @@ import NavigationContainer from "./Navigation/NavigationContainer";
 import LeadCheckListContainer from "../CheckLists/LeadCheckList/LeadCheckListContainer";
 import WebCheckListContainer from "../CheckLists/WebCheckList.js/WebCheckListContainer";
 import EditMasterDataContainer from "../AdminPage/MasterData/EditMasterData/EditMasterDataContainer";
+import NotFound from "../Status/NotFound";
+import {Switch} from "react-router";
 
 
 function RootPage(props) {
@@ -23,6 +25,7 @@ function RootPage(props) {
     return (
         <Router>
             {props.auth.isEmpty ? null : <NavigationContainer/>}
+            <Switch>
             <Route path={ROUTES.SIGN_IN} component={SignInPageContainer}/>
             <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPageContainer}/>
             <PrivateRouteContainer exact path={ROUTES.HOME} component={HomePageContainer}/>
@@ -34,6 +37,8 @@ function RootPage(props) {
             <PrivateRouteContainer path={ROUTES.WEB_CHECKS + "/:id"} component={WebCheckListContainer}/>
             <AdminRouteContainer path={ROUTES.ADMIN} component={AdminPageContainer}/>
             <AdminRouteContainer path={ROUTES.EDIT_MASTERDATA + "/:id"} component={EditMasterDataContainer}/>
+            <PrivateRouteContainer component={NotFound}/>
+            </Switch>
         </Router>
     );
 }
