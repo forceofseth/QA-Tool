@@ -48,9 +48,9 @@ function AddCasePage(props) {
         productHtml.value = value && value.product ? value.product : "";
 
         setState({...state,
-            product: value.product,
-            customer: value.customer,
-            projectId: value.projectId
+            product: value && value.product,
+            customer: value && value.customer,
+            projectId: value && value.projectId
         });
     };
 
