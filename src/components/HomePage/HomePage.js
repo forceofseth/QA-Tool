@@ -15,6 +15,7 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from "@material-ui/core/Button";
+import {ForumOutlined} from "@material-ui/icons";
 
 
 
@@ -42,6 +43,7 @@ const HomePage = (props) => {
                     <th>Product</th>
                     <th>Lead</th>
                     <th>Web</th>
+                    <th>Comments</th>
                     <th>Edit</th>
                 </tr>
                 </thead>
@@ -71,7 +73,11 @@ const HomePage = (props) => {
                                     </div>
                                 </Link>
                             </td>
-
+                            <td data-label="Comments">
+                                <Link to={"/comments"}>
+                                    <ForumOutlined fontSize="small"/>
+                                </Link>
+                            </td>
                             <td className="editLabel" data-label="Edit">
                                 <Link to={EDIT_CASE + "/" + oneCase.id}>
                                     <EditIcon fontSize="small"/>

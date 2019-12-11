@@ -11,6 +11,4 @@ export const ADD_CASE = '/addcase';
 export const EDIT_CASE = '/editcase';
 export const LEAD_CHECKS = '/lead-checks';
 export const WEB_CHECKS = '/web-checks';
-
-
-
+export const COMMENTS = '/comments';

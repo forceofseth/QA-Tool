@@ -1,0 +1,45 @@
+.addComment {
+    float: right;
+}
+
+.chat {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.userA {
+    align-items: flex-end;
+}
+
+.userA .message {
+    color: #ffffff;
+    margin-left: 25%;
+    background-color: #35C7FF;
+    position: relative;
+}
+
+
+.userB {
+    align-items: flex-start;
+}
+
+.userB .message {
+    margin-right: 25%;
+    background-color: #4C8CFD;
+    position: relative;
+    color: #ffffff;
+}

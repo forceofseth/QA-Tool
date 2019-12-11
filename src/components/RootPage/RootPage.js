@@ -16,6 +16,7 @@ import NavigationContainer from "./Navigation/NavigationContainer";
 import LeadCheckListContainer from "../CheckLists/LeadCheckList/LeadCheckListContainer";
 import WebCheckListContainer from "../CheckLists/WebCheckList.js/WebCheckListContainer";
 import EditMasterDataContainer from "../AdminPage/MasterData/EditMasterData/EditMasterDataContainer";
+import CommentPageContainer from "../CommentPage/CommentPageContainer";
 
 
 function RootPage(props) {
@@ -32,6 +33,7 @@ function RootPage(props) {
             <PrivateRouteContainer path={ROUTES.EDIT_CASE + "/:id"} component={EditCaseContainer}/>
             <PrivateRouteContainer path={ROUTES.LEAD_CHECKS + "/:id"} component={LeadCheckListContainer}/>
             <PrivateRouteContainer path={ROUTES.WEB_CHECKS + "/:id"} component={WebCheckListContainer}/>
+            <PrivateRouteContainer path={ROUTES.COMMENTS} component={CommentPageContainer}/>
             <AdminRouteContainer path={ROUTES.ADMIN} component={AdminPageContainer}/>
             <AdminRouteContainer path={ROUTES.EDIT_MASTERDATA + "/:id"} component={EditMasterDataContainer}/>
         </Router>
