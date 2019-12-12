@@ -3,38 +3,34 @@ import Container from "@material-ui/core/Container";
 import '../global.css';
 import './CommentPage.css'
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
-import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
-import Button from "@material-ui/core/Button";
-import {Link} from "react-router-dom";
+import CommentForm from "../Ui/CommentForm/CommentForm";
 
 function CommentPage(props) {
     useAuthorizationRedirect(props.auth);
     return(
         <Container maxWidth="lg" className="mainContainer">
             <h1>Comments for Case XYZ</h1>
-            <div className="addComment">
-                <Link to="/">
-                    <Button color="primary" variant="contained">
-                        <span>Add Comment</span>
-                        <AddCircleOutlineOutlinedIcon className="addCaseIcon" fontSize="large"/>
-                    </Button>
-                </Link>
-            </div>
+
+            <CommentForm/>
             <div className="chat">
-                <div className="userA messages">
+                <div className="messages">
                     <div className="message">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, alias at dolor dolorem ea esse explicabo illo inventore magni maxime nesciunt nobis non officiis, quibusdam quidem ratione, temporibus vero vitae.
-                        <strong><p>Lukas Kiefer</p></strong>
-                    </div>
-                </div>
-                <div className="userB messages">
-                    <div className="message">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius hic ipsa laborum tempore voluptates. Ad, dolorem, obcaecati. Deserunt distinctio dolores explicabo fuga, iste maiores mollitia, perferendis quasi quia repellat voluptatibus!!
-                        <strong><p>Milos Djuric</p></strong>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi est et expedita molestias, ratione voluptate voluptatum! Culpa iusto molestiae mollitia officia. Ab ducimus facere, magnam modi possimus tenetur. Doloribus ipsum iusto neque quis?</p>
+                        <div className="contributer">
+                            <strong>Lukas Kiefer</strong>, <em>12.12.2019</em>
+                        </div>
                     </div>
                     <div className="message">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque autem dolore iste nam, odio odit sit vitae voluptatem. Ab cumque cupiditate ducimus natus odio officia quia quibusdam ullam voluptatum.
-                        <strong><p>Milos Djuric</p></strong>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid asperiores, magni. Asperiores eligendi, eos in quidem quisquam veniam!</p>
+                        <div className="contributer">
+                            <strong>Milos Djuric</strong>, <em>10.12.2019</em>
+                        </div>
+                    </div>
+                    <div className="message">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur modi neque odit reprehenderit voluptatum! Assumenda blanditiis consectetur culpa cumque dolorem doloremque error exercitationem fugiat illum impedit ipsam laudantium libero non, nostrum numquam odit possimus praesentium quas quo repellat rerum suscipit tempore totam ut voluptas? Commodi, consequatur cum facere labore nisi odio sed soluta voluptates. Aspernatur dignissimos dolores et explicabo facere illo inventore omnis placeat temporibus voluptatibus!</p>
+                        <div className="contributer">
+                            <strong>Milos Djuric</strong>, <em>01.12.2019</em>
+                        </div>
                     </div>
                 </div>
 

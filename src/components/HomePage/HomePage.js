@@ -73,7 +73,7 @@ const HomePage = (props) => {
                                     </div>
                                 </Link>
                             </td>
-                            <td data-label="Comments">
+                            <td className="commentIcon" data-label="Comments">
                                 <Link to={"/comments"}>
                                     <ForumOutlined fontSize="small"/>
                                 </Link>
