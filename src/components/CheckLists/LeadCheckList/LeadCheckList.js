@@ -1,4 +1,3 @@
-import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import React, {useEffect, useState} from "react";
 import Loading from "../../Status/Loading";
@@ -6,6 +5,7 @@ import CheckboxWithLabel from "../../Ui/Checkbox/CheckboxWithLabel";
 import {HOME} from "../../../constants/routes";
 import Button from "@material-ui/core/Button";
 import {Link} from "react-router-dom";
+import AddCheckListElement from "../../Ui/AddCheckListElement/AddCheckListElement";
 
 function LeadCheckList(props){
     const {leadChecks, caseId, updateCaseChecklist} = props;
@@ -29,7 +29,6 @@ function LeadCheckList(props){
 
     return(
         <Container maxWidth="lg" className="mainContainer">
-            <CssBaseline/>
             {leadChecks ? (
                 <div>
                     <Link to={HOME} className="backButton">
@@ -44,9 +43,12 @@ function LeadCheckList(props){
                         )
                     })}
                 </div>
+
             ): (
                 <Loading/>
             )}
+
+        <AddCheckListElement/>
 
         </Container>
     );

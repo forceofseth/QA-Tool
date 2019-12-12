@@ -102,56 +102,7 @@ const HomePage = (props) => {
                 </ExpansionPanelSummary>
 
                 <ExpansionPanelDetails>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Project ID</th>
-                            <th>Approved</th>
-                            <th>Customer</th>
-                            <th>Date</th>
-                            <th>Product</th>
-                            <th>Lead</th>
-                            <th>Web</th>
-                            <th>Edit</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        {props.cases && props.cases.map(oneCase => {
-                            return (
-                                <tr key={oneCase.id}>
-                                    <td data-label="ID">{oneCase.projectId}</td>
-                                    <td data-label="Approved">{oneCase.approved.toString()}</td>
-                                    <td data-label="Customer">{oneCase.customer}</td>
-                                    <td data-label="Date">{moment(oneCase.date.toDate()).format('DD.MM.YY')}</td>
-                                    <td data-label="Product">{oneCase.product}</td>
-
-                                    <td data-label="Lead">
-                                        <Link to={LEAD_CHECKS + "/" + oneCase.id}>
-                                            <div>{oneCase.lead}
-                                                <LaunchIcon className="openLink" />
-                                            </div>
-                                        </Link>
-                                    </td>
-
-                                    <td data-label="Web">
-                                        <Link to={WEB_CHECKS + "/" + oneCase.id}>
-                                            <div>{oneCase.web}
-                                                <LaunchIcon className="openLink" />
-                                            </div>
-                                        </Link>
-                                    </td>
-
-                                    <td data-label="Edit">
-                                        <Link to={EDIT_CASE + "/" + oneCase.id}>
-                                            <EditIcon fontSize="small"/>
-                                        </Link>
-                                    </td>
-                                </tr>
-                            )
-                        })}
-                        </tbody>
-                    </table>
+                    table with archived cases
                 </ExpansionPanelDetails>
 
             </ExpansionPanel>
