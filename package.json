@@ -22,7 +22,7 @@
     "redux-firestore": "^0.9.0",
     "redux-thunk": "^2.3.0",
     "use-react-router": "^1.0.7",
-    "react-router": "latest"
+    "prop-types": "latest"
   },
   "scripts": {
     "start": "react-scripts start",

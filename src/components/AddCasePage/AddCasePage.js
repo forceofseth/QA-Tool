@@ -4,7 +4,6 @@ import CaseForm from "../Ui/CaseForm/CaseForm";
 import {HOME} from "../../constants/routes";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import {Link} from "react-router-dom";
@@ -59,7 +58,6 @@ function AddCasePage(props) {
         <div>
 
             <Container maxWidth="lg" className="mainContainer">
-                <CssBaseline/>
                 <h1 className="title">Add Case</h1>
                 <Link to={HOME} className="backButton">
                     <Button color="primary" variant="contained">
