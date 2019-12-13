@@ -21,7 +21,8 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-firestore": "^0.9.0",
     "redux-thunk": "^2.3.0",
-    "use-react-router": "^1.0.7"
+    "use-react-router": "^1.0.7",
+    "react-router": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
