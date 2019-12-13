@@ -3,7 +3,7 @@ import {
     CREATE_CASE_ERROR,
     CLEAN_CASE_SUCCESS,
     CLEAN_CASE_ERROR,
-    UPDATE_CASE_SUCCESS, UPDATE_CASE_ERROR, UPDATE_CASE_CHECKLIST_SUCCESS, UPDATE_CASE_CHECKLIST_ERROR
+    UPDATE_CASE_SUCCESS, UPDATE_CASE_ERROR, UPDATE_CASE_CHECKLIST_ERROR
 } from "../actions/caseActions";
 
 const initalState = {
@@ -43,14 +43,6 @@ export default function caseReducer(state = initalState, action) {
                 ...state,
                 successMessage: null,
                 error: action.payload.error
-            };
-
-        case UPDATE_CASE_CHECKLIST_SUCCESS:
-            console.log("updated case checkList", action.payload);
-            return {
-                ...state,
-                successMessage: "Successfully updated checkList",
-                error: null
             };
 
         case UPDATE_CASE_CHECKLIST_ERROR:

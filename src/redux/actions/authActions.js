@@ -63,7 +63,7 @@ export const createUser = (newUser) => (dispatch, getState, {getFirebase, getFir
             return firestore.collection('users').doc(response.user.uid).set({
                 firstName: newUser.firstName,
                 lastName: newUser.lastName,
-                admin: newUser.admin === 'true'
+                admin: newUser.admin === true
             }).then(() => {
                 dispatch(getCreateUserSuccessAction(newUser));
             }).catch(error => {

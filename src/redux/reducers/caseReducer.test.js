@@ -3,7 +3,6 @@ import {
     CLEAN_CASE_SUCCESS,
     CREATE_CASE_ERROR,
     CREATE_CASE_SUCCESS, UPDATE_CASE_CHECKLIST_ERROR,
-    UPDATE_CASE_CHECKLIST_SUCCESS,
     UPDATE_CASE_ERROR,
     UPDATE_CASE_SUCCESS
 } from "../actions/caseActions";
@@ -48,15 +47,6 @@ describe('caseReducer Test Suite', () =>{
         const error= {message: "this is an error"};
         const newState = caseReducer(initialState, {type: UPDATE_CASE_ERROR, payload: {error}});
         expect(newState).toEqual({successMessage: null, error: error});
-    });
-
-    it('error null, successMessage not null on update checklist success', () => {
-        const initialState = {
-            successMessage: null,
-            error: "test error message"
-        };
-        const newState = caseReducer(initialState, {type: UPDATE_CASE_CHECKLIST_SUCCESS});
-        expect(newState).toEqual({successMessage: "Successfully updated checkList", error: null});
     });
 
     it('error not null, successMessage  null on update checklist error', () => {
