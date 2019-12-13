@@ -17,7 +17,7 @@ export default function caseReducer(state = initalState, action) {
             console.log("created case", action.payload);
             return {
                 ...state,
-                successMessage: "Successfully created new case with the Projectid: " + action.payload.newCase.projectId + ".",
+                successMessage: "Successfully created new case with the ProjectId: " + action.payload.newCase.projectId + ".",
                 error: null
             };
 
@@ -33,7 +33,7 @@ export default function caseReducer(state = initalState, action) {
             console.log("updated case", action.payload);
             return {
                 ...state,
-                successMessage: "Successfully updated case with the Projectid: " + action.payload.updatedCase.projectId + ".",
+                successMessage: "Successfully updated case with the ProjectId: " + action.payload.updatedCase.projectId + ".",
                 error: null
             };
 
