@@ -4,6 +4,7 @@ import SimpleSnackbarContainer from "../../../Ui/Snackbar/SimpleSnackbarContaine
 import MasterDataForm from "../../../Ui/MasterDataForm/MasterDataForm";
 import Loading from "../../../Status/Loading";
 import {ADMIN} from "../../../../constants/routes";
+import Container from "@material-ui/core/Container";
 
 function EditMasterData(props) {
     useAuthorizationRedirect(props.auth);
@@ -30,7 +31,7 @@ function EditMasterData(props) {
 
 
     return (
-        <div>
+        <Container maxWidth="lg" className="mainContainer">
             {masterDataToEdit ? (
                 <div>
                     <MasterDataForm onSubmit={onSubmit} onChange={onChange} state={state} title={"Edit Masterdata"}/>
@@ -39,7 +40,7 @@ function EditMasterData(props) {
             ) : (
                 <Loading/>
             )}
-        </div>
+        </Container>
     );
 }
 

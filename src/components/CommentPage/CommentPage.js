@@ -4,13 +4,20 @@ import '../global.css';
 import './CommentPage.css'
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
 import CommentForm from "../Ui/CommentForm/CommentForm";
+import {HOME} from "../../constants/routes";
+import Button from "@material-ui/core/Button";
+import {Link} from "react-router-dom";
 
 function CommentPage(props) {
     useAuthorizationRedirect(props.auth);
     return(
         <Container maxWidth="lg" className="mainContainer">
-            <h1>Comments for Case XYZ</h1>
-
+            <h1 className="title">Comments for Case XYZ</h1>
+            <Link to={HOME} className="backButton">
+                <Button color="primary" variant="contained">
+                    <span>BACK</span>
+                </Button>
+            </Link>
             <CommentForm/>
             <div className="chat">
                 <div className="messages">
