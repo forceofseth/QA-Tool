@@ -47,9 +47,7 @@ function LeadCheckList(props){
             ): (
                 <Loading/>
             )}
-
         <AddCheckListElement/>
-
         </Container>
     );
 }

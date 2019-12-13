@@ -3,7 +3,7 @@ import {
     CREATE_CASE_ERROR,
     CLEAN_CASE_SUCCESS,
     CLEAN_CASE_ERROR,
-    UPDATE_CASE_SUCCESS, UPDATE_CASE_ERROR, UPDATE_CASE_CHECKLIST_SUCCESS, UPDATE_CASE_CHECKLIST_ERROR
+    UPDATE_CASE_SUCCESS, UPDATE_CASE_ERROR, UPDATE_CASE_CHECKLIST_ERROR
 } from "../actions/caseActions";
 
 const initalState = {
@@ -17,7 +17,7 @@ export default function caseReducer(state = initalState, action) {
             console.log("created case", action.payload);
             return {
                 ...state,
-                successMessage: "Successfully created new case with the Projectid: " + action.payload.newCase.projectId + ".",
+                successMessage: "Successfully created new case with the ProjectId: " + action.payload.newCase.projectId + ".",
                 error: null
             };
 
@@ -33,7 +33,7 @@ export default function caseReducer(state = initalState, action) {
             console.log("updated case", action.payload);
             return {
                 ...state,
-                successMessage: "Successfully updated case with the Projectid: " + action.payload.updatedCase.projectId + ".",
+                successMessage: "Successfully updated case with the ProjectId: " + action.payload.updatedCase.projectId + ".",
                 error: null
             };
 
@@ -43,14 +43,6 @@ export default function caseReducer(state = initalState, action) {
                 ...state,
                 successMessage: null,
                 error: action.payload.error
-            };
-
-        case UPDATE_CASE_CHECKLIST_SUCCESS:
-            console.log("updated case checkList", action.payload);
-            return {
-                ...state,
-                successMessage: "Successfully updated checkList",
-                error: null
             };
 
         case UPDATE_CASE_CHECKLIST_ERROR:

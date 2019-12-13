@@ -6,7 +6,6 @@ export const CLEAN_CASE_SUCCESS = 'CLEAN_CASE_SUCCESS';
 export const CLEAN_CASE_ERROR = 'CLEAN_CASE_ERROR';
 export const UPDATE_CASE_SUCCESS = 'UPDATE_CASE_SUCCESS';
 export const UPDATE_CASE_ERROR = 'UPDATE_CASE_ERROR';
-export const UPDATE_CASE_CHECKLIST_SUCCESS = 'UPDATE_CASE_CHECKLIST_SUCCESS';
 export const UPDATE_CASE_CHECKLIST_ERROR = 'UPDATE_CASE_CHECKLIST_ERROR';
 
 //thunk actions
@@ -62,7 +61,7 @@ export const updateCaseChecklist = (updatedCheckList, caseId, checkType) =>{
           let caseObjectToUpdate ={};
           caseObjectToUpdate[checkType]=updatedCheckList;
       firestore.collection('cases').doc(caseId).update(caseObjectToUpdate).then(()=> {
-          dispatch(getUpdateCaseCheckListSuccessAction(updatedCheckList));
+          // we dont want to notify the user when he updated a checklist item!
       }).catch((error =>{
           dispatch(getUpdateCaseCheckListErrorAction(error));
       }))
@@ -87,11 +86,6 @@ const getUpdateCaseSuccessAction = updatedCase => ({
 const getUpdateCaseErrorAction = error => ({
     type: UPDATE_CASE_ERROR,
     payload: {error}
-});
-
-export const getUpdateCaseCheckListSuccessAction = (updatedCheckList) => ({
-   type:  UPDATE_CASE_CHECKLIST_SUCCESS,
-    payload: {updatedCheckList}
 });
 
 export const getUpdateCaseCheckListErrorAction = (error) =>({
