@@ -7,6 +7,8 @@ export const CLEAN_CASE_ERROR = 'CLEAN_CASE_ERROR';
 export const UPDATE_CASE_SUCCESS = 'UPDATE_CASE_SUCCESS';
 export const UPDATE_CASE_ERROR = 'UPDATE_CASE_ERROR';
 export const UPDATE_CASE_CHECKLIST_ERROR = 'UPDATE_CASE_CHECKLIST_ERROR';
+export const UPDATE_CASE_APPROVAL_SUCCESS = 'UPDATE_CASE_APPROVAL_SUCCESS';
+export const UPDATE_CASE_APPROVAL_ERROR = 'UPDATE_CASE_APPROVAL_ERROR';
 
 //thunk actions
 export const createCase = newCase => {
@@ -54,20 +56,45 @@ export const updateCase = updatedCase => {
     }
 };
 
-export const updateCaseChecklist = (updatedCheckList, caseId, checkType) =>{
-  return(dispatch, getState,{getFirestore})=>{
-      const firestore = getFirestore();
-      if(updatedCheckList && Object.keys(updatedCheckList).length !== 0){
-          let caseObjectToUpdate ={};
-          caseObjectToUpdate[checkType]=updatedCheckList;
-      firestore.collection('cases').doc(caseId).update(caseObjectToUpdate).then(()=> {
-          // we dont want to notify the user when he updated a checklist item!
-      }).catch((error =>{
-          dispatch(getUpdateCaseCheckListErrorAction(error));
-      }))
-  }}
+export const updateCaseChecklist = (updatedCheckList, caseId, checkType) => {
+    return (dispatch, getState, {getFirestore}) => {
+        const firestore = getFirestore();
+        if (updatedCheckList && Object.keys(updatedCheckList).length !== 0) {
+            let caseObjectToUpdate = {};
+            caseObjectToUpdate[checkType] = updatedCheckList;
+            firestore.collection('cases').doc(caseId).update(caseObjectToUpdate).then(() => {
+                firestore.collection('cases').doc(caseId).get().then((doc) => {
+                    updateCaseApproval(firestore, dispatch, doc.data(), caseId);
+                });
+            }).catch((error => {
+                dispatch(getUpdateCaseCheckListErrorAction(error));
+            }))
+        }
+    }
 };
-
+const updateCaseApproval = (firestore, dispatch, updatedCase, caseId) => {
+    const allChecks = [...Object.values(updatedCase.webChecks), ...Object.values(updatedCase.leadChecks)];
+    const allChecksApproved = allChecks.every((element => element === true));
+    if (allChecksApproved) {
+        firestore.collection('cases').doc(caseId).update({
+            approved: Boolean(true)
+            //we dont want a snackbar to popup on case approval or disapproval so we dont dispatch actions here.
+        }).then(() => {
+            console.log("successfully updated case approval");
+        }).catch((error) => {
+            console.log("error in case approval"+ error);
+        })
+    }else{
+        firestore.collection('cases').doc(caseId).update({
+            approved: Boolean(false)
+            //we dont want a snackbar to popup on case approval or disapproval so we dont dispatch actions here.
+        }).then(() => {
+            console.log("successfully updated case approval");
+        }).catch((error) => {
+            console.log("error in case approval" + error);
+        })
+    }
+};
 //action creators
 const getCreateCaseSuccessAction = newCase => ({
     type: CREATE_CASE_SUCCESS,
@@ -88,9 +115,9 @@ const getUpdateCaseErrorAction = error => ({
     payload: {error}
 });
 
-export const getUpdateCaseCheckListErrorAction = (error) =>({
-   type: UPDATE_CASE_CHECKLIST_ERROR,
-   payload:{error}
+export const getUpdateCaseCheckListErrorAction = (error) => ({
+    type: UPDATE_CASE_CHECKLIST_ERROR,
+    payload: {error}
 });
 
 export const cleanCaseSuccessAction = () => ({
@@ -99,6 +126,14 @@ export const cleanCaseSuccessAction = () => ({
 
 export const cleanCaseErrorAction = () => ({
     type: CLEAN_CASE_ERROR
+});
+
+export const updateCaseApprovalSuccessAction = () =>({
+    type: UPDATE_CASE_APPROVAL_SUCCESS
+});
+
+export const updateCaseApprovalErrorAction = () =>({
+    type: UPDATE_CASE_APPROVAL_ERROR
 });
 
 

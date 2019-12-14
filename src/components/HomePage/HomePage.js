@@ -16,6 +16,8 @@ import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from "@material-ui/core/Button";
 import {ForumOutlined} from "@material-ui/icons";
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
 
 
@@ -53,7 +55,9 @@ const HomePage = (props) => {
                     return (
                         <tr key={oneCase.id}>
                             <td data-label="ID">{oneCase.projectId}</td>
-                            <td data-label="Approved">{oneCase.approved.toString()}</td>
+                            {oneCase.approved ?<td data-label="Approved"><CheckCircleOutlineIcon className="approved"/></td>:
+                                <td data-label="Approved"><HighlightOffIcon className="notApproved"/></td>
+                            }
                             <td data-label="Customer">{oneCase.customer}</td>
                             <td data-label="Date">{moment(oneCase.date.toDate()).format('DD.MM.YY')}</td>
                             <td data-label="Product">{oneCase.product}</td>
