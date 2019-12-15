@@ -4,7 +4,9 @@ import './Loading.css'
 
 const Loading = () => (
 
-    <CircularProgress/>
+    <div className="spinnerContainer">
+        <CircularProgress/>
+    </div>
 );
 
 export default Loading;
