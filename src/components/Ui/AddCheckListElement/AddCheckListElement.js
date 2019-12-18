@@ -1,12 +1,28 @@
-import React from "react";
+import React, {useState} from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
 import './AddCheckListElement.css'
 
 function AddCheckListElement(props){
+    const {checkType, caseId, addCheckListElement,currentChecks} = props;
+    const INITIAL_STATE ={
+        newCheckListElement: ''
+    };
+    const [state, setState] = useState(INITIAL_STATE);
 
-    const {onSubmit, onChange} = props;
+    const onChange = event => {
+        setState({
+            ...state,
+            [event.target.name]: event.target.value
+        });
+    };
+
+    const onSubmit = event => {
+        event.preventDefault();
+        addCheckListElement(state.newCheckListElement, caseId, checkType, currentChecks);
+        setState(INITIAL_STATE);
+    };
 
     return(
         <div>
@@ -18,6 +34,7 @@ function AddCheckListElement(props){
                     placeholder="New checklist element"
                     margin="normal"
                     variant="outlined"
+                    value={state.newCheckListElement}
                     required
                 />
 
