@@ -5,14 +5,15 @@ import CheckboxWithLabel from "../../Ui/Checkbox/CheckboxWithLabel";
 import {HOME} from "../../../constants/routes";
 import Button from "@material-ui/core/Button";
 import {Link} from "react-router-dom";
-import AddCheckListElement from "../../Ui/AddCheckListElement/AddCheckListElement";
+import AddCheckListElementContainer from "../../Ui/AddCheckListElement/AddCheckListElementContainer";
+import SimpleSnackbarContainer from "../../Ui/Snackbar/SimpleSnackbarContainer";
 
-function LeadCheckList(props){
+function LeadCheckList(props) {
     const {leadChecks, caseId, updateCaseChecklist} = props;
     const [state, setState] = useState(leadChecks);
 
     useEffect(() => {
-        updateCaseChecklist(state,caseId,"leadChecks")
+        updateCaseChecklist(state, caseId, "leadChecks")
     }, [state, caseId, updateCaseChecklist]);
 
     useEffect(() => {
@@ -27,7 +28,7 @@ function LeadCheckList(props){
     };
 
 
-    return(
+    return (
         <Container maxWidth="lg" className="mainContainer">
             {leadChecks ? (
                 <div>
@@ -37,17 +38,18 @@ function LeadCheckList(props){
                         </Button>
                     </Link>
                     <h1>{"Lead CheckList"}</h1>
-                    {state && Object.keys(state).map(key =>{
-                        return(
-                            <CheckboxWithLabel defaultChecked = {state[key]} checkFor={key} onChange={onChange} />
+                    {state && Object.keys(state).map(key => {
+                        return (
+                            <CheckboxWithLabel defaultChecked={state[key]} checkFor={key} onChange={onChange}/>
                         )
                     })}
                 </div>
 
-            ): (
+            ) : (
                 <Loading/>
             )}
-        <AddCheckListElement/>
+            <AddCheckListElementContainer checkType="leadChecks" caseId={caseId} currentChecks={leadChecks}/>
+            <SimpleSnackbarContainer/>
         </Container>
     );
 }

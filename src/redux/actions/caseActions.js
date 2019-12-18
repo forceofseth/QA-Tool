@@ -7,8 +7,9 @@ export const CLEAN_CASE_ERROR = 'CLEAN_CASE_ERROR';
 export const UPDATE_CASE_SUCCESS = 'UPDATE_CASE_SUCCESS';
 export const UPDATE_CASE_ERROR = 'UPDATE_CASE_ERROR';
 export const UPDATE_CASE_CHECKLIST_ERROR = 'UPDATE_CASE_CHECKLIST_ERROR';
-export const UPDATE_CASE_APPROVAL_SUCCESS = 'UPDATE_CASE_APPROVAL_SUCCESS';
-export const UPDATE_CASE_APPROVAL_ERROR = 'UPDATE_CASE_APPROVAL_ERROR';
+export const ADD_CHECKLIST_ELEMENT_SUCCESS = 'ADD_CHECKLIST_ELEMENT_SUCCESS';
+export const ADD_CHECKLIST_ELEMENT_ERROR = 'ADD_CHECKLIST_ELEMENT_ERROR';
+
 
 //thunk actions
 export const createCase = newCase => {
@@ -72,6 +73,25 @@ export const updateCaseChecklist = (updatedCheckList, caseId, checkType) => {
         }
     }
 };
+
+export const addCheckListElement = (newChecklistElement, caseId, checkType, currentChecks) => {
+    return (dispatch, getState, {getFirestore}) => {
+        const firestore = getFirestore();
+        if (newChecklistElement !== '') {
+            currentChecks[newChecklistElement] = false;
+            let caseObjectToUpdate = {[checkType]:currentChecks};
+            firestore.collection('cases').doc(caseId).update(caseObjectToUpdate).then(() =>{
+                console.log("successfully added CheckListElement");
+                dispatch(getAddCheckListElementSuccessAction(newChecklistElement));
+            }).catch(error =>{
+                console.log(error);
+                dispatch(getAddCheckListElementErrorAction(error));
+            })
+        }
+    }
+};
+
+
 const updateCaseApproval = (firestore, dispatch, updatedCase, caseId) => {
     const allChecks = [...Object.values(updatedCase.webChecks), ...Object.values(updatedCase.leadChecks)];
     const allChecksApproved = allChecks.every((element => element === true));
@@ -82,9 +102,9 @@ const updateCaseApproval = (firestore, dispatch, updatedCase, caseId) => {
         }).then(() => {
             console.log("successfully updated case approval");
         }).catch((error) => {
-            console.log("error in case approval"+ error);
+            console.log("error in case approval" + error);
         })
-    }else{
+    } else {
         firestore.collection('cases').doc(caseId).update({
             approved: Boolean(false)
             //we dont want a snackbar to popup on case approval or disapproval so we dont dispatch actions here.
@@ -95,6 +115,7 @@ const updateCaseApproval = (firestore, dispatch, updatedCase, caseId) => {
         })
     }
 };
+
 //action creators
 const getCreateCaseSuccessAction = newCase => ({
     type: CREATE_CASE_SUCCESS,
@@ -115,8 +136,18 @@ const getUpdateCaseErrorAction = error => ({
     payload: {error}
 });
 
-export const getUpdateCaseCheckListErrorAction = (error) => ({
+export const getUpdateCaseCheckListErrorAction = error => ({
     type: UPDATE_CASE_CHECKLIST_ERROR,
+    payload: {error}
+});
+
+const getAddCheckListElementSuccessAction = addedElement =>({
+    type: ADD_CHECKLIST_ELEMENT_SUCCESS,
+    payload: {addedElement}
+});
+
+const getAddCheckListElementErrorAction = error =>({
+    type: ADD_CHECKLIST_ELEMENT_SUCCESS,
     payload: {error}
 });
 
@@ -128,13 +159,7 @@ export const cleanCaseErrorAction = () => ({
     type: CLEAN_CASE_ERROR
 });
 
-export const updateCaseApprovalSuccessAction = () =>({
-    type: UPDATE_CASE_APPROVAL_SUCCESS
-});
 
-export const updateCaseApprovalErrorAction = () =>({
-    type: UPDATE_CASE_APPROVAL_ERROR
-});
 
 
 
