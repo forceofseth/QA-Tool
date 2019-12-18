@@ -1,4 +1,6 @@
 import {
+    ADD_CHECKLIST_ELEMENT_ERROR,
+    ADD_CHECKLIST_ELEMENT_SUCCESS,
     CLEAN_CASE_ERROR,
     CLEAN_CASE_SUCCESS,
     CREATE_CASE_ERROR,
@@ -46,6 +48,26 @@ describe('caseReducer Test Suite', () =>{
         };
         const error= {message: "this is an error"};
         const newState = caseReducer(initialState, {type: UPDATE_CASE_ERROR, payload: {error}});
+        expect(newState).toEqual({successMessage: null, error: error});
+    });
+
+    it('error null, successMessage not null on add checklist element success', () => {
+        const initialState = {
+            successMessage: null,
+            error: "test error message"
+        };
+        const addedElement= "addedElement";
+        const newState = caseReducer(initialState, {type: ADD_CHECKLIST_ELEMENT_SUCCESS, payload: {addedElement}});
+        expect(newState).toEqual({successMessage: "Successfully added "+ addedElement + " to the Check-List", error: null});
+    });
+
+    it('error not null, successMessage null add checklist element error', () => {
+        const initialState = {
+            successMessage: null,
+            error: null
+        };
+        const error= {message: "this is an error"};
+        const newState = caseReducer(initialState, {type: ADD_CHECKLIST_ELEMENT_ERROR, payload: {error}});
         expect(newState).toEqual({successMessage: null, error: error});
     });
 
