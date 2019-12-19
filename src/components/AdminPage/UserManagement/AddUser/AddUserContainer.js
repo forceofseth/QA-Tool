@@ -1,7 +1,7 @@
-import {getAuth, getAuthError, getAuthSuccessMessage} from "../../../redux/selectors";
+import {getAuth, getAuthError, getAuthSuccessMessage} from "../../../../redux/selectors";
 import {connect} from "react-redux";
 import AddUser from "./AddUser";
-import {createUser} from "../../../redux/actions/authActions";
+import {createUser} from "../../../../redux/actions/authActions";
 
 const mapDispatchToProps = {
     createUser

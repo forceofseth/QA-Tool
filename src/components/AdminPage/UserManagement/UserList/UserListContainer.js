@@ -1,4 +1,4 @@
-import {getAuth, getUserList} from "../../../redux/selectors";
+import {getAuth, getUserList} from "../../../../redux/selectors";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {firestoreConnect} from "react-redux-firebase";
