@@ -18,6 +18,7 @@ import Button from "@material-ui/core/Button";
 import {ForumOutlined} from "@material-ui/icons";
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+import Radio from "@material-ui/core/Radio";
 
 
 
@@ -47,6 +48,7 @@ const HomePage = (props) => {
                     <th>Web</th>
                     <th>Comments</th>
                     <th>Edit</th>
+                    <th>Archive</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -87,8 +89,12 @@ const HomePage = (props) => {
                                     <EditIcon fontSize="small"/>
                                 </Link>
                             </td>
-
-                        {/*TODO-Milos: Add archiving toggle*/}
+                            <td className="archive" data-label="Archive">
+                                <Radio
+                                    color="default"
+                                    name="radio-button-demo"
+                                />
+                            </td>
                         </tr>
                     )
                 })}

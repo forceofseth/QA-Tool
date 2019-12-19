@@ -68,3 +68,20 @@ export const getMasterDataSuccessMessage = state => {
     return state.masterdata.successMessage;
 };
 
+// User Selectors
+export const getUserList = state => {
+    return state.firestore.ordered.users;
+};
+
+export const getUserListData = state => {
+    return state.firestore.data.users;
+};
+
+export const getUserListError = state =>{
+    return state.users.error;
+};
+
+export const getUserListSuccessMessage = state =>{
+    return state.users.successMessage;
+};
+
