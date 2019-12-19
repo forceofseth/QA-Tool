@@ -4,6 +4,8 @@ export const CLEAN_MASTERDATA_SUCCESS = 'CLEAN_MASTERDATA_SUCCESS';
 export const CLEAN_MASTERDATA_ERROR = 'CLEAN_MASTERDATA_ERROR';
 export const UPDATE_MASTERDATA_SUCCESS = 'UPDATE_MASTERDATA_SUCCESS';
 export const UPDATE_MASTERDATA_ERROR = 'UPDATE_MASTERDATA_ERROR';
+export const DELETE_MASTERDATA_SUCCESS = 'DELETE_MASTERDATA_SUCCESS';
+export const DELETE_MASTERDATA_ERROR = 'DELETE_MASTERDATA_ERROR';
 
 //thunk actions
 export const createMasterData = newMasterData => {
@@ -34,6 +36,19 @@ export const updateMasterData = updatedMasterData => {
     }
 };
 
+export const deleteMasterData = masterDataId => {
+    return (dispatch, getState, {getFirestore}) => {
+        const firestore = getFirestore();
+        firestore.collection('masterdata').doc(masterDataId).delete().then(() => {
+            console.log("successfully deleted masterdata with the id: " + masterDataId);
+            dispatch(getDeleteMasterDataSuccessAction(masterDataId));
+        }).catch((error) => {
+            console.log(error);
+            dispatch(getDeleteMasterDataSuccessError(error));
+        })
+    }
+};
+
 //action creators
 const getCreateMasterDataSuccessAction = newMasterData => ({
     type: CREATE_MASTERDATA_SUCCESS,
@@ -51,6 +66,16 @@ const getUpdateMasterDataSuccessAction = updatedMasterData => ({
 
 const getUpdateMasterDataErrorAction = error => ({
     type: UPDATE_MASTERDATA_ERROR,
+    payload: {error}
+});
+
+const getDeleteMasterDataSuccessAction = masterDataId => ({
+    type: DELETE_MASTERDATA_SUCCESS,
+    payload: {masterDataId}
+});
+
+const getDeleteMasterDataSuccessError = error => ({
+    type: DELETE_MASTERDATA_ERROR,
     payload: {error}
 });
 

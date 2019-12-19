@@ -2,7 +2,7 @@ import {
     CLEAN_MASTERDATA_ERROR,
     CLEAN_MASTERDATA_SUCCESS,
     CREATE_MASTERDATA_ERROR,
-    CREATE_MASTERDATA_SUCCESS,
+    CREATE_MASTERDATA_SUCCESS, DELETE_MASTERDATA_ERROR, DELETE_MASTERDATA_SUCCESS,
     UPDATE_MASTERDATA_ERROR, UPDATE_MASTERDATA_SUCCESS
 } from "../actions/masterDataActions";
 import masterDataReducer from "./masterDataReducer";
@@ -45,6 +45,26 @@ describe('masterDataReducer Test Suite', () =>{
         };
         const error = {message: "this is an error"};
         const newState = masterDataReducer(initialState, {type: UPDATE_MASTERDATA_ERROR, payload: {error}});
+        expect(newState).toEqual({successMessage: null, error: error});
+    });
+
+    it('error null, successMessage not null on delete masterData success', () => {
+        const initialState = {
+            successMessage: null,
+            error: "test error message"
+        };
+        const masterDataId= "thisisanid";
+        const newState = masterDataReducer(initialState, {type: DELETE_MASTERDATA_SUCCESS, payload: {masterDataId}});
+        expect(newState).toEqual({successMessage: "Successfully deleted masterData entry with the id: " + masterDataId + ".", error: null});
+    });
+
+    it('error not null, successMessage  null on delete masterData error', () => {
+        const initialState = {
+            successMessage: null,
+            error: null
+        };
+        const error = {message: "this is an error"};
+        const newState = masterDataReducer(initialState, {type: DELETE_MASTERDATA_ERROR, payload: {error}});
         expect(newState).toEqual({successMessage: null, error: error});
     });
 

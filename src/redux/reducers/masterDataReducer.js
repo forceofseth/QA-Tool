@@ -3,7 +3,7 @@ import {
     CREATE_MASTERDATA_ERROR,
     CLEAN_MASTERDATA_SUCCESS,
     CLEAN_MASTERDATA_ERROR,
-    UPDATE_MASTERDATA_SUCCESS, UPDATE_MASTERDATA_ERROR
+    UPDATE_MASTERDATA_SUCCESS, UPDATE_MASTERDATA_ERROR, DELETE_MASTERDATA_SUCCESS, DELETE_MASTERDATA_ERROR
 } from "../actions/masterDataActions";
 
 const initalState = {
@@ -39,6 +39,20 @@ export default function masterDataReducer(state = initalState, action) {
 
         case UPDATE_MASTERDATA_ERROR:
             console.log("error updating masterData");
+            return {
+                ...state,
+                successMessage: null,
+                error: action.payload.error
+            };
+
+        case DELETE_MASTERDATA_SUCCESS:
+            return {
+                ...state,
+                successMessage: "Successfully deleted masterData entry with the id: " + action.payload.masterDataId + ".",
+                error: null
+            };
+
+        case DELETE_MASTERDATA_ERROR:
             return {
                 ...state,
                 successMessage: null,

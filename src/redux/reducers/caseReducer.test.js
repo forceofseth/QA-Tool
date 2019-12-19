@@ -1,4 +1,6 @@
 import {
+    ADD_CHECKLIST_ELEMENT_ERROR,
+    ADD_CHECKLIST_ELEMENT_SUCCESS, ADD_COMMENT_ERROR, ADD_COMMENT_SUCCESS,
     CLEAN_CASE_ERROR,
     CLEAN_CASE_SUCCESS,
     CREATE_CASE_ERROR,
@@ -48,6 +50,47 @@ describe('caseReducer Test Suite', () =>{
         const newState = caseReducer(initialState, {type: UPDATE_CASE_ERROR, payload: {error}});
         expect(newState).toEqual({successMessage: null, error: error});
     });
+
+    it('error null, successMessage not null on add checklist element success', () => {
+        const initialState = {
+            successMessage: null,
+            error: "test error message"
+        };
+        const addedElement= "addedElement";
+        const newState = caseReducer(initialState, {type: ADD_CHECKLIST_ELEMENT_SUCCESS, payload: {addedElement}});
+        expect(newState).toEqual({successMessage: "Successfully added "+ addedElement + " to the Check-List", error: null});
+    });
+
+    it('error not null, successMessage null add checklist element error', () => {
+        const initialState = {
+            successMessage: null,
+            error: null
+        };
+        const error= {message: "this is an error"};
+        const newState = caseReducer(initialState, {type: ADD_CHECKLIST_ELEMENT_ERROR, payload: {error}});
+        expect(newState).toEqual({successMessage: null, error: error});
+    });
+    /////////////////////////////////////////////
+    it('error null, successMessage not null on add comment success', () => {
+        const initialState = {
+            successMessage: null,
+            error: "test error message"
+        };
+        const newState = caseReducer(initialState, {type: ADD_COMMENT_SUCCESS});
+        expect(newState).toEqual({successMessage: "Successfully added new comment.", error: null});
+    });
+
+    it('error not null, successMessage null add comment error', () => {
+        const initialState = {
+            successMessage: null,
+            error: null
+        };
+        const error= {message: "this is an error"};
+        const newState = caseReducer(initialState, {type: ADD_COMMENT_ERROR, payload: {error}});
+        expect(newState).toEqual({successMessage: null, error: error});
+    });
+
+    ///////////////////////////////////////////
 
     it('error not null, successMessage  null on update checklist error', () => {
         const initialState = {
