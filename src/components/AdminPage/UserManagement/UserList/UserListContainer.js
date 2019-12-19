@@ -3,6 +3,11 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import {firestoreConnect} from "react-redux-firebase";
 import UserList from "./UserList";
+import {deleteUser} from "../../../../redux/actions/authActions";
+
+const mapDispatchToProps = {
+    deleteUser
+};
 
 const mapStateToProps = state => {
     return {
@@ -12,7 +17,7 @@ const mapStateToProps = state => {
 };
 
 export default compose(
-    connect(mapStateToProps),
+    connect(mapStateToProps, mapDispatchToProps),
     firestoreConnect([
         {collection: 'users'}
     ])

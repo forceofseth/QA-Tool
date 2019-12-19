@@ -11,6 +11,8 @@ export const CLEAN_AUTH_ERROR = 'CLEAN_AUTH_ERROR';
 export const CLEAN_AUTH_SUCCESS = 'CLEAN_AUTH_SUCCESS';
 export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
 export const UPDATE_USER_ERROR = 'UPDATE_USER_ERROR';
+export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
+export const DELETE_USER_ERROR = 'DELETE_USER_ERROR';
 
 
 
@@ -45,6 +47,20 @@ export const updateUser = updateUser => {
             dispatch(getUpdatedUserSuccessAction(updateUser));
         }).catch((error) => {
             dispatch(getUpdatedUserErrorAction(error));
+        })
+    }
+};
+
+
+export const deleteUser = userId => {
+    return (dispatch, getState, {getFirestore}) => {
+        const firestore = getFirestore();
+        firestore.collection('users').doc(userId).delete().then(() => {
+            console.log("successfully deleted user with the id: " + userId);
+            dispatch(getDeleteUserSuccessAction(userId));
+        }).catch((error) => {
+            console.log(error);
+            dispatch(getDeleteUserSuccessError(error));
         })
     }
 };
@@ -146,6 +162,16 @@ const getUpdatedUserSuccessAction = (updatedUser) => ({
 
 const getUpdatedUserErrorAction = (error) => ({
     type: UPDATE_USER_ERROR,
+    payload: {error}
+});
+
+const getDeleteUserSuccessAction = userId => ({
+    type: DELETE_USER_SUCCESS,
+    payload: {userId}
+});
+
+const getDeleteUserSuccessError = error => ({
+    type: DELETE_USER_ERROR,
     payload: {error}
 });
 

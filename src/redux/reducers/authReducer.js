@@ -8,7 +8,9 @@ import {
     RESET_PASSWORD_ERROR,
     CREATE_USER_SUCCESS,
     CREATE_USER_ERROR, CLEAN_AUTH_ERROR, CLEAN_AUTH_SUCCESS,
-    UPDATE_USER_SUCCESS, UPDATE_USER_ERROR
+    UPDATE_USER_SUCCESS, UPDATE_USER_ERROR,
+    DELETE_USER_SUCCESS, DELETE_USER_ERROR
+
 
 } from "../actions/authActions";
 
@@ -79,12 +81,26 @@ export default function authReducer(state = initialState, action) {
             console.log("updated user");
             return {
                 ...state,
-                successMessage: "Successfully updated User: "+ action.payload.updatedUser.firstName + " " + action.payload.updatedUser.lastName + "!",
+                successMessage: "Successfully updated user: "+ action.payload.updatedUser.firstName + " " + action.payload.updatedUser.lastName + "!",
                 error: null
             };
 
         case UPDATE_USER_ERROR:
             console.log("error updating user");
+            return {
+                ...state,
+                successMessage: null,
+                error: action.payload.error
+            };
+
+        case DELETE_USER_SUCCESS:
+            return {
+                ...state,
+                successMessage: "Successfully deleted user: "+ action.payload.userId.firstName + " " + action.payload.userId.lastName + "!",
+                error: null
+            };
+
+        case DELETE_USER_ERROR:
             return {
                 ...state,
                 successMessage: null,
