@@ -1,6 +1,6 @@
 import React from 'react';
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
-import {EDIT_CASE, LEAD_CHECKS, WEB_CHECKS, ADD_CASE} from "../../constants/routes";
+import {EDIT_CASE, LEAD_CHECKS, WEB_CHECKS, ADD_CASE, COMMENTS} from "../../constants/routes";
 import {Link} from "react-router-dom";
 import moment from "moment";
 import Container from "@material-ui/core/Container";
@@ -78,7 +78,7 @@ const HomePage = (props) => {
                                 </Link>
                             </td>
                             <td className="commentIcon" data-label="Comments">
-                                <Link to={"/comments"}>
+                                <Link to={COMMENTS + "/" + oneCase.id}>
                                     <ForumOutlined fontSize="small"/>
                                 </Link>
                             </td>

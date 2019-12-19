@@ -22,7 +22,6 @@ import CommentPageContainer from "../CommentPage/CommentPageContainer";
 
 
 function RootPage(props) {
-    //TODO all Routes should be Pages?
     return (
         <Router>
             {props.auth.isEmpty ? null : <NavigationContainer/>}
@@ -36,7 +35,7 @@ function RootPage(props) {
             <PrivateRouteContainer path={ROUTES.EDIT_CASE + "/:id"} component={EditCaseContainer}/>
             <PrivateRouteContainer path={ROUTES.LEAD_CHECKS + "/:id"} component={LeadCheckListContainer}/>
             <PrivateRouteContainer path={ROUTES.WEB_CHECKS + "/:id"} component={WebCheckListContainer}/>
-            <PrivateRouteContainer path={ROUTES.COMMENTS} component={CommentPageContainer}/>
+            <PrivateRouteContainer path={ROUTES.COMMENTS + "/:id"} component={CommentPageContainer}/>
             <AdminRouteContainer path={ROUTES.ADMIN} component={AdminPageContainer}/>
             <AdminRouteContainer path={ROUTES.EDIT_MASTERDATA + "/:id"} component={EditMasterDataContainer}/>
             <PrivateRouteContainer component={NotFound}/>
