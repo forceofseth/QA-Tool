@@ -4,7 +4,7 @@ export const getAuth = state => {
 };
 
 export const getAuthProfile = state => {
-  return state.firebase.profile;
+    return state.firebase.profile;
 };
 
 export const getAuthError = state => {
@@ -24,12 +24,30 @@ export const getCasesData = state => {
     return state.firestore.data.cases;
 };
 
-export const getCasesError = state =>{
+export const getCasesError = state => {
     return state.cases.error;
 };
 
-export const getCasesSuccessMessage = state =>{
+export const getCasesSuccessMessage = state => {
     return state.cases.successMessage;
+};
+
+export const getCommentsById = (state, caseId) => {
+    const cases = getCasesData(state);
+    const singleCase = cases ? cases[caseId] : null;
+    return singleCase ? singleCase.comments : null
+};
+
+export const getCommentCounterById = (state, caseId) => {
+    const cases = getCasesData(state);
+    const singleCase = cases ? cases[caseId] : null;
+    return singleCase ? singleCase.commentCounter: null;
+};
+
+export const getCustomerById = (state, caseId) => {
+    const cases = getCasesData(state);
+    const singleCase = cases ? cases[caseId] : null;
+    return singleCase ? singleCase.customer: null;
 };
 
 
@@ -42,11 +60,11 @@ export const getMasterDataData = state => {
     return state.firestore.data.masterdata;
 };
 
-export const getMasterDataError = state =>{
+export const getMasterDataError = state => {
     return state.masterdata.error;
 };
 
-export const getMasterDataSuccessMessage = state =>{
+export const getMasterDataSuccessMessage = state => {
     return state.masterdata.successMessage;
 };
 

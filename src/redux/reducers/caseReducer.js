@@ -7,7 +7,7 @@ import {
     UPDATE_CASE_ERROR,
     UPDATE_CASE_CHECKLIST_ERROR,
     ADD_CHECKLIST_ELEMENT_SUCCESS,
-    ADD_CHECKLIST_ELEMENT_ERROR
+    ADD_CHECKLIST_ELEMENT_ERROR, ADD_COMMENT_SUCCESS, ADD_COMMENT_ERROR
 } from "../actions/caseActions";
 
 const initalState = {
@@ -65,6 +65,20 @@ export default function caseReducer(state = initalState, action) {
             };
 
         case ADD_CHECKLIST_ELEMENT_ERROR:
+            return {
+                ...state,
+                successMessage: null,
+                error: action.payload.error
+            };
+
+        case ADD_COMMENT_SUCCESS:
+            return {
+                ...state,
+                successMessage: "Successfully added new comment.",
+                error: null
+            };
+
+        case ADD_COMMENT_ERROR:
             return {
                 ...state,
                 successMessage: null,
