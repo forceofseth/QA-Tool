@@ -9,7 +9,7 @@ import EditCaseContainer from "../EditCasePage/EditCasePageContainer";
 import HomePageContainer from "../HomePage/HomePageContainer";
 import PasswordForgetPageContainer from "../PasswordForgetPage/PasswordForgetPageContainer";
 import SignInPageContainer from "../SignInPage/SignInPageContainer";
-import AddUserContainer from "../AdminPage/AddUser/AddUserContainer";
+import AddUserContainer from "../AdminPage/UserManagement/AddUser/AddUserContainer";
 import PrivateRouteContainer from "../Ui/PrivateRoute/PrivateRouteContainer";
 import AdminRouteContainer from "../Ui/AdminRoute/AdminRouteContainer";
 import NavigationContainer from "./Navigation/NavigationContainer";
@@ -19,6 +19,7 @@ import EditMasterDataContainer from "../AdminPage/MasterData/EditMasterData/Edit
 import NotFound from "../Status/NotFound";
 import {Switch} from "react-router";
 import CommentPageContainer from "../CommentPage/CommentPageContainer";
+import EditUserContainer from "../AdminPage/UserManagement/EditUser/EditUserContainer";
 
 
 function RootPage(props) {
@@ -38,6 +39,7 @@ function RootPage(props) {
             <PrivateRouteContainer path={ROUTES.COMMENTS + "/:id"} component={CommentPageContainer}/>
             <AdminRouteContainer path={ROUTES.ADMIN} component={AdminPageContainer}/>
             <AdminRouteContainer path={ROUTES.EDIT_MASTERDATA + "/:id"} component={EditMasterDataContainer}/>
+            <AdminRouteContainer path={ROUTES.EDIT_USER + "/:id"} component={EditUserContainer}/>
             <PrivateRouteContainer component={NotFound}/>
             </Switch>
         </Router>

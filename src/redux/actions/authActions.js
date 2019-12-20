@@ -9,6 +9,11 @@ export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS';
 export const CREATE_USER_ERROR = 'CREATE_USER_ERROR';
 export const CLEAN_AUTH_ERROR = 'CLEAN_AUTH_ERROR';
 export const CLEAN_AUTH_SUCCESS = 'CLEAN_AUTH_SUCCESS';
+export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
+export const UPDATE_USER_ERROR = 'UPDATE_USER_ERROR';
+export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
+export const DELETE_USER_ERROR = 'DELETE_USER_ERROR';
+
 
 
 //thunk actions
@@ -31,6 +36,36 @@ export const logoutUser = () => (dispatch, getState, {getFirebase}) => {
             dispatch(getLogoutUserSuccessAction());
         })
 };
+
+export const updateUser = updateUser => {
+    return (dispatch, getState, {getFirestore}) => {
+        const firestore = getFirestore();
+        firestore.collection('users').doc(updateUser.id).update({
+            firstName: updateUser.firstName,
+            lastName: updateUser.lastName,
+        }).then(() => {
+            dispatch(getUpdatedUserSuccessAction(updateUser));
+        }).catch((error) => {
+            dispatch(getUpdatedUserErrorAction(error));
+        })
+    }
+};
+
+
+export const deleteUser = userId => {
+    return (dispatch, getState, {getFirestore}) => {
+        const firestore = getFirestore();
+        firestore.collection('users').doc(userId).delete().then(() => {
+            console.log("successfully deleted user with the id: " + userId);
+            dispatch(getDeleteUserSuccessAction(userId));
+        }).catch((error) => {
+            console.log(error);
+            dispatch(getDeleteUserSuccessError(error));
+        })
+    }
+};
+
+
 
 export const changePassword = (password) => (dispatch, getState, {getFirebase}) => {
     const firebase = getFirebase();
@@ -107,15 +142,39 @@ const getResetPasswordErrorAction = (error) => ({
     payload: {error}
 });
 
+
 const getCreateUserSuccessAction = (newUser) => ({
     type: CREATE_USER_SUCCESS,
     payload: {newUser}
 });
 
+
 const getCreateUserErrorAction = (error) => ({
     type: CREATE_USER_ERROR,
     payload: {error}
 });
+
+
+const getUpdatedUserSuccessAction = (updatedUser) => ({
+    type: UPDATE_USER_SUCCESS,
+    payload: {updatedUser}
+});
+
+const getUpdatedUserErrorAction = (error) => ({
+    type: UPDATE_USER_ERROR,
+    payload: {error}
+});
+
+const getDeleteUserSuccessAction = userId => ({
+    type: DELETE_USER_SUCCESS,
+    payload: {userId}
+});
+
+const getDeleteUserSuccessError = error => ({
+    type: DELETE_USER_ERROR,
+    payload: {error}
+});
+
 
 export const cleanAuthErrorAction = () => ({
     type: CLEAN_AUTH_ERROR

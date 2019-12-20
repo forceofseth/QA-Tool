@@ -5,6 +5,7 @@ export const HOME = '/';
 export const ACCOUNT = '/account';
 export const ADD_USER = '/adduser';
 export const ADMIN = '/admin';
+export const EDIT_USER = '/edit-user';
 export const EDIT_MASTERDATA = '/edit-masterdata';
 export const PASSWORD_FORGET = '/pw-forget';
 export const ADD_CASE = '/addcase';

@@ -1,10 +1,10 @@
 import React from 'react';
 import {useAuthorizationRedirect} from "../../hooks/useAuthorizationRedirect";
 import Container from "@material-ui/core/Container";
-import AddUser from "./AddUser/AddUserContainer";
+import AddUser from "./UserManagement/AddUser/AddUserContainer";
 import AddMasterDataContainer from "./MasterData/AddMasterData/AddMasterDataContainer";
 import MasterDataListContainer from "./MasterData/MasterDataList/MasterDataListContainer";
-import UserListContainer from "./UserList/UserListContainer";
+import UserListContainer from "./UserManagement/UserList/UserListContainer";
 import Grid from "@material-ui/core/Grid";
 
 function AdminPage(props) {
