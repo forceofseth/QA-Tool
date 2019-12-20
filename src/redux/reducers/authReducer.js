@@ -96,7 +96,7 @@ export default function authReducer(state = initialState, action) {
         case DELETE_USER_SUCCESS:
             return {
                 ...state,
-                successMessage: "Successfully deleted user: "+ action.payload.userId.firstName + " " + action.payload.userId.lastName + "!",
+                successMessage: "Successfully deleted user!",
                 error: null
             };
 
