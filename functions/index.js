@@ -8,16 +8,18 @@ exports.deleteAuthUser = functions.https.onRequest((req, res) => {
     if (!admin.apps.length) {
         admin.initializeApp();
     }
-    const uid = req.query.uid;
-    admin.auth().deleteUser(uid).then(() => {
-        console.log("Successfully deleted user with the uid: " + uid);
-        res.end();
-        return null;
-    }).catch((error) => {
-        console.log(error);
-        res.end();
-        return null;
-    });
+    return cors(req, res, () => {
+        const uid = req.query.uid;
+        admin.auth().deleteUser(uid).then(() => {
+            console.log("Successfully deleted user with the uid: " + uid);
+            res.end();
+            return null;
+        }).catch((error) => {
+            console.log(error);
+            res.end();
+            return null;
+        });
+    })
 });
 
 exports.createNewAuthUser = functions.https.onRequest((req, res) => {

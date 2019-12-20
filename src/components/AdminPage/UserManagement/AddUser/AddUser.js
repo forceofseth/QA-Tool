@@ -44,8 +44,7 @@ function AddUser(props) {
         state.passwordOne === '' ||
         state.email === '' ||
         state.firstName === ''||
-        state.lastName === ''||
-        state.admin === '';
+        state.lastName === '';
 
     return (
         <div>
@@ -109,7 +108,7 @@ function AddUser(props) {
                 <FormControlLabel
                     control={<Checkbox
                         onChange={onChangeCheckbox}
-                        defaultChecked = {state.admin}
+                        checked={state.admin}
                         name="admin"
                         />}
                         label="Is this user an admin?"

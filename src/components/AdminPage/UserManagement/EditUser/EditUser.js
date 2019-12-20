@@ -79,7 +79,6 @@ function EditUser(props) {
                             />}
                             label="Is this user an admin?"
                         />
-
                         <Button disabled={isInvalid} type="submit" color="primary" variant="contained">
                             Update User
                         </Button>
