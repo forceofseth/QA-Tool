@@ -9,7 +9,7 @@ import AddCheckListElementContainer from "../../Ui/AddCheckListElement/AddCheckL
 import SimpleSnackbarContainer from "../../Ui/Snackbar/SimpleSnackbarContainer";
 
 function WebCheckList(props) {
-    const {webChecks, caseId, updateCaseChecklist} = props;
+    const {webChecks, caseId, updateCaseChecklist,singleCase} = props;
     const [state, setState] = useState(webChecks);
 
     useEffect(() => {
@@ -38,7 +38,7 @@ function WebCheckList(props) {
                             <span>BACK</span>
                         </Button>
                     </Link>
-                    <h1>Customer Name / ProjectID / Product comes here</h1>
+                    <h1>{singleCase.customer} / {caseId} / {singleCase.product}</h1>
 
                     {state && Object.keys(state).map(key => {
                         return (
