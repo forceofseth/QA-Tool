@@ -31,4 +31,4 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `firebase CloudFunctions`
  To deploy only the functions run:
-firebase deploy --only functions
+firebase `deploy --only functions`
