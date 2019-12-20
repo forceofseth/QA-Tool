@@ -42,7 +42,9 @@ function WebCheckList(props) {
 
                     {state && Object.keys(state).map(key => {
                         return (
+                            <div key={key}>
                             <CheckboxWithLabel defaultChecked={state[key]} checkFor={key} onChange={onChange}/>
+                            </div>
                         )
                     })}
                 </div>
