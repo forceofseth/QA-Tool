@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
@@ -57,6 +59,11 @@ export const deleteUser = userId => {
     return (dispatch, getState, {getFirestore}) => {
         const firestore = getFirestore();
         firestore.collection('users').doc(userId).delete().then(() => {
+            //call firebase-cloud-function to delete the auth user.
+        axios.post("https://us-central1-qa-tool-e6f47.cloudfunctions.net/deleteAuthUser?uid="+userId).then(()=>{
+                console.log("successfully deleted auth user");
+            }
+        );
             console.log("successfully deleted user with the id: " + userId);
             dispatch(getDeleteUserSuccessAction(userId));
         }).catch((error) => {
@@ -65,8 +72,6 @@ export const deleteUser = userId => {
         })
     }
 };
-
-
 
 export const changePassword = (password) => (dispatch, getState, {getFirebase}) => {
     const firebase = getFirebase();
@@ -91,25 +96,26 @@ export const resetPassword = (email) => (dispatch, getState, {getFirebase}) => {
 
 };
 
-export const createUser = (newUser) => (dispatch, getState, {getFirebase, getFirestore}) => {
-    const firebase = getFirebase();
-    const firestore = getFirestore();
-    firebase.auth().createUserWithEmailAndPassword(newUser.email, newUser.passwordOne)
-        .then((response) => {
-            return firestore.collection('users').doc(response.user.uid).set({
-                firstName: newUser.firstName,
-                lastName: newUser.lastName,
-                admin: newUser.admin === true
-            }).then(() => {
-                dispatch(getCreateUserSuccessAction(newUser));
+export const createUser = (newUser) => {
+    return (dispatch, getState, {getFirestore}) => {
+        const firestore = getFirestore();
+        axios.post("https://us-central1-qa-tool-e6f47.cloudfunctions.net/createNewAuthUser?email=" + newUser.email + "&password=" + newUser.passwordOne)
+            .then((response) => {
+                return firestore.collection('users').doc(response.data).set({
+                    firstName: newUser.firstName,
+                    lastName: newUser.lastName,
+                    admin: newUser.admin === true
+                }).then(()=>{
+                    dispatch(getCreateUserSuccessAction(newUser));
+                }).catch((error)=>{
+                    dispatch(getCreateUserErrorAction(error));
+                })
             }).catch(error => {
-                dispatch(getCreateUserErrorAction(error));
-            })
-        }).catch(error =>{
+                console.log(error);
             dispatch(getCreateUserErrorAction(error));
-    })
+        })
+    };
 };
-
 
 //actions creators
 const getLoggedInUserSuccessAction = () => ({
