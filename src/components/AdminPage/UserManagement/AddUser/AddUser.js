@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import SimpleSnackbarContainer from "../../Ui/Snackbar/SimpleSnackbarContainer";
+import SimpleSnackbarContainer from "../../../Ui/Snackbar/SimpleSnackbarContainer";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -44,8 +44,7 @@ function AddUser(props) {
         state.passwordOne === '' ||
         state.email === '' ||
         state.firstName === ''||
-        state.lastName === ''||
-        state.admin === '';
+        state.lastName === '';
 
     return (
         <div>
@@ -109,7 +108,7 @@ function AddUser(props) {
                 <FormControlLabel
                     control={<Checkbox
                         onChange={onChangeCheckbox}
-                        defaultChecked = {state.admin}
+                        checked={state.admin}
                         name="admin"
                         />}
                         label="Is this user an admin?"

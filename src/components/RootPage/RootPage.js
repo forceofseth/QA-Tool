@@ -9,20 +9,24 @@ import EditCaseContainer from "../EditCasePage/EditCasePageContainer";
 import HomePageContainer from "../HomePage/HomePageContainer";
 import PasswordForgetPageContainer from "../PasswordForgetPage/PasswordForgetPageContainer";
 import SignInPageContainer from "../SignInPage/SignInPageContainer";
-import AddUserContainer from "../AdminPage/AddUser/AddUserContainer";
+import AddUserContainer from "../AdminPage/UserManagement/AddUser/AddUserContainer";
 import PrivateRouteContainer from "../Ui/PrivateRoute/PrivateRouteContainer";
 import AdminRouteContainer from "../Ui/AdminRoute/AdminRouteContainer";
 import NavigationContainer from "./Navigation/NavigationContainer";
 import LeadCheckListContainer from "../CheckLists/LeadCheckList/LeadCheckListContainer";
 import WebCheckListContainer from "../CheckLists/WebCheckList.js/WebCheckListContainer";
 import EditMasterDataContainer from "../AdminPage/MasterData/EditMasterData/EditMasterDataContainer";
+import NotFound from "../Status/NotFound";
+import {Switch} from "react-router";
+import CommentPageContainer from "../CommentPage/CommentPageContainer";
+import EditUserContainer from "../AdminPage/UserManagement/EditUser/EditUserContainer";
 
 
 function RootPage(props) {
-    //TODO all Routes should be Pages?
     return (
         <Router>
             {props.auth.isEmpty ? null : <NavigationContainer/>}
+            <Switch>
             <Route path={ROUTES.SIGN_IN} component={SignInPageContainer}/>
             <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPageContainer}/>
             <PrivateRouteContainer exact path={ROUTES.HOME} component={HomePageContainer}/>
@@ -32,8 +36,12 @@ function RootPage(props) {
             <PrivateRouteContainer path={ROUTES.EDIT_CASE + "/:id"} component={EditCaseContainer}/>
             <PrivateRouteContainer path={ROUTES.LEAD_CHECKS + "/:id"} component={LeadCheckListContainer}/>
             <PrivateRouteContainer path={ROUTES.WEB_CHECKS + "/:id"} component={WebCheckListContainer}/>
+            <PrivateRouteContainer path={ROUTES.COMMENTS + "/:id"} component={CommentPageContainer}/>
             <AdminRouteContainer path={ROUTES.ADMIN} component={AdminPageContainer}/>
             <AdminRouteContainer path={ROUTES.EDIT_MASTERDATA + "/:id"} component={EditMasterDataContainer}/>
+            <AdminRouteContainer path={ROUTES.EDIT_USER + "/:id"} component={EditUserContainer}/>
+            <PrivateRouteContainer component={NotFound}/>
+            </Switch>
         </Router>
     );
 }

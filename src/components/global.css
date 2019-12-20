@@ -40,3 +40,11 @@ h1 {
 .title {
     float: left;
 }
+
+.MuiButton-containedPrimary {
+    background-color: #4C8CFD !important;
+}
+
+.MuiButton-contained.Mui-disabled {
+    background-color: rgba(0, 0, 0, 0.12) !important;
+}

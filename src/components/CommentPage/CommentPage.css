@@ -1,0 +1,25 @@
+.addComment {
+    float: right;
+}
+
+.chat {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    background-color: #EFEFEF;
+    color: #333333;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12);
+}
