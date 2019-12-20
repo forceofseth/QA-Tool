@@ -11,7 +11,7 @@ import Button from "@material-ui/core/Button";
 
 function EditUser(props) {
     useAuthorizationRedirect(props.auth);
-    const {userToEdit: userToEdit} = props;
+    const {userToEdit} = props;
     const [state, setState] = useState({...userToEdit});
 
     useEffect(() => {
@@ -41,14 +41,14 @@ function EditUser(props) {
 
     const isInvalid =
         state.firstName === ''||
-        state.lastName === ''||
-        state.admin === '';
+        state.lastName === '';
 
     return (
         <Container maxWidth="lg" className="mainContainer">
+            <h1>Edit User</h1>
             {userToEdit ? (
                 <div>
-                    <form className="form" onSubmit={onSubmit} onChange={onChange} state={state} title={"Edit User"}>
+                    <form className="form" onSubmit={onSubmit}>
                         <TextField
                             name="firstName"
                             value={state.firstName}

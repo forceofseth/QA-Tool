@@ -43,6 +43,7 @@ export const updateUser = updateUser => {
         firestore.collection('users').doc(updateUser.id).update({
             firstName: updateUser.firstName,
             lastName: updateUser.lastName,
+            admin: updateUser.admin === true
         }).then(() => {
             dispatch(getUpdatedUserSuccessAction(updateUser));
         }).catch((error) => {
