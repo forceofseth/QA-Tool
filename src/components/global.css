@@ -41,8 +41,17 @@ h1 {
     float: left;
 }
 
+.mainContainer.notFound {
+    height: 200px !important;
+}
+
+.title.notFound {
+    float: none;
+}
+
 .MuiButton-containedPrimary {
     background-color: #4C8CFD !important;
+    margin-top: 15px !important;
 }
 
 .MuiButton-contained.Mui-disabled {
