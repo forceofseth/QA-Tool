@@ -8,6 +8,7 @@ import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
+import {Link} from "react-router-dom";
 
 function EditUser(props) {
     useAuthorizationRedirect(props.auth);
@@ -45,7 +46,12 @@ function EditUser(props) {
 
     return (
         <Container maxWidth="lg" className="mainContainer">
-            <h1>Edit User</h1>
+            <h1 className="title">Edit User</h1>
+            <Link to={ADMIN} className="backButton">
+                <Button color="primary" variant="contained">
+                    <span>BACK</span>
+                </Button>
+            </Link>
             {userToEdit ? (
                 <div>
                     <form className="form" onSubmit={onSubmit}>
@@ -73,6 +79,7 @@ function EditUser(props) {
                         />
                         <FormControlLabel
                             control={<Checkbox
+                                color="primary"
                                 onChange={onChangeCheckbox}
                                 defaultChecked = {state.admin}
                                 name="admin"

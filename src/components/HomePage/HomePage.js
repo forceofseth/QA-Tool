@@ -40,15 +40,15 @@ const HomePage = (props) => {
                 <thead>
                 <tr>
                     <th>Project ID</th>
-                    <th>Approved</th>
+                    <th className="centeredTableElement">Approved</th>
                     <th>Customer</th>
                     <th>Date</th>
                     <th>Product</th>
                     <th>Lead</th>
                     <th>Web</th>
-                    <th>Comments</th>
-                    <th>Edit</th>
-                    <th>Archive</th>
+                    <th className="centeredTableElement">Comments</th>
+                    <th className="centeredTableElement">Edit</th>
+                    <th className="centeredTableElement">Archive</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -57,8 +57,8 @@ const HomePage = (props) => {
                     return (
                         <tr key={oneCase.id}>
                             <td data-label="ID">{oneCase.projectId}</td>
-                            {oneCase.approved ?<td data-label="Approved"><CheckCircleOutlineIcon className="approved"/></td>:
-                                <td data-label="Approved"><HighlightOffIcon className="notApproved"/></td>
+                            {oneCase.approved ?<td data-label="Approved" className="centeredTableElement"><CheckCircleOutlineIcon className="approved"/></td>:
+                                <td data-label="Approved" className="centeredTableElement"><HighlightOffIcon className="notApproved"/></td>
                             }
                             <td data-label="Customer">{oneCase.customer}</td>
                             <td data-label="Date">{moment(oneCase.date.toDate()).format('DD.MM.YY')}</td>
@@ -84,15 +84,14 @@ const HomePage = (props) => {
                                     <ForumOutlined fontSize="small"/>
                                 </Link>
                             </td>
-                            <td className="editLabel" data-label="Edit">
+                            <td className="editLabel centeredTableElement" data-label="Edit">
                                 <Link to={EDIT_CASE + "/" + oneCase.id}>
                                     <EditIcon fontSize="small"/>
                                 </Link>
                             </td>
-                            <td className="archive" data-label="Archive">
+                            <td className="archive centeredTableElement" data-label="Archive">
                                 <Radio
-                                    color="default"
-                                    name="radio-button-demo"
+                                    color="primary"
                                 />
                             </td>
                         </tr>

@@ -54,7 +54,6 @@ function PasswordForgetPage(props) {
                             value={state.email}
                             onChange={onChange}
                             type="text"
-                            placeholder="Email Address"
                         />
                         <Button
                             type="submit"
