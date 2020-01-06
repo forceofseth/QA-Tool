@@ -55,6 +55,7 @@ function SignInPage(props) {
                             label="E-Mail"
                             required
                             fullWidth
+                            autoComplete="true"
                         />
                         <TextField
                             id="outlined-password-input"
@@ -67,6 +68,7 @@ function SignInPage(props) {
                             type="password"
                             required
                             fullWidth
+                            autoComplete="true"
                         />
 
                         <Button
