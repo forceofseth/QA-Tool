@@ -1,5 +1,4 @@
 import * as moment from "moment";
-
 export const CREATE_CASE_SUCCESS = 'CREATE_CASE_SUCCESS';
 export const CREATE_CASE_ERROR = 'CREATE_CASE_ERROR';
 export const CLEAN_CASE_SUCCESS = 'CLEAN_CASE_SUCCESS';
@@ -11,6 +10,8 @@ export const ADD_CHECKLIST_ELEMENT_SUCCESS = 'ADD_CHECKLIST_ELEMENT_SUCCESS';
 export const ADD_CHECKLIST_ELEMENT_ERROR = 'ADD_CHECKLIST_ELEMENT_ERROR';
 export const ADD_COMMENT_SUCCESS = 'ADD_COMMENT_SUCCESS';
 export const ADD_COMMENT_ERROR = 'ADD_COMMENT_ERROR';
+export const UPDATE_ARCHIVE_STATE_SUCCESS = 'UPDATE_ARCHIVE_STATE_SUCCESS';
+export const UPDATE_ARCHIVE_STATE_ERROR = 'UPDATE_ARCHIVE_STATE_ERROR';
 
 //thunk actions
 export const createCase = newCase => {
@@ -30,8 +31,8 @@ export const createCase = newCase => {
                 //TODO milos add more checkboxes
                 checkProperties: Boolean(false),
                 checkProperties2: Boolean(false)
-
-            }
+            },
+            archived: Boolean(false)
         }).then(() => {
             dispatch(getCreateCaseSuccessAction(newCase));
         }).catch(error => {
@@ -89,6 +90,22 @@ export const addCheckListElement = (newChecklistElement, caseId, checkType, curr
                 dispatch(getAddCheckListElementErrorAction(error));
             })
         }
+    }
+};
+
+export const updateCaseArchiveState = (caseId) => {
+    return(dispatch, getState, {getFirestore}) =>{
+        const firestore = getFirestore();
+        firestore.collection('cases').doc(caseId).get().then((doc) => {
+            const currentArchivedValue = doc.data().archived;
+            firestore.collection('cases').doc(caseId).update({archived: (!currentArchivedValue === true)}).then(()=>{
+                console.log("updated archive state of the case!");
+                dispatch(getUpdateArchiveStateSuccessAction(doc.data().projectId));
+            }).catch(error =>{
+                console.log(error);
+                dispatch(getUpdateArchiveStateErrorAction(error));
+            })
+        });
     }
 };
 
@@ -187,6 +204,16 @@ const getAddCommentSuccessAction = () => ({
 const getAddCommentErrorAction = error => ({
     type: ADD_COMMENT_ERROR,
     payload: {error}
+});
+
+const getUpdateArchiveStateSuccessAction = projectId =>({
+    type: UPDATE_ARCHIVE_STATE_SUCCESS,
+    payload:{projectId}
+});
+
+const getUpdateArchiveStateErrorAction = error =>({
+    type: UPDATE_ARCHIVE_STATE_ERROR,
+    payload:{error}
 });
 
 export const cleanCaseSuccessAction = () => ({

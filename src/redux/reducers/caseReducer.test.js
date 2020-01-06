@@ -4,7 +4,7 @@ import {
     CLEAN_CASE_ERROR,
     CLEAN_CASE_SUCCESS,
     CREATE_CASE_ERROR,
-    CREATE_CASE_SUCCESS, UPDATE_CASE_CHECKLIST_ERROR,
+    CREATE_CASE_SUCCESS, UPDATE_ARCHIVE_STATE_ERROR, UPDATE_ARCHIVE_STATE_SUCCESS, UPDATE_CASE_CHECKLIST_ERROR,
     UPDATE_CASE_ERROR,
     UPDATE_CASE_SUCCESS
 } from "../actions/caseActions";
@@ -70,7 +70,7 @@ describe('caseReducer Test Suite', () =>{
         const newState = caseReducer(initialState, {type: ADD_CHECKLIST_ELEMENT_ERROR, payload: {error}});
         expect(newState).toEqual({successMessage: null, error: error});
     });
-    /////////////////////////////////////////////
+
     it('error null, successMessage not null on add comment success', () => {
         const initialState = {
             successMessage: null,
@@ -90,7 +90,25 @@ describe('caseReducer Test Suite', () =>{
         expect(newState).toEqual({successMessage: null, error: error});
     });
 
-    ///////////////////////////////////////////
+    it('error null, successMessage not null on update archive state success', () => {
+        const initialState = {
+            successMessage: null,
+            error: "test error message"
+        };
+        const projectId = "projectId";
+        const newState = caseReducer(initialState, {type: UPDATE_ARCHIVE_STATE_SUCCESS, payload:{projectId}});
+        expect(newState).toEqual({successMessage: "Successfully updated archive-state of the case with the projectId: " + projectId, error: null});
+    });
+
+    it('error not null, successMessage null update archive state error', () => {
+        const initialState = {
+            successMessage: null,
+            error: null
+        };
+        const error= {message: "this is an error"};
+        const newState = caseReducer(initialState, {type: UPDATE_ARCHIVE_STATE_ERROR, payload: {error}});
+        expect(newState).toEqual({successMessage: null, error: error});
+    });
 
     it('error not null, successMessage  null on update checklist error', () => {
         const initialState = {
