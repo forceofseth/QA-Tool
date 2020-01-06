@@ -23,14 +23,42 @@ export const createCase = newCase => {
             date: new Date(moment.now()),
             projectId: Number(newCase.projectId),
             leadChecks: {
-                //TODO milos add more checkboxes
-                testLinks: Boolean(false),
-                testLinks2: Boolean(false)
+                "Browserkompatibilät Desktop (Chrome, Firefox, IE, Edge, Safari)": Boolean(false),
+                "Browserkompatibilät Mobile (iOS // Safari, Android // Chrome)": Boolean(false),
+                "Page-Title korrekt": Boolean(false),
+                "Favicon gesetzt": Boolean(false),
+                "Open Graph Sharing komplett": Boolean(false),
+                "Share-Image definiert": Boolean(false),
+                "Twitter Share-Image definiert": Boolean(false),
+                "Sämtliche Links und Buttons funktionieren": Boolean(false),
+                "Share funktoniert": Boolean(false),
+                "Print-Version ist optimiert": Boolean(false),
+                "Responsive": Boolean(false),
+                "Sprachversione stimmen(?lang=fr etc.)": Boolean(false),
+                "Send2Friend funktioniert und ist gestyled": Boolean(false)
             },
             webChecks: {
-                //TODO milos add more checkboxes
-                checkProperties: Boolean(false),
-                checkProperties2: Boolean(false)
+                "Browserkompatibilät Desktop (Chrome, Firefox, IE, Edge, Safari)": Boolean(false),
+                "Browserkompatibilät Mobile (iOS // Safari, Android // Chrome)": Boolean(false),
+                "Page-Title korrekt": Boolean(false),
+                "Favicon gesetzt": Boolean(false),
+                "Open Graph Sharing komplett": Boolean(false),
+                "Share-Image definiert": Boolean(false),
+                "Twitter Share-Image definiert": Boolean(false),
+                "Sämtliche Links und Buttons funktionieren": Boolean(false),
+                "Share funktoniert": Boolean(false),
+                "Print-Version ist optimiert": Boolean(false),
+                "Responsive": Boolean(false),
+                "Sprachversione stimmen (?lang=fr etc.)": Boolean(false),
+                "Send2Friend funktioniert und ist gestyled": Boolean(false),
+                "WEB: HTML-Sprache definiert": Boolean(false),
+                "WEB: styles.css korrekt eingebunden": Boolean(false),
+                "WEB: stepstone alternate.css": Boolean(false),
+                "WEB: message.properties file korrekt": Boolean(false),
+                "WEB: viewPixel implementiert": Boolean(false),
+                "WEB: GoogleMaps mit korrektem API Key": Boolean(false),
+                "WEB: alle Pfade korrekt ({{assetsPath}})": Boolean(false),
+                "WEB: customfonts korrekt implementiert": Boolean(false)
             },
             archived: Boolean(false)
         }).then(() => {
