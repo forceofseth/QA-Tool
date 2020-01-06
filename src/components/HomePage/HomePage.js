@@ -16,9 +16,13 @@ import HomeTableHeader from "../Ui/HomeTable/HomeTableHeader";
 import HomeTableRow from "../Ui/HomeTable/HomeTableRow";
 
 
-
 const HomePage = (props) => {
     useAuthorizationRedirect(props.auth);
+    const sortedCases = props.cases && props.cases
+        //sorting the cases from newest to oldest
+        .sort((a, b) => {
+        return b.date.toDate() - a.date.toDate();
+    });
 
     return (
         <Container maxWidth="lg" className="mainContainer">
@@ -34,20 +38,21 @@ const HomePage = (props) => {
             <table>
                 <HomeTableHeader/>
                 <tbody>
-                {props.cases && props.cases
+                {sortedCases && sortedCases
                     .filter(singleCase => singleCase.archived === false)
                     .map(singleCase => {
-                    return(
-                    <HomeTableRow key={singleCase.id} singleCase={singleCase} updateCaseArchiveState={props.updateCaseArchiveState} />
-                    )
-                })}
+                        return (
+                            <HomeTableRow key={singleCase.id} singleCase={singleCase}
+                                          updateCaseArchiveState={props.updateCaseArchiveState}/>
+                        )
+                    })}
                 </tbody>
             </table>
 
             <br/><br/>
             <ExpansionPanel>
                 <ExpansionPanelSummary
-                    expandIcon={<ExpandMoreIcon />}
+                    expandIcon={<ExpandMoreIcon/>}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
@@ -58,11 +63,12 @@ const HomePage = (props) => {
                     <table>
                         <HomeTableHeader/>
                         <tbody>
-                        {props.cases && props.cases
+                        {sortedCases && sortedCases
                             .filter(singleCase => singleCase.archived === true)
                             .map(singleCase => {
-                                return(
-                                    <HomeTableRow key={singleCase.id} singleCase={singleCase} updateCaseArchiveState={props.updateCaseArchiveState} />
+                                return (
+                                    <HomeTableRow key={singleCase.id} singleCase={singleCase}
+                                                  updateCaseArchiveState={props.updateCaseArchiveState}/>
                                 )
                             })}
                         </tbody>
@@ -71,7 +77,6 @@ const HomePage = (props) => {
             </ExpansionPanel>
             <SimpleSnackbarContainer/>
         </Container>
-
     );
 };
 
