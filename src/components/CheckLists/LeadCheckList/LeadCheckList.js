@@ -9,7 +9,7 @@ import AddCheckListElementContainer from "../../Ui/AddCheckListElement/AddCheckL
 import SimpleSnackbarContainer from "../../Ui/Snackbar/SimpleSnackbarContainer";
 
 function LeadCheckList(props) {
-    const {leadChecks, caseId, updateCaseChecklist} = props;
+    const {leadChecks, caseId, updateCaseChecklist, singleCase} = props;
     const [state, setState] = useState(leadChecks);
 
     useEffect(() => {
@@ -37,10 +37,12 @@ function LeadCheckList(props) {
                             <span>BACK</span>
                         </Button>
                     </Link>
-                    <h1>{"Lead CheckList"}</h1>
+                    <h1>{singleCase.customer} / {caseId} / {singleCase.product}</h1>
                     {state && Object.keys(state).map(key => {
                         return (
+                            <div key={key}>
                             <CheckboxWithLabel defaultChecked={state[key]} checkFor={key} onChange={onChange}/>
+                            </div>
                         )
                     })}
                 </div>

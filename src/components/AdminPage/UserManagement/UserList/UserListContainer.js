@@ -1,4 +1,4 @@
-import {getAuth, getUserList} from "../../../../redux/selectors";
+import {getAuth, getAuthProfile, getUserList} from "../../../../redux/selectors";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {firestoreConnect} from "react-redux-firebase";
@@ -12,7 +12,8 @@ const mapDispatchToProps = {
 const mapStateToProps = state => {
     return {
         auth: getAuth(state),
-        userList: getUserList(state)
+        userList: getUserList(state),
+        profile: getAuthProfile(state)
     };
 };
 

@@ -40,7 +40,7 @@ function PasswordChange(props) {
                     value={state.passwordOne}
                     onChange={onChange}
                     type="password"
-                    placeholder="New Password"
+                    label="New Password"
                     required
                     fullWidth
                 />
@@ -52,7 +52,7 @@ function PasswordChange(props) {
                     value={state.passwordTwo}
                     onChange={onChange}
                     type="password"
-                    placeholder="Confirm New Password"
+                    label="Confirm New Password"
                     required
                     fullWidth
                 />

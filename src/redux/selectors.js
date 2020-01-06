@@ -8,7 +8,7 @@ export const getAuthProfile = state => {
 };
 
 export const getAuthError = state => {
-    return state.auth.error
+    return state.auth.error;
 };
 
 export const getAuthSuccessMessage = state => {

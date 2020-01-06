@@ -34,12 +34,14 @@ function PasswordForgetPage(props) {
         <Box component="span" className="loginFullPage">
             <Container maxWidth="md">
                 <div className="paper">
-                    <h1 className="title">Reset your Password</h1>
-                    <Link to='/' className="backButton">
-                        <Button color="primary" variant="contained">
-                            <span>BACK</span>
-                        </Button>
-                    </Link>
+                    <header>
+                        <h1 className="title">Reset your Password</h1>
+                        <Link to='/' className="backButton">
+                            <Button color="primary" variant="contained">
+                                <span>BACK</span>
+                            </Button>
+                        </Link>
+                    </header>
                     <form className="form" noValidate onSubmit={onSubmit}>
                         <TextField
                             id="outlined-email-input"
@@ -52,7 +54,6 @@ function PasswordForgetPage(props) {
                             value={state.email}
                             onChange={onChange}
                             type="text"
-                            placeholder="Email Address"
                         />
                         <Button
                             type="submit"

@@ -13,7 +13,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 
 const UserList = (props) => {
-
+    const profileUserName = props.profile.firstName + props.profile.lastName;
     const initialState = {
         open: false,
         userId: null
@@ -34,6 +34,10 @@ const UserList = (props) => {
         });
     };
 
+    const areUserStringsEqual =(profileUserName, listUserName)=>{
+      return profileUserName === listUserName;
+    };
+
     return (
         <div>
             <table>
@@ -48,24 +52,25 @@ const UserList = (props) => {
                 </thead>
                 <tbody>
 
-                {props.userList && props.userList.map(oneUserList => {
+                {props.userList && props.userList.map(user => {
                     return (
-                        <tr key={oneUserList.id}>
-                            <td data-label="Firstname">{oneUserList.firstName}</td>
-                            <td data-label="Lastname">{oneUserList.lastName}</td>
-                            {oneUserList.admin ?<td data-label="Admin"><CheckCircleOutlineIcon/></td>:
+                        <tr key={user.id}>
+                            <td data-label="Firstname">{user.firstName}</td>
+                            <td data-label="Lastname">{user.lastName}</td>
+                            {user.admin ?<td data-label="Admin"><CheckCircleOutlineIcon/></td>:
                                 <td data-label="Admin"><HighlightOffIcon/></td>
                             }
                             <td data-label="Edit">
-                                <Link to={EDIT_USER + "/" + oneUserList.id}>
+                                <Link to={EDIT_USER + "/" + user.id}>
                                     <EditIcon fontSize="small"/>
                                 </Link>
                             </td>
+
                             <td data-label="Delete">
-                                <DeleteIcon
-                                    onClick={() =>handleClickOpen(oneUserList.id)}
+                                {!areUserStringsEqual(profileUserName,user.firstName + user.lastName)?  <DeleteIcon
+                                    onClick={() =>handleClickOpen(user.id)}
                                     className="deleteIcon"
-                                />
+                                />: null}
                             </td>
                         </tr>
                     )
@@ -95,7 +100,6 @@ const UserList = (props) => {
                         </Button>
                     </DialogActions>
                 </Dialog>
-
                 </tbody>
             </table>
         </div>

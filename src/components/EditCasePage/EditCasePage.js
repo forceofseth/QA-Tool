@@ -34,6 +34,7 @@ function EditCasePage(props) {
             <div>
                 {caseToEdit ? (
                     <div>
+                        <h1 className="title">Edit Case</h1>
                         <Link to={HOME} className="backButton">
                             <Button color="primary" variant="contained">
                                 <span>BACK</span>

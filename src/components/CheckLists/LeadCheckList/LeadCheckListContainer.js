@@ -15,10 +15,13 @@ const mapStateToProps = (state, ownProps) => {
     const caseId = ownProps.match.params.id;
     const cases = getCasesData(state);
     const leadChecks = cases ? cases[caseId].leadChecks : null;
+    const singleCase = cases ? cases[caseId] : null;
+
     return {
         auth: getAuth(state),
         leadChecks: leadChecks,
-        caseId: caseId
+        caseId: caseId,
+        singleCase: singleCase
     };
 };
 

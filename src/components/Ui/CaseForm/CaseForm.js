@@ -24,7 +24,7 @@ function CaseForm(props) {
                     value={state.customer}
                     onChange={onChange}
                     type="text"
-                    placeholder="Customer"
+                    label="Customer"
                     margin="normal"
                     variant="outlined"
                     required
@@ -36,7 +36,7 @@ function CaseForm(props) {
                     value={state.projectId}
                     onChange={onChange}
                     type="text"
-                    placeholder="Layout ID"
+                    label="Layout ID"
                     margin="normal"
                     variant="outlined"
                     required
@@ -48,7 +48,7 @@ function CaseForm(props) {
                     value={state.product}
                     onChange={onChange}
                     type="text"
-                    placeholder="Product"
+                    label="Product"
                     margin="normal"
                     variant="outlined"
                     required
@@ -59,7 +59,7 @@ function CaseForm(props) {
                     value={state.lead}
                     onChange={onChange}
                     type="text"
-                    placeholder="Lead"
+                    label="Lead"
                     margin="normal"
                     variant="outlined"
                     required
@@ -70,7 +70,7 @@ function CaseForm(props) {
                     value={state.web}
                     onChange={onChange}
                     type="text"
-                    placeholder="Web"
+                    label="Web"
                     margin="normal"
                     variant="outlined"
                     required
