@@ -11,7 +11,6 @@ import Divider from "@material-ui/core/Divider";
 function AdminPage(props) {
     useAuthorizationRedirect(props.auth);
     return (
-        //TODO MILOS Responsive view table fix
         <Container maxWidth="lg" className="mainContainer">
 
             <h1>Admin</h1>

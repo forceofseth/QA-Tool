@@ -5,7 +5,7 @@ import moment from "moment";
 import {Link} from "react-router-dom";
 import {COMMENTS, EDIT_CASE, LEAD_CHECKS, WEB_CHECKS} from "../../../constants/routes";
 import LaunchIcon from "@material-ui/icons/Launch";
-import {ForumOutlined} from "@material-ui/icons";
+import {ChatBubbleOutline} from "@material-ui/icons";
 import EditIcon from "@material-ui/icons/Edit";
 import Checkbox from "@material-ui/core/Checkbox";
 
@@ -39,8 +39,9 @@ function HomeTableRow(props) {
             </td>
             <td className="commentIcon" data-label="Comments">
                 <Link to={COMMENTS + "/" + singleCase.id}>
-                    <div>{singleCase.commentCounter}</div>
-                    <ForumOutlined fontSize="small"/>
+                    <ChatBubbleOutline fontSize="medium"/>
+                    <div className="commentCounter">{singleCase.commentCounter}</div>
+
                 </Link>
             </td>
             <td className="editLabel centeredTableElement" data-label="Edit">
