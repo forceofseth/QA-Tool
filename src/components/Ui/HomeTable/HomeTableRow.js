@@ -39,6 +39,7 @@ function HomeTableRow(props) {
             </td>
             <td className="commentIcon" data-label="Comments">
                 <Link to={COMMENTS + "/" + singleCase.id}>
+                    <div>{singleCase.commentCounter}</div>
                     <ForumOutlined fontSize="small"/>
                 </Link>
             </td>
