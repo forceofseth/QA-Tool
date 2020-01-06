@@ -6,12 +6,12 @@ import {
     UPDATE_MASTERDATA_SUCCESS, UPDATE_MASTERDATA_ERROR, DELETE_MASTERDATA_SUCCESS, DELETE_MASTERDATA_ERROR
 } from "../actions/masterDataActions";
 
-const initalState = {
+const initialState = {
     successMessage: null,
     error: null
 };
 
-export default function masterDataReducer(state = initalState, action) {
+export default function masterDataReducer(state = initialState, action) {
     switch (action.type) {
         case CREATE_MASTERDATA_SUCCESS:
             console.log("created masterData");

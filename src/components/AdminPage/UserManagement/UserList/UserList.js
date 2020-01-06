@@ -30,12 +30,12 @@ const UserList = (props) => {
 
     const handleClose = () => {
         setDialogState({
-            open:false
+            open: false
         });
     };
 
-    const areUserStringsEqual =(profileUserName, listUserName)=>{
-      return profileUserName === listUserName;
+    const areUserStringsEqual = (profileUserName, listUserName) => {
+        return profileUserName === listUserName;
     };
 
     return (
@@ -57,7 +57,7 @@ const UserList = (props) => {
                         <tr key={user.id}>
                             <td data-label="Firstname">{user.firstName}</td>
                             <td data-label="Lastname">{user.lastName}</td>
-                            {user.admin ?<td data-label="Admin"><CheckCircleOutlineIcon/></td>:
+                            {user.admin ? <td data-label="Admin"><CheckCircleOutlineIcon/></td> :
                                 <td data-label="Admin"><HighlightOffIcon/></td>
                             }
                             <td data-label="Edit">
@@ -67,10 +67,10 @@ const UserList = (props) => {
                             </td>
 
                             <td data-label="Delete">
-                                {!areUserStringsEqual(profileUserName,user.firstName + user.lastName)?  <DeleteIcon
-                                    onClick={() =>handleClickOpen(user.id)}
+                                {!areUserStringsEqual(profileUserName, user.firstName + user.lastName) ? <DeleteIcon
+                                    onClick={() => handleClickOpen(user.id)}
                                     className="deleteIcon"
-                                />: null}
+                                /> : null}
                             </td>
                         </tr>
                     )
@@ -89,7 +89,7 @@ const UserList = (props) => {
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={()=>{
+                        <Button onClick={() => {
                             props.deleteUser(dialogState.userId);
                             handleClose()
                         }} color="primary">
@@ -103,7 +103,6 @@ const UserList = (props) => {
                 </tbody>
             </table>
         </div>
-
     );
 };
 

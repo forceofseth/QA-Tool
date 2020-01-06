@@ -17,6 +17,7 @@ export const UPDATE_ARCHIVE_STATE_ERROR = 'UPDATE_ARCHIVE_STATE_ERROR';
 export const createCase = newCase => {
     return (dispatch, getState, {getFirestore}) => {
         const firestore = getFirestore();
+        // noinspection NonAsciiCharacters
         firestore.collection('cases').add({
             ...newCase,
             approved: Boolean(false),
@@ -83,7 +84,6 @@ export const updateCase = updatedCase => {
         }).catch((error) => {
             dispatch(getUpdateCaseErrorAction(error));
         })
-
     }
 };
 

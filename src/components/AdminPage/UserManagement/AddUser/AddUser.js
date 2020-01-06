@@ -7,7 +7,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 
 function AddUser(props) {
 
-    const INITIAL_STATE = {
+    const initalState = {
         firstName: '',
         lastName: '',
         email: '',
@@ -15,11 +15,11 @@ function AddUser(props) {
         passwordTwo: '',
         admin: false
     };
-    const [state, setState] = useState(INITIAL_STATE);
+    const [state, setState] = useState(initalState);
 
     const onSubmit = event => {
         props.createUser(state);
-        setState(INITIAL_STATE);
+        setState(initalState);
         event.preventDefault();
     };
 
@@ -36,8 +36,6 @@ function AddUser(props) {
             [event.target.name]: !event.target.defaultChecked
         });
     };
-
-
 
     const isInvalid =
         state.passwordOne !== state.passwordTwo ||
@@ -104,7 +102,6 @@ function AddUser(props) {
                     required
                     fullWidth
                 />
-
                 <FormControlLabel
                     control={<Checkbox
                         color="primary"

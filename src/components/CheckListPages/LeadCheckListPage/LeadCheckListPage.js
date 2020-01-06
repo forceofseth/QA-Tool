@@ -2,23 +2,23 @@ import Container from "@material-ui/core/Container";
 import React, {useEffect, useState} from "react";
 import Loading from "../../Status/Loading";
 import CheckboxWithLabel from "../../Ui/Checkbox/CheckboxWithLabel";
-import {Link} from "react-router-dom";
 import {HOME} from "../../../constants/routes";
 import Button from "@material-ui/core/Button";
+import {Link} from "react-router-dom";
 import AddCheckListElementContainer from "../../Ui/AddCheckListElement/AddCheckListElementContainer";
 import SimpleSnackbarContainer from "../../Ui/Snackbar/SimpleSnackbarContainer";
 
-function WebCheckList(props) {
-    const {webChecks, caseId, updateCaseChecklist,singleCase} = props;
-    const [state, setState] = useState(webChecks);
+function LeadCheckListPage(props) {
+    const {leadChecks, caseId, updateCaseChecklist, singleCase} = props;
+    const [state, setState] = useState(leadChecks);
 
     useEffect(() => {
-        updateCaseChecklist(state, caseId, "webChecks")
+        updateCaseChecklist(state, caseId, "leadChecks")
     }, [state, caseId, updateCaseChecklist]);
 
     useEffect(() => {
-        setState(webChecks)
-    }, [webChecks]);
+        setState(leadChecks)
+    }, [leadChecks]);
 
     const onChange = event => {
         setState({
@@ -29,17 +29,15 @@ function WebCheckList(props) {
 
 
     return (
-
         <Container maxWidth="lg" className="mainContainer">
-            {webChecks ? (
+            {leadChecks ? (
                 <div>
                     <Link to={HOME} className="backButton">
                         <Button color="primary" variant="contained">
                             <span>BACK</span>
                         </Button>
                     </Link>
-                    <h1>Web-Checks: {singleCase.customer} / {caseId} / {singleCase.product}</h1>
-
+                    <h1>Lead-Checks: {singleCase.customer} / {caseId} / {singleCase.product}</h1>
                     {state && Object.keys(state).map(key => {
                         return (
                             <div key={key}>
@@ -48,13 +46,14 @@ function WebCheckList(props) {
                         )
                     })}
                 </div>
+
             ) : (
                 <Loading/>
             )}
-            <AddCheckListElementContainer checkType="webChecks" caseId={caseId} currentChecks={webChecks}/>
+            <AddCheckListElementContainer checkType="leadChecks" caseId={caseId} currentChecks={leadChecks}/>
             <SimpleSnackbarContainer/>
         </Container>
     );
 }
 
-export default WebCheckList;
+export default LeadCheckListPage;

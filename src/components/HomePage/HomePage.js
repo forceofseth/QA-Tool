@@ -21,8 +21,8 @@ const HomePage = (props) => {
     const sortedCases = props.cases && props.cases
         //sorting the cases from newest to oldest
         .sort((a, b) => {
-        return b.date.toDate() - a.date.toDate();
-    });
+            return b.date.toDate() - a.date.toDate();
+        });
 
     return (
         <Container maxWidth="lg" className="mainContainer">

@@ -6,10 +6,10 @@ import './AddCheckListElement.css'
 
 function AddCheckListElement(props){
     const {checkType, caseId, addCheckListElement,currentChecks} = props;
-    const INITIAL_STATE ={
+    const initialState ={
         newCheckListElement: ''
     };
-    const [state, setState] = useState(INITIAL_STATE);
+    const [state, setState] = useState(initialState);
 
     const onChange = event => {
         setState({
@@ -21,7 +21,7 @@ function AddCheckListElement(props){
     const onSubmit = event => {
         event.preventDefault();
         addCheckListElement(state.newCheckListElement, caseId, checkType, currentChecks);
-        setState(INITIAL_STATE);
+        setState(initialState);
     };
 
     return(

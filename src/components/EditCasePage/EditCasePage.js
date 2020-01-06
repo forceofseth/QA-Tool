@@ -50,5 +50,4 @@ function EditCasePage(props) {
     );
 }
 
-
 export default EditCasePage;

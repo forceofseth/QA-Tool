@@ -12,9 +12,7 @@ function AdminPage(props) {
     useAuthorizationRedirect(props.auth);
     return (
         <Container maxWidth="lg" className="mainContainer">
-
             <h1>Admin</h1>
-
             <Grid container spacing={5}>
                 <Grid item xs={12} md={6} >
                     <h3>Add User</h3>
@@ -26,8 +24,6 @@ function AdminPage(props) {
                 </Grid>
             </Grid>
             <Divider className="divider" orientation="horizontal" />
-
-
             <Grid container spacing={5}>
                 <Grid item xs={12} md={6} >
                     <h3>Add Masterdata</h3>
@@ -38,11 +34,7 @@ function AdminPage(props) {
                     <MasterDataListContainer/>
                 </Grid>
             </Grid>
-
-
-
         </Container>
-
     );
 }
 

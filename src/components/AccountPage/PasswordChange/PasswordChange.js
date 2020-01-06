@@ -6,12 +6,12 @@ import SimpleSnackbarContainer from "../../Ui/Snackbar/SimpleSnackbarContainer";
 
 function PasswordChange(props) {
 
-    const INITIAL_STATE = {
+    const initialState = {
         passwordOne: '',
         passwordTwo: '',
     };
 
-    const [state, setState] = useState(INITIAL_STATE);
+    const [state, setState] = useState(initialState);
 
     const isInvalid =
         state.passwordOne !== state.passwordTwo || state.passwordOne === '';
@@ -19,7 +19,7 @@ function PasswordChange(props) {
     const onSubmit = event => {
         props.changePassword(state.passwordOne);
         event.preventDefault();
-        setState(INITIAL_STATE);
+        setState(initialState);
     };
 
     const onChange = event => {
@@ -64,6 +64,5 @@ function PasswordChange(props) {
         </div>
     );
 }
-
 
 export default PasswordChange;

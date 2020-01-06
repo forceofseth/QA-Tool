@@ -3,7 +3,7 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import {firestoreConnect} from "react-redux-firebase";
 import {updateCaseChecklist} from "../../../redux/actions/caseActions";
-import WebCheckList from "./WebCheckList";
+import WebCheckListPage from "./WebCheckListPage";
 
 
 const mapDispatchToProps = {
@@ -29,4 +29,4 @@ export default compose(
     firestoreConnect([
         {collection: 'cases'}
     ])
-)(WebCheckList);
+)(WebCheckListPage);

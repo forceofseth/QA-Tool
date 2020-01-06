@@ -2,7 +2,7 @@ import {getAuth, getCasesData} from "../../../redux/selectors";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import {firestoreConnect} from "react-redux-firebase";
-import LeadCheckList from "./LeadCheckList";
+import LeadCheckListPage from "./LeadCheckListPage";
 import {updateCaseChecklist} from "../../../redux/actions/caseActions";
 
 
@@ -30,4 +30,4 @@ export default compose(
     firestoreConnect([
         {collection: 'cases'}
     ])
-)(LeadCheckList);
+)(LeadCheckListPage);

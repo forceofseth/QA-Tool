@@ -5,11 +5,11 @@ import Button from "@material-ui/core/Button";
 function CommentForm(props) {
     const {profile} = props;
 
-    const INITIAL_STATE = {
+    const initialState = {
         content: ''
     };
 
-    const [state, setState] = useState(INITIAL_STATE);
+    const [state, setState] = useState(initialState);
 
     const onChange = event => {
         setState({
@@ -21,9 +21,8 @@ function CommentForm(props) {
     const onSubmit = event => {
         event.preventDefault();
         props.createNewComment(props.caseId, state.content, props.currentComments, profile.firstName + " " +profile.lastName, props.commentCounter);
-        setState(INITIAL_STATE);
+        setState(initialState);
     };
-
 
     return (
         <div>

@@ -6,7 +6,7 @@ import Loading from "../../../Status/Loading";
 import {ADMIN} from "../../../../constants/routes";
 import Container from "@material-ui/core/Container";
 
-function EditMasterData(props) {
+function EditMasterDataPage(props) {
     useAuthorizationRedirect(props.auth);
     const {masterDataToEdit} = props;
     const [state, setState] = useState({...masterDataToEdit});
@@ -45,4 +45,4 @@ function EditMasterData(props) {
 }
 
 
-export default EditMasterData;
+export default EditMasterDataPage;

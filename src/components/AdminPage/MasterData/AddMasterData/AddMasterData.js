@@ -4,18 +4,18 @@ import MasterDataForm from "../../../Ui/MasterDataForm/MasterDataForm";
 
 function AddMasterData(props) {
 
-    const INITIAL_STATE = {
+    const initialState = {
         customer: '',
         projectId: '',
         product: ''
     };
 
-    const [state, setState] = useState(INITIAL_STATE);
+    const [state, setState] = useState(initialState);
 
     const onSubmit = event => {
         event.preventDefault();
         props.createMasterData(state);
-        setState(INITIAL_STATE);
+        setState(initialState);
     };
 
     const onChange = event => {

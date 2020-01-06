@@ -9,18 +9,18 @@ import Button from "@material-ui/core/Button";
 
 function PasswordForgetPage(props) {
 
-    const INITIAL_STATE = {
+    const initialState = {
         email: '',
     };
 
-    const [state, setState] = useState(INITIAL_STATE);
+    const [state, setState] = useState(initialState);
 
     const isInvalid = state.email === '';
 
     const onSubmit = event => {
         props.resetPassword(state.email);
         event.preventDefault();
-        setState(INITIAL_STATE);
+        setState(initialState);
     };
 
     const onChange = event => {
@@ -64,7 +64,6 @@ function PasswordForgetPage(props) {
                         >
                             Reset My Password
                         </Button>
-
                     </form>
                 </div>
             </Container>

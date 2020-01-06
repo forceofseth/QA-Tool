@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
@@ -15,8 +14,6 @@ export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
 export const UPDATE_USER_ERROR = 'UPDATE_USER_ERROR';
 export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
 export const DELETE_USER_ERROR = 'DELETE_USER_ERROR';
-
-
 
 //thunk actions
 export const loginUser = (email, password) => (dispatch, getState, {getFirebase}) => {
@@ -53,7 +50,6 @@ export const updateUser = updateUser => {
         })
     }
 };
-
 
 export const deleteUser = userId => {
     return (dispatch, getState, {getFirestore}) => {
@@ -93,12 +89,12 @@ export const resetPassword = (email) => (dispatch, getState, {getFirebase}) => {
         .catch(error => {
             dispatch(getResetPasswordErrorAction(error));
         })
-
 };
 
 export const createUser = (newUser) => {
     return (dispatch, getState, {getFirestore}) => {
         const firestore = getFirestore();
+        //call firebase-cloud-function to create a new user.
         axios.post("https://us-central1-qa-tool-e6f47.cloudfunctions.net/createNewAuthUser?email=" + newUser.email + "&password=" + newUser.passwordOne)
             .then((response) => {
                 return firestore.collection('users').doc(response.data).set({
@@ -161,7 +157,6 @@ const getCreateUserErrorAction = (error) => ({
     payload: {error}
 });
 
-
 const getUpdatedUserSuccessAction = (updatedUser) => ({
     type: UPDATE_USER_SUCCESS,
     payload: {updatedUser}
@@ -182,7 +177,6 @@ const getDeleteUserSuccessError = error => ({
     payload: {error}
 });
 
-
 export const cleanAuthErrorAction = () => ({
     type: CLEAN_AUTH_ERROR
 });
@@ -190,9 +184,3 @@ export const cleanAuthErrorAction = () => ({
 export const cleanAuthSuccessAction = () => ({
     type: CLEAN_AUTH_SUCCESS
 });
-
-
-
-
-
-

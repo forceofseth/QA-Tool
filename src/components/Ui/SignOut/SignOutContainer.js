@@ -5,7 +5,6 @@ import SignOut from "./SignOut";
 
 const mapDispatchToProps = {
     logoutUser
-
 };
 
 

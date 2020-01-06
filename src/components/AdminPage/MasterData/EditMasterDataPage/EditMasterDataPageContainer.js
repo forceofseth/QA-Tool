@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {updateMasterData} from "../../../../redux/actions/masterDataActions";
 import {compose} from "redux";
 import {firestoreConnect} from "react-redux-firebase";
-import EditMasterData from "./EditMasterData";
+import EditMasterDataPage from "./EditMasterDataPage";
 
 const mapDispatchToProps = {
     updateMasterData
@@ -25,4 +25,4 @@ export default compose(
     firestoreConnect([
         {collection: 'masterdata'}
     ])
-)(EditMasterData);
+)(EditMasterDataPage);

@@ -12,7 +12,7 @@ import '../global.css';
 function AddCasePage(props) {
     useAuthorizationRedirect(props.auth);
 
-    const INITIAL_STATE = {
+    const initialState = {
         approved: '',
         customer: '',
         date: '',
@@ -22,12 +22,12 @@ function AddCasePage(props) {
         web: ''
     };
 
-    const [state, setState] = useState(INITIAL_STATE);
+    const [state, setState] = useState(initialState);
 
     const onSubmit = event => {
         event.preventDefault();
         props.createCase(state);
-        setState(INITIAL_STATE);
+        setState(initialState);
         props.history.push(HOME);
     };
 
@@ -53,10 +53,8 @@ function AddCasePage(props) {
         });
     };
 
-
     return (
         <div>
-
             <Container maxWidth="lg" className="mainContainer">
                 <h1 className="title">Add Case</h1>
                 <Link to={HOME} className="backButton">
@@ -75,14 +73,9 @@ function AddCasePage(props) {
                 />
                 <CaseForm onSubmit={onSubmit} onChange={onChange} state={state}  title={"Add Case"}/>
             </Container>
-
-
-
-
         </div>
 
     );
 }
-
 
 export default AddCasePage;

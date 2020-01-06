@@ -94,6 +94,4 @@ describe('masterDataReducer Test Suite', () =>{
         const newState = masterDataReducer(initialState, {type: "NOT_MATCHING"});
         expect(newState).toEqual(initialState);
     });
-
-
 });

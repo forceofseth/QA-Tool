@@ -10,11 +10,11 @@ import SimpleSnackbarContainer from "../Ui/Snackbar/SimpleSnackbarContainer";
 
 
 function SignInPage(props) {
-    const INITIAL_STATE = {
+    const InitialState = {
         email: '',
         password: ''
     };
-    const [state, setState] = useState(INITIAL_STATE);
+    const [state, setState] = useState(InitialState);
     const {history} = props;
 
     useEffect(() => {
@@ -90,8 +90,6 @@ function SignInPage(props) {
             </Container>
             <SimpleSnackbarContainer/>
         </Box>
-
-
     );
 }
 

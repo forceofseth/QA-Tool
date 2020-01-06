@@ -1,5 +1,4 @@
 import React from 'react';
-import './RootPage.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import * as ROUTES from '../../constants/routes'
 import AccountPageContainer from "../AccountPage/AccountPageContainer";
@@ -13,9 +12,9 @@ import AddUserContainer from "../AdminPage/UserManagement/AddUser/AddUserContain
 import PrivateRouteContainer from "../Ui/PrivateRoute/PrivateRouteContainer";
 import AdminRouteContainer from "../Ui/AdminRoute/AdminRouteContainer";
 import NavigationContainer from "./Navigation/NavigationContainer";
-import LeadCheckListContainer from "../CheckLists/LeadCheckList/LeadCheckListContainer";
-import WebCheckListContainer from "../CheckLists/WebCheckList.js/WebCheckListContainer";
-import EditMasterDataContainer from "../AdminPage/MasterData/EditMasterData/EditMasterDataContainer";
+import LeadCheckListContainer from "../CheckListPages/LeadCheckListPage/LeadCheckListPageContainer";
+import WebCheckListContainer from "../CheckListPages/WebCheckListPage.js/WebCheckListPageContainer";
+import EditMasterDataContainer from "../AdminPage/MasterData/EditMasterDataPage/EditMasterDataPageContainer";
 import NotFound from "../Status/NotFound";
 import {Switch} from "react-router";
 import CommentPageContainer from "../CommentPage/CommentPageContainer";

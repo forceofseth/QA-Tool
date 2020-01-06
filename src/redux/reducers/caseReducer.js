@@ -14,12 +14,12 @@ import {
     UPDATE_ARCHIVE_STATE_ERROR
 } from "../actions/caseActions";
 
-const initalState = {
+const initialState = {
     successMessage: null,
     error: null
 };
 
-export default function caseReducer(state = initalState, action) {
+export default function caseReducer(state = initialState, action) {
     switch (action.type) {
         case CREATE_CASE_SUCCESS:
             console.log("created case", action.payload);

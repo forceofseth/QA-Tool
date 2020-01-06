@@ -9,7 +9,6 @@ const mapDispatchToProps = {
     createCase
 };
 
-
 const mapStateToProps = state => {
     return {
         auth: getAuth(state),
@@ -19,7 +18,6 @@ const mapStateToProps = state => {
     };
 
 };
-
 
 export default compose(
     connect(mapStateToProps,mapDispatchToProps),

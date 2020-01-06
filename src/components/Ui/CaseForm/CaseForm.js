@@ -13,8 +13,6 @@ function CaseForm(props) {
         state.product === '' ||
         state.web === '';
 
-
-
     return (
         <div>
             <form onSubmit={onSubmit}>
@@ -87,9 +85,6 @@ function CaseForm(props) {
             </form>
             <SimpleSnackbarContainer/>
         </div>
-
-
-
     );
 }
 
