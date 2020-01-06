@@ -13,8 +13,12 @@ table a {
 }
 
 table tr {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #f2f2f2;
     padding: 5px;
+}
+
+table tr:nth-child(even) {
+    background-color: rgba(53, 199, 255, 0.08);
 }
 
 table th, table td {
@@ -25,7 +29,6 @@ table th, table td {
 table td div {
     text-overflow: ellipsis;
     white-space: nowrap;
-    max-width: 90%;
     overflow: hidden;
 }
 
@@ -108,6 +111,12 @@ table th {
         right: 30px;
         position: absolute;
     }
+    table tr:nth-child(even) {
+        background-color: transparent;
+    }
+    .centeredTableElement {
+        text-align: right !important;
+    }
 }
 
 .addCase {
@@ -128,8 +137,13 @@ table th {
     margin-left: 5px;
 }
 
+.centeredTableElement {
+    text-align: center;
+}
+
 .approved {
     color: green !important;
+    text-align: center;
 }
 
 .notApproved {

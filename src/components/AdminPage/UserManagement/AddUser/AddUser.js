@@ -107,6 +107,7 @@ function AddUser(props) {
 
                 <FormControlLabel
                     control={<Checkbox
+                        color="primary"
                         onChange={onChangeCheckbox}
                         checked={state.admin}
                         name="admin"

@@ -21,7 +21,7 @@ function CommentPage(props) {
                     <span>BACK</span>
                 </Button>
             </Link>
-            <CommentFormContainer caseId={props.caseId} currentComments={props.comments} commentCounter={props.commentCounter}/>
+
             <div className="chat">
                 <div className="messages">
                     {comments && comments.map(comment =>{
@@ -36,6 +36,7 @@ function CommentPage(props) {
                     })}
                 </div>
             </div>
+            <CommentFormContainer caseId={props.caseId} currentComments={props.comments} commentCounter={props.commentCounter}/>
             <SimpleSnackbarContainer/>
         </Container>
     );

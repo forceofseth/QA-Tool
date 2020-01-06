@@ -41,10 +41,35 @@ h1 {
     float: left;
 }
 
+.mainContainer.notFound {
+    text-align: center;
+}
+
+.title.notFound {
+    float: none;
+}
+
 .MuiButton-containedPrimary {
     background-color: #4C8CFD !important;
+    margin-top: 15px !important;
 }
 
 .MuiButton-contained.Mui-disabled {
     background-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+.checklistInput {
+    text-align: right;
+}
+
+.MuiFormControlLabel-root {
+    display: block !important;
+}
+
+.divider {
+    margin: 50px 0 !important;
+}
+
+.MuiSvgIcon-root {
+    vertical-align: middle;
 }
