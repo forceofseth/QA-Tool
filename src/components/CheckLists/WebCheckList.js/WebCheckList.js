@@ -38,7 +38,7 @@ function WebCheckList(props) {
                             <span>BACK</span>
                         </Button>
                     </Link>
-                    <h1>{singleCase.customer} / {caseId} / {singleCase.product}</h1>
+                    <h1>Web-Checks: {singleCase.customer} / {caseId} / {singleCase.product}</h1>
 
                     {state && Object.keys(state).map(key => {
                         return (
