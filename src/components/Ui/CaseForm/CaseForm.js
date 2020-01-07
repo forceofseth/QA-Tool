@@ -39,6 +39,9 @@ function CaseForm(props) {
                     variant="outlined"
                     required
                     fullWidth
+                    inputProps={{
+                        maxLength: 12,
+                    }}
                 />
                 <TextField
                     name="product"
@@ -62,6 +65,9 @@ function CaseForm(props) {
                     variant="outlined"
                     required
                     fullWidth
+                    inputProps={{
+                        maxLength: 8,
+                    }}
                 />
                 <TextField
                     name="web"
@@ -73,6 +79,9 @@ function CaseForm(props) {
                     variant="outlined"
                     required
                     fullWidth
+                    inputProps={{
+                        maxLength: 8,
+                    }}
                 />
                 <Button
                     type="submit"
