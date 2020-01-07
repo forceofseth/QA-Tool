@@ -33,7 +33,6 @@ function PasswordChange(props) {
         <div>
             <form className="form" onSubmit={onSubmit}>
                 <TextField
-                    id="outlined-email-input"
                     margin="normal"
                     variant="outlined"
                     name="passwordOne"
@@ -45,7 +44,6 @@ function PasswordChange(props) {
                     fullWidth
                 />
                 <TextField
-                    id="outlined-email-input"
                     margin="normal"
                     variant="outlined"
                     name="passwordTwo"
