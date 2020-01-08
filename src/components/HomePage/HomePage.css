@@ -43,7 +43,6 @@ tr td {
     max-width: 70px;
 }
 
-
 table th {
     text-transform: uppercase;
     font-size: 14px;
@@ -127,27 +126,9 @@ table th {
     text-decoration: none;
 }
 
-.addCaseIcon {
-    font-size: 20px !important;
-    margin-left: 10px;
-}
-
-.openLink {
-    font-size: 12px !important;
-    margin-left: 5px;
-}
 
 .centeredTableElement {
     text-align: center;
-}
-
-.approved {
-    color: green !important;
-    text-align: center;
-}
-
-.notApproved {
-    color: red !important;
 }
 
 .commentCounter {
@@ -159,3 +140,23 @@ table th {
     margin-top: -20px;
 }
 
+/* overriding material ui styles */
+
+.approved {
+    color: green !important;
+    text-align: center;
+}
+
+.notApproved {
+    color: red !important;
+}
+
+.addCaseIcon {
+    font-size: 20px !important;
+    margin-left: 10px;
+}
+
+.openLink {
+    font-size: 12px !important;
+    margin-left: 5px;
+}

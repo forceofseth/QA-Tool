@@ -28,10 +28,6 @@ h1 {
     color: green;
 }
 
-.MuiContainer-maxWidthXl {
-    max-width: 100% !important;
-}
-
 .backButton {
     float: right;
     text-decoration: none;
@@ -49,27 +45,36 @@ h1 {
     float: none;
 }
 
-.MuiButton-containedPrimary {
-    background-color: #4C8CFD !important;
-    margin-top: 15px !important;
+.checklistInput {
+    text-align: right;
+}
+
+
+.MuiSvgIcon-root {
+    vertical-align: middle;
+}
+
+
+/* overriding material ui styles */
+
+.MuiFormControlLabel-root {
+    display: block !important;
 }
 
 .MuiButton-contained.Mui-disabled {
     background-color: rgba(0, 0, 0, 0.12) !important;
 }
 
-.checklistInput {
-    text-align: right;
+.MuiButton-containedPrimary {
+    background-color: #4C8CFD !important;
+    margin-top: 15px !important;
 }
 
-.MuiFormControlLabel-root {
-    display: block !important;
+.MuiContainer-maxWidthXl {
+    max-width: 100% !important;
 }
 
 .divider {
     margin: 50px 0 !important;
 }
 
-.MuiSvgIcon-root {
-    vertical-align: middle;
-}
