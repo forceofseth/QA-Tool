@@ -1,5 +1,3 @@
-
-
 table {
     border: 0 solid #ccc;
     width: 100%;
@@ -65,12 +63,14 @@ table th {
     }
 }
 
-.openLink {
-    font-size: 12px !important;
-    margin-left: 5px;
-}
-
 .deleteIcon{
     cursor: pointer;
 }
 
+
+/* overriding material ui styles */
+
+.openLink {
+    font-size: 12px !important;
+    margin-left: 5px;
+}
