@@ -60,28 +60,6 @@ https://qa-tool.online or https://qa-tool-e6f47.web.app
 * [Google Firebase](https://firebase.google.com/)
 * [Material UI](https://material-ui.com/)
 
-## Modules
-
-<b>User Module</b>
-- Loginpage
-- Logout
-
-<b>Security Module</b>
-- Roles: Admin / User
-- Admin can Add/Edit/Delete Users
-
-<b>Case Module</b>
-- Add a case with predefined checklist, adding new checklist elements is possible
-- Adding a case with predefined masterdata
-- Archiving cases
-
-<b>Masterdata Module</b>
-- Add new customers
-- Edit / delete masterdata
-
-<b>Comment Module</b>
-- Commenting function for each case 
-
 
 ## Authors
 
