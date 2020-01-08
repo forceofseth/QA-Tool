@@ -71,12 +71,15 @@ https://qa-tool.online or https://qa-tool-e6f47.web.app
 
 This project is licensed under the MIT License.
 
+
+## User testing
+
+* Heatmap of user-clicks all over the QA Tool: <em>[Image](https://i.imgur.com/EPs2Kr7.jpg)</em>
+* Video of user interacting with the tool: <em>[Video](https://insights.hotjar.com/r?site=1631304&recording=3007657372&token=a1c2120df6c1d496b4b03938d4bafd3a)</em>
+
+
 ## Acknowledgments
 
 * 
 * 
 * 
-
-## user test
-
-
