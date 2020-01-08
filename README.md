@@ -1,6 +1,6 @@
-[![QA-Tool Logo](https://i.imgur.com/v5hxt0b.png)](https://qa-tool.online)
+<p align="center"><img src="https://i.imgur.com/v5hxt0b.png"></p>
 
-<h5>https://qa-tool.online/</h5>
+<h5 align="center">https://qa-tool.online/</h5>
 <h2 align="center"><a href="https://qa-tool.online">QA Tool</a></h2>
 
 <p align="center">
