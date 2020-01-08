@@ -5,6 +5,7 @@ import Container from "@material-ui/core/Container";
 import {ACCOUNT, ADMIN} from "../../../constants/routes";
 import './Navigation.css';
 import {LockOpenOutlined, PermIdentityOutlined, HomeOutlined} from "@material-ui/icons";
+import Tooltip from "@material-ui/core/Tooltip";
 
 function Navigation(props) {
     const {profile} = props;
@@ -22,17 +23,23 @@ function Navigation(props) {
                 </div>
 
                 <div className="menuRight">
-                    <a href="/">
-                        <HomeOutlined className="topIcon" fontSize="large"/>
-                    </a>
-                    <Link to={ACCOUNT}>
-                        <PermIdentityOutlined className="topIcon" fontSize="large"/>
-                    </Link>
+                    <Tooltip title="Home">
+                        <a href="/">
+                            <HomeOutlined className="topIcon" fontSize="large"/>
+                        </a>
+                    </Tooltip>
+                    <Tooltip title="Account">
+                        <Link to={ACCOUNT}>
+                            <PermIdentityOutlined className="topIcon" fontSize="large"/>
+                        </Link>
+                    </Tooltip>
                     {!profile || !profile.isLoaded ? null : (
                         profile.admin ?
-                            <Link to={ADMIN}>
-                                <LockOpenOutlined className="topIcon" fontSize="large"/>
-                            </Link>
+                            <Tooltip title="Admin">
+                                <Link to={ADMIN}>
+                                    <LockOpenOutlined className="topIcon" fontSize="large"/>
+                                </Link>
+                            </Tooltip>
                             : null)
                     }
                     <SignOutContainer/>
