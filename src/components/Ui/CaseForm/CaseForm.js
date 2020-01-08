@@ -42,6 +42,7 @@ function CaseForm(props) {
                     inputProps={{
                         maxLength: 12,
                     }}
+                    placeholder="max. 12 character"
                 />
                 <TextField
                     name="product"
@@ -68,6 +69,7 @@ function CaseForm(props) {
                     inputProps={{
                         maxLength: 8,
                     }}
+                    placeholder="max. 8 character"
                 />
                 <TextField
                     name="web"
@@ -82,6 +84,7 @@ function CaseForm(props) {
                     inputProps={{
                         maxLength: 8,
                     }}
+                    placeholder="max. 8 character"
                 />
                 <Button
                     type="submit"
