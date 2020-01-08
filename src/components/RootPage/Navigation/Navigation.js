@@ -4,7 +4,7 @@ import SignOutContainer from "../../Ui/SignOut/SignOutContainer";
 import Container from "@material-ui/core/Container";
 import {ACCOUNT, ADMIN} from "../../../constants/routes";
 import './Navigation.css';
-import {LockOpenOutlined, PermIdentityOutlined, HomeOutlined} from "@material-ui/icons";
+import {PermIdentityOutlined, HomeOutlined, Settings} from "@material-ui/icons";
 import Tooltip from "@material-ui/core/Tooltip";
 
 function Navigation(props) {
@@ -37,7 +37,7 @@ function Navigation(props) {
                         profile.admin ?
                             <Tooltip title="Admin">
                                 <Link to={ADMIN}>
-                                    <LockOpenOutlined className="topIcon" fontSize="large"/>
+                                    <Settings className="topIcon" fontSize="large"/>
                                 </Link>
                             </Tooltip>
                             : null)
