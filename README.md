@@ -80,6 +80,6 @@ This project is licensed under the MIT License.
 
 ## Acknowledgments
 
-* 100 % unit test coverag in all reducers.<img src="https://imgur.com/HiEfIVH">
+* 100 % unit test coverag in all reducers.
 * 
 * 
