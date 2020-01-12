@@ -40,8 +40,10 @@ function HomeTableRow(props) {
             <td className="commentIcon" data-label="Comments">
                 <Link to={COMMENTS + "/" + singleCase.id}>
                     <ChatBubbleOutline fontSize="medium"/>
-                    <div className="commentCounter">{singleCase.commentCounter}</div>
-
+                    {singleCase.commentCounter ?
+                        <div className="commentCounter">{singleCase.commentCounter}</div>:
+                        <div className="commentCounter">0</div>
+                    }
                 </Link>
             </td>
             <td className="editLabel centeredTableElement" data-label="Edit">
