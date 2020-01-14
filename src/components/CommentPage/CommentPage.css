@@ -27,3 +27,10 @@
 .message p {
     margin-block-start: 0;
 }
+
+@media screen and (max-width: 1000px) {
+    .title {
+        max-width: 50%;
+        position: absolute;
+    }
+}

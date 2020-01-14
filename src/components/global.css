@@ -78,3 +78,7 @@ h1 {
     margin: 50px 0 !important;
 }
 
+.MuiSnackbarContent-message {
+    max-width: 80%;
+}
+

@@ -87,11 +87,12 @@ table th {
         font-weight: bold;
     }
 
-    .editLabel::before, .commentIcon::before, .archive {
-        display: none;
-    }
     .commentIcon {
         text-align: right;
+    }
+
+    .commentCounter {
+        margin-right: 5px;
     }
 
     table td div {
@@ -116,6 +117,9 @@ table th {
     .centeredTableElement {
         text-align: right !important;
     }
+    .PrivateSwitchBase-root-186 {
+        padding: 0 !important;
+    }
 }
 
 .addCase {
@@ -139,6 +143,7 @@ table th {
     border-radius: 4px;
     margin-top: -20px;
 }
+
 
 /* overriding material ui styles */
 
