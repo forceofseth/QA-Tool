@@ -2,12 +2,12 @@ import authReducer from "./authReducer";
 import {
     CLEAN_AUTH_ERROR, CLEAN_AUTH_SUCCESS,
     CREATE_USER_ERROR,
-    CREATE_USER_SUCCESS,
+    CREATE_USER_SUCCESS, DELETE_USER_ERROR, DELETE_USER_SUCCESS,
     LOGIN_ERROR,
     LOGIN_SUCCESS,
     LOGOUT_SUCCESS,
     PASSWORD_UPDATE_ERROR,
-    PASSWORD_UPDATE_SUCCESS, RESET_PASSWORD_ERROR, RESET_PASSWORD_SUCCESS
+    PASSWORD_UPDATE_SUCCESS, RESET_PASSWORD_ERROR, RESET_PASSWORD_SUCCESS, UPDATE_USER_ERROR, UPDATE_USER_SUCCESS
 } from "../actions/authActions";
 
 describe('authReducer Test Suite', () => {
@@ -96,6 +96,47 @@ describe('authReducer Test Suite', () => {
         const newState = authReducer(initialState, {type: CREATE_USER_ERROR, payload: {error}});
         expect(newState).toEqual({successMessage: null, error: error});
     });
+    it('error null, successMessage not null on update user success', () => {
+        const initialState = {
+            successMessage: null,
+            error: "test error message"
+        };
+        const updatedUser = {firstName: "Hans", lastName: "Peter"};
+        const newState = authReducer(initialState, {type: UPDATE_USER_SUCCESS, payload: {updatedUser}});
+        expect(newState).toEqual({successMessage: "Successfully updated user: "+ updatedUser.firstName + " " + updatedUser.lastName + "!", error: null});
+    });
+
+    it('error not null, successMessage null on update user error', () => {
+        const initialState = {
+            successMessage: null,
+            error: null
+        };
+        const error = {message: "this is an error"};
+        const newState = authReducer(initialState, {type: UPDATE_USER_ERROR, payload: {error}});
+        expect(newState).toEqual({successMessage: null, error: error});
+    });
+
+    //////////////////////////////////////////////////////////////////////////////
+    it('error null, successMessage not null on delete user success', () => {
+        const initialState = {
+            successMessage: null,
+            error: "test error message"
+        };
+        const newState = authReducer(initialState, {type: DELETE_USER_SUCCESS});
+        expect(newState).toEqual({successMessage: "Successfully deleted user!", error: null});
+    });
+
+    it('error not null, successMessage null on delete user error', () => {
+        const initialState = {
+            successMessage: null,
+            error: null
+        };
+        const error = {message: "this is an error"};
+        const newState = authReducer(initialState, {type: DELETE_USER_ERROR, payload: {error}});
+        expect(newState).toEqual({successMessage: null, error: error});
+    });
+
+    ////////////////////////////////////////////////////////////////////
 
     it('error null, successMessage null on clean auth error', () => {
         const initialState = {
