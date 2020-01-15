@@ -82,5 +82,3 @@ This project is licensed under the MIT License.
 
 * 100 % unit test coverag in all reducers. <br>
 <img src="https://i.imgur.com/zdQ9xwU.png">
-* 
-* 
