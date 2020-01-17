@@ -46,10 +46,11 @@ function AddCasePage(props) {
         const productHtml = document.querySelector(".product-js");
         productHtml.value = value && value.product ? value.product : "";
 
-        setState({...state,
-            product: value && value.product,
-            customer: value && value.customer,
-            projectId: value && value.projectId
+        setState({
+            ...state,
+            product: value && value.product ? value.product : "",
+            customer: value && value.customer ? value.customer : "",
+            projectId: value && value.projectId ? value.projectId : ""
         });
     };
 
@@ -71,7 +72,7 @@ function AddCasePage(props) {
                         <TextField {...params} label="Choose Customer from Database" variant="outlined" fullWidth/>
                     )}
                 />
-                <CaseForm onSubmit={onSubmit} onChange={onChange} state={state}  title={"Add Case"}/>
+                <CaseForm onSubmit={onSubmit} onChange={onChange} state={state} title={"Add Case"}/>
             </Container>
         </div>
 

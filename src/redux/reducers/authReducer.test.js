@@ -116,7 +116,6 @@ describe('authReducer Test Suite', () => {
         expect(newState).toEqual({successMessage: null, error: error});
     });
 
-    //////////////////////////////////////////////////////////////////////////////
     it('error null, successMessage not null on delete user success', () => {
         const initialState = {
             successMessage: null,
@@ -135,8 +134,6 @@ describe('authReducer Test Suite', () => {
         const newState = authReducer(initialState, {type: DELETE_USER_ERROR, payload: {error}});
         expect(newState).toEqual({successMessage: null, error: error});
     });
-
-    ////////////////////////////////////////////////////////////////////
 
     it('error null, successMessage null on clean auth error', () => {
         const initialState = {
