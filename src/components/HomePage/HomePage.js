@@ -14,6 +14,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from "@material-ui/core/Button";
 import HomeTableHeader from "../Ui/HomeTable/HomeTableHeader";
 import HomeTableRow from "../Ui/HomeTable/HomeTableRow";
+import Loading from "../Status/Loading";
 
 
 const HomePage = (props) => {
@@ -25,6 +26,7 @@ const HomePage = (props) => {
         });
 
     return (
+        sortedCases?
         <Container maxWidth="lg" className="mainContainer">
             <h1 className="title">Projects</h1>
             <div className="addCase">
@@ -58,7 +60,6 @@ const HomePage = (props) => {
                 >
                     <h3>Archived Projects</h3>
                 </ExpansionPanelSummary>
-
                 <ExpansionPanelDetails>
                     <table>
                         <HomeTableHeader/>
@@ -76,7 +77,7 @@ const HomePage = (props) => {
                 </ExpansionPanelDetails>
             </ExpansionPanel>
             <SimpleSnackbarContainer/>
-        </Container>
+        </Container>:<Loading/>
     );
 };
 
