@@ -9,7 +9,7 @@ function CheckboxWithLabel(props){
         <div key={checkFor}>
             <Grid item s={12} md={5} >
                 <Checkbox color="primary" type="checkbox" name={checkFor} defaultChecked={defaultChecked} onChange={onChange} className="checklistInput"/>
-                <label htmlFor ={checkFor}>{checkFor + ":"}</label>
+                <label htmlFor ={checkFor}>{checkFor}</label>
             </Grid>
         </div>
     );

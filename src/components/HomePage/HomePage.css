@@ -120,14 +120,22 @@ table th {
     .centeredTableElement {
         text-align: right !important;
     }
-    .PrivateSwitchBase-root-110 {
-        padding: 0 !important;
-    }
+
     table .MuiSvgIcon-root {
         font-size: 2rem;
     }
     .openLink {
         font-size: 20px !important;
+    }
+    .archive::before, .editLabel::before {
+        padding-top: 8px;
+    }
+    .commentIcon::before {
+        padding-top: 5px;
+    }
+
+    .archive > .MuiCheckbox-colorPrimary {
+        padding: 0;
     }
 }
 

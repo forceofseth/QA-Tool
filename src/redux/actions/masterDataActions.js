@@ -26,7 +26,7 @@ export const updateMasterData = updatedMasterData => {
         const firestore = getFirestore();
         firestore.collection('masterdata').doc(updatedMasterData.id).update({
             customer: updatedMasterData.customer,
-            projectId: Number(updatedMasterData.projectId),
+            projectId: updatedMasterData.projectId,
             product: updatedMasterData.product,
         }).then(() => {
             dispatch(getUpdateMasterDataSuccessAction(updatedMasterData));

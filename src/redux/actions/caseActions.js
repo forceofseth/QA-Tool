@@ -17,12 +17,11 @@ export const UPDATE_ARCHIVE_STATE_ERROR = 'UPDATE_ARCHIVE_STATE_ERROR';
 export const createCase = newCase => {
     return (dispatch, getState, {getFirestore}) => {
         const firestore = getFirestore();
-        // noinspection NonAsciiCharacters
+        // noinspection NonAsciiCharacters,JSNonASCIINames
         firestore.collection('cases').add({
             ...newCase,
             approved: Boolean(false),
             date: new Date(moment.now()),
-            projectId: Number(newCase.projectId),
             leadChecks: {
                 "Browserkompatibilät Desktop (Chrome, Firefox, IE, Edge, Safari)": Boolean(false),
                 "Browserkompatibilät Mobile (iOS // Safari, Android // Chrome)": Boolean(false),
@@ -75,7 +74,7 @@ export const updateCase = updatedCase => {
         const firestore = getFirestore();
         firestore.collection('cases').doc(updatedCase.id).update({
             customer: updatedCase.customer,
-            projectId: Number(updatedCase.projectId),
+            projectId: updatedCase.projectId,
             lead: updatedCase.lead,
             product: updatedCase.product,
             web: updatedCase.web
