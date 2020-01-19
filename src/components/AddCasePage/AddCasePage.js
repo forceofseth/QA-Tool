@@ -66,7 +66,6 @@ function AddCasePage(props) {
                 <Autocomplete
                     options={props.masterData}
                     getOptionLabel={option => option.customer}
-                    style={{width: 300}}
                     onChange={onAutocompleteChange}
                     renderInput={params => (
                         <TextField {...params} label="Choose Customer from Database" variant="outlined" fullWidth/>
