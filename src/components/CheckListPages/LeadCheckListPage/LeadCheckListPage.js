@@ -37,7 +37,7 @@ function LeadCheckListPage(props) {
                             <span>BACK</span>
                         </Button>
                     </Link>
-                    <h1>Lead-Checks: {singleCase.customer} / {caseId} / {singleCase.product}</h1>
+                    <h1>Lead-Checks: {singleCase.customer} - {singleCase.product}</h1>
                     {state && Object.keys(state).map(key => {
                         return (
                             <div key={key}>

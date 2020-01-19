@@ -72,7 +72,7 @@ table th {
     table td {
         display: block;
         text-align: right;
-        font-size: 13px;
+        font-size: 16px;
         border-bottom: 1px dotted #ccc;
     }
 
@@ -93,7 +93,10 @@ table th {
 
     .commentCounter {
         margin-right: 5px;
+        font-size: 13px !important;
+        margin-top: -27px !important;
     }
+
 
     table td div {
         max-width: 100%;
@@ -117,8 +120,14 @@ table th {
     .centeredTableElement {
         text-align: right !important;
     }
-    .PrivateSwitchBase-root-186 {
+    .PrivateSwitchBase-root-110 {
         padding: 0 !important;
+    }
+    table .MuiSvgIcon-root {
+        font-size: 2rem;
+    }
+    .openLink {
+        font-size: 20px !important;
     }
 }
 
@@ -162,6 +171,5 @@ table th {
 }
 
 .openLink {
-    font-size: 12px !important;
     margin-left: 5px;
 }
